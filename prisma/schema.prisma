@@ -6,6 +6,76 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model article {
+  id                  Int                       @id @default(autoincrement()) @db.UnsignedInt
+  class_number        String?
+  article_category_id Int?                      @db.UnsignedInt
+  article_category    article_category_master?  @relation(fields: [article_category_id], references: [id])
+  region_id           Int?                      @db.UnsignedInt
+  region              region_master?            @relation(fields: [region_id], references: [id])
+  country_id          Int?                      @db.UnsignedInt
+  country             country_master?           @relation(fields: [country_id], references: [id])
+  period_id           Int?                      @db.UnsignedInt
+  period              period_master?            @relation(fields: [period_id], references: [id])
+  prefecture_id       Int?                      @db.UnsignedInt
+  prefecture          prefecture_master?        @relation(fields: [prefecture_id], references: [id])
+  author_id           Int?                      @db.UnsignedInt
+  author              author?                   @relation(fields: [author_id], references: [id])
+  source_category_id  Int?                      @db.UnsignedInt
+  source_category     source_category_master?   @relation(fields: [source_category_id], references: [id])
+  source              String?
+  title               String
+  kana                String                    @db.VarChar(1)
+  content             String?                   @db.Text
+  created_at          DateTime                  @default(now()) @db.Timestamp(0)
+  updated_at          DateTime                  @default(now()) @updatedAt @db.Timestamp(0)
+  is_public           Boolean                   @default(false)
+}
+
+model article_category_master {
+  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  name      String
+  articles  article[]
+}
+
+model region_master {
+  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  name      String
+  articles  article[]
+}
+
+model country_master {
+  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  kana      String  @db.VarChar(1)
+  name      String
+  articles  article[]
+}
+
+model period_master {
+  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  name      String
+  articles  article[]
+}
+
+model prefecture_master {
+  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  name      String
+  articles  article[]
+}
+
+model author {
+  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  kana      String  @db.VarChar(1)
+  name      String
+  articles  article[]
+}
+
+model source_category_master {
+  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  name      String
+  articles  article[]
 }
