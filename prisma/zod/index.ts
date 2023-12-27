@@ -39,7 +39,7 @@ export const NullsOrderSchema = z.enum(['first','last']);
 // ARTICLE SCHEMA
 /////////////////////////////////////////
 
-export const articleSchema = z.object({
+export const ArticleSchema = z.object({
   id: z.number().int(),
   class_number: z.string().nullable(),
   article_category_id: z.number().int().nullable(),
@@ -58,7 +58,7 @@ export const articleSchema = z.object({
   is_public: z.boolean(),
 })
 
-export type article = z.infer<typeof articleSchema>
+export type Article = z.infer<typeof ArticleSchema>
 
 /////////////////////////////////////////
 // ARTICLE CATEGORY MASTER SCHEMA

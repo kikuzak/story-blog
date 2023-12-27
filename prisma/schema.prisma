@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model article {
+model Article {
   id                  Int                     @id @default(autoincrement()) @db.UnsignedInt
   class_number        String?
   article_category_id Int?                    @db.UnsignedInt
@@ -34,19 +34,20 @@ model article {
   created_at          DateTime                  @default(now()) @db.Timestamp(0)
   updated_at          DateTime                  @default(now()) @updatedAt @db.Timestamp(0)
   is_public           Boolean                   @default(false)
+  @@map("article")
 }
 
 model ArticleCategoryMaster {
   id        Int @id @default(autoincrement()) @db.UnsignedInt
   name      String
-  articles  article[]
+  articles  Article[]
   @@map("article_category_master")
 }
 
 model RegionMaster {
   id        Int @id @default(autoincrement()) @db.UnsignedInt
   name      String
-  articles  article[]
+  articles  Article[]
   @@map("region_master")
 }
 
@@ -54,21 +55,21 @@ model CountryMaster {
   id        Int @id @default(autoincrement()) @db.UnsignedInt
   kana      String  @db.VarChar(1)
   name      String
-  articles  article[]
+  articles  Article[]
   @@map("country_master")
 }
 
 model PeriodMaster {
   id        Int @id @default(autoincrement()) @db.UnsignedInt
   name      String
-  articles  article[]
+  articles  Article[]
   @@map("period_master")
 }
 
 model PrefectureMaster {
   id        Int @id @default(autoincrement()) @db.UnsignedInt
   name      String
-  articles  article[]
+  articles  Article[]
   @@map("prefecture_master")
 }
 
@@ -76,14 +77,14 @@ model Author {
   id        Int @id @default(autoincrement()) @db.UnsignedInt
   kana      String  @db.VarChar(1)
   name      String
-  articles  article[]
+  articles  Article[]
   @@map("author")
 }
 
 model SourceCategoryMaster {
   id        Int @id @default(autoincrement()) @db.UnsignedInt
   name      String
-  articles  article[]
+  articles  Article[]
   @@map("source_category_master")
 }
 
