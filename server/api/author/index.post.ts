@@ -5,7 +5,7 @@ export default defineEventHandler(async (e): Promise<Author> => {
 
     const body = await readBody(e);
 
-    if (!body) console.error("`API Error: Author Create.");
+    if (!body) console.error(e);
 
     try {
         let data: Author = await prisma.author.create({

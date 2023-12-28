@@ -5,7 +5,7 @@ export default defineEventHandler(async (e): Promise<Article> => {
 
     const body = await readBody(e);
 
-    if (!body) console.error(`API Error: Article update.`);
+    if (!body) console.error(e);
 
     try {
         let data: Article = await prisma.article.update({
