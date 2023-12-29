@@ -1,0 +1,68 @@
+html {
+    font-size: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    writing-mode: horizontal-tb;
+}
+
+h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+a {
+    display: block;
+}
+
+.pis-1 {
+    padding-inline-start: 1rem;
+}
+
+.pis-2 {
+    padding-inline-start: 2rem;
+}
+
+.pis-3 {
+    padding-inline-start: 3rem;
+}
+
+.pis-4 {
+    padding-inline-start: 4rem;
+}
+
+.pis-5 {
+    padding-inline-start: 5rem;
+}
+
+.base-container {
+    inline-size: 100%;
+    margin-inline: auto;
+    max-inline-size: 70rem;
+    padding-inline: 1.5rem;
+}
+
+.grid-container {
+    display: grid;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.flex-item {
+
+}

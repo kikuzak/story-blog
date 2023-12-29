@@ -1,7 +1,7 @@
 <template>
     <NuxtLayout name="admin">
         <div class="top base-container">
-            <h1>ダッシュボード</h1>
+            <h1>著者管理</h1>
         </div>
     </NuxtLayout>
 </template>
