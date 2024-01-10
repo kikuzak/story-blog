@@ -8,7 +8,17 @@ const {
     getAll
 } = createReadMethods<Region>('region');
 
-export {
+function initialize(): Region {
+    return {
+        id: 0,
+        name: "" 
+    }
+}
+
+const RegionLogic = {
     getById,
-    getAll
-};
+    getAll,
+    initialize
+}
+
+export { RegionLogic };

@@ -2,62 +2,73 @@ export function createReadMethods<T>(name: string) {
     const uri = `/api/${name}`;
     
     // idとallは汎用なので作成
-    function getById(id: number): Ref<T> {
-        const { data, error } = useFetch(uri, {
+    async function getById(id: number): Promise<Ref<T>> {
+        const { data, error } = await useFetch(uri, {
             query: {id: id}
         });
         if (error.value) throw(error.value);
         return data as Ref<T>;
     }
 
-    function getAll(): Ref<T[]> {
-        const { data, error } = useFetch(uri);
+    async function getAll(): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri);
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
     }
 
-    function getMultiByKana(kana: string): Ref<T[]> {
-        const { data, error } = useFetch(uri, {
+    async function getMultiByPage(pageNumber: number, pageSize: number): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri, {
+            query: {
+                page: pageNumber,
+                size: pageSize
+            }
+        });
+        if (error.value) throw(error.value);
+        return data as Ref<T[]>;
+    }
+
+    async function getMultiByKana(kana: string): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri, {
             query: {kana: kana}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
     }
 
-    function getMultiByRegion(region: number): Ref<T[]> {
-        const { data, error } = useFetch(uri, {
+    async function getMultiByRegion(region: number): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri, {
             query: {region: region}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
     }
     
-    function getMultiByCountry(country: number): Ref<T[]> {
-        const { data, error } = useFetch(uri, {
+    async function getMultiByCountry(country: number): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri, {
             query: {country: country}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
     }
     
-    function getMultiByPrefecture(prefecture: number): Ref<T[]> {
-        const { data, error } = useFetch(uri, {
+    async function getMultiByPrefecture(prefecture: number): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri, {
             query: {prefecture: prefecture}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
     }
     
-    function getMultiBySourceCategory(sourceCategory: number): Ref<T[]> {
-        const { data, error } = useFetch(uri, {
+    async function getMultiBySourceCategory(sourceCategory: number): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri, {
             query: {source_category: sourceCategory}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
     }
     
-    function getByAuthorId(authorId: number): Ref<T> {
-        const { data, error } = useFetch(uri, {
+    async function getByAuthorId(authorId: number): Promise<Ref<T>> {
+        const { data, error } = await useFetch(uri, {
             query: {author_id: authorId}
         });
         if (error.value) throw(error.value);
@@ -67,6 +78,7 @@ export function createReadMethods<T>(name: string) {
     return {
         getById,
         getAll,
+        getMultiByPage,
         getMultiByKana,
         getMultiByRegion,
         getMultiByCountry,
@@ -78,53 +90,38 @@ export function createReadMethods<T>(name: string) {
 
 export function createWriteMethods<T>(name: string) {
     const uri = `/api/${name}`;
+    type EntityWithId = {
+        id: number
+    }
 
-    async function post(data: T): Promise<T> {
-        // 型チェック
-        let bodyData: BodyInit | null = null;
-        if (data instanceof URLSearchParams) {
-            bodyData = data;
-        } else {
-            throw('createWriteMethod: post');
-        }
-
+    async function post<T extends EntityWithId>(data: T): Promise<T> {
+        const {id, ...withoutIdData} = data;
         const res = await $fetch(uri, {
             method: 'post',
-            body: bodyData
+            body: {data: withoutIdData}
         });
         await refreshNuxtData();
         return res as T;
     }
     
-    async function update(data: T): Promise<T> {
-        // 型チェック
-        let bodyData: BodyInit | null = null;
-        if (data instanceof URLSearchParams) {
-            bodyData = data;
-        } else {
-            throw('createWriteMethod: update');
-        }
+    async function update<T extends EntityWithId>(data: T): Promise<T> {
 
         const res = await $fetch(uri, {
             method: 'put',
-            body: bodyData
+            body: {
+                id: data.id,
+                data: data
+            }
         });
         await refreshNuxtData();
         return res as T;
     }
 
-    async function deleteById(data: T): Promise<T> {
-        // 型チェック
-        let bodyData: BodyInit | null = null;
-        if (data instanceof URLSearchParams) {
-            bodyData = data;
-        } else {
-            throw('createWriteMethod: delete');
-        }
+    async function deleteById(id: number): Promise<T> {
 
         const res = await $fetch(uri, {
             method: 'delete',
-            body: bodyData
+            body: {id: id}
         });
         await refreshNuxtData();
         return res as T;

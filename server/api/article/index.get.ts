@@ -11,18 +11,37 @@ export default defineEventHandler(async (e): Promise<Article | Article[] | null>
         const keys = Object.keys(query);
 
         // 検索条件をクエリから検索
-        let cond: any = {};
+        let where: any = {};
+        let pageNumber: number = 0;
+        let pageSize: number = 0;
         for (let i = 0; i < keys.length; i++) {
-            cond[keys[i]] = convertType(query[keys[i]] as string);
+            if (keys[i] == 'page') {
+                pageNumber = Number(query[keys[i]]);
+            } else if (keys[i] == 'size') {
+                pageSize = Number(query[keys[i]]);
+            } else {
+                where[keys[i]] = convertType(query[keys[i]] as string);
+            }
         }
 
         // データの取得
-        const data = await prisma.article.findMany({
-            where: cond
-        });
+        let data: any;
+        if (pageNumber === 0 && pageSize === 0) {
+            data = await prisma.article.findMany({
+                where: where
+            });
+        } else {
+            data = await prisma.article.findMany({
+                where: where,
+                skip: (pageNumber - 1) * pageSize,
+                take: pageSize,
+                orderBy: {kana: 'asc'}
+            });
+        }
 
         if (data.length === 0) return null;
-        if (data.length === 1) return data[0];
+        else if (query.page && query.size || query.length === 0) return data;
+        else if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);

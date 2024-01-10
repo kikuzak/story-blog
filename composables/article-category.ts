@@ -8,7 +8,17 @@ const {
     getAll
 } = createReadMethods<ArticleCategory>('article-category');
 
-export {
+function initialize(): ArticleCategory {
+    return {
+        id: 0,
+        name: ""
+    }
+}
+
+const ArticleCategoryLogic = {
     getById,
-    getAll
-};
+    getAll,
+    initialize
+}
+
+export {ArticleCategoryLogic };

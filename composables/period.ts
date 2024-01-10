@@ -8,7 +8,16 @@ const {
     getAll
 } = createReadMethods<Period>('period');
 
-export {
+function initialize(): Period {
+    return {
+        id: 0,
+        name: "" 
+    }
+}
+
+const PeriodLogic = {
     getById,
-    getAll
-};
+    getAll,
+    initialize
+}
+export { PeriodLogic };

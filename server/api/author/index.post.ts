@@ -9,8 +9,9 @@ export default defineEventHandler(async (e): Promise<Author> => {
 
     try {
         let data: Author = await prisma.author.create({
-            data: body
+            data: body.data
         });
+        console.log(data);
         return data;
     } catch (e) {
         console.error(e);

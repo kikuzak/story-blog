@@ -5,6 +5,7 @@ type Article = Zod.infer<typeof ArticleSchema>;
 
 const {
     getById,
+    getMultiByPage,
     getMultiByRegion,
     getMultiByCountry,
     getMultiByPrefecture,
@@ -19,8 +20,30 @@ const {
     deleteById
 } = createWriteMethods<Article>('article');
 
-export {
+function initialize(): Article {
+    return {
+        id: 0,
+        class_number: null,
+        article_category_id: null,
+        region_id: null,
+        country_id: null,
+        period_id: null,
+        prefecture_id: null,
+        author_id: null,
+        source_category_id: null,
+        source: null,
+        title:  "",
+        kana: "",
+        content: null,
+        created_at: new Date(),
+        updated_at: new Date(),
+        is_public: false
+    }
+}
+
+const ArticleLogic = {
     getById,
+    getMultiByPage,
     getMultiByRegion,
     getMultiByCountry,
     getMultiByPrefecture,
@@ -29,5 +52,8 @@ export {
     getAll,
     post,
     update,
-    deleteById
+    deleteById,
+    initialize
 }
+
+export { ArticleLogic };

@@ -9,8 +9,18 @@ const {
     getAll
 } = createReadMethods<Prefecture>('prefecture');
 
-export {
+function initialize(): Prefecture {
+    return {
+        id: 0,
+        name: "" 
+    }
+}
+
+const PrefectureLogic = {
     getById,
     getMultiByKana,
-    getAll
+    getAll,
+    initialize
 };
+
+export { PrefectureLogic };

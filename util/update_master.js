@@ -52,12 +52,14 @@ async function parseCSV(fileName) {
 async function updateMaster(tableName, tableData) {
     const prisma = new PrismaClient();
     try {
-        await prisma[tableName].deleteMany();
-        await prisma[tableName].createMany({
+        let table = tableName.replace(/_([a-zA-Z])/g, (_, match) => match.toUpperCase());
+        await prisma[table].deleteMany();
+        await prisma[table].createMany({
             data: tableData,
         });
         console.log(`table: ${tableName} is updated.`);
     } catch(error) {
+        console.log(`Error: ${tableName}`)
         console.log(error);
     } finally {
         await prisma.$disconnect();

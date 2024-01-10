@@ -8,7 +8,17 @@ const {
     getAll
 } = createReadMethods<SourceCategory>('source-category');
 
-export {
+function initialize(): SourceCategory {
+    return {
+        id: 0,
+        name: "" 
+    }
+}
+
+const SourceCategoryLogic = {
     getById,
-    getAll
+    getAll,
+    initialize
 };
+
+export { SourceCategoryLogic };

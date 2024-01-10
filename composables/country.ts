@@ -9,8 +9,19 @@ const {
     getAll
 } = createReadMethods<Country>('country');
 
-export {
+function initialize(): Country {
+    return {
+        id: 0,
+        kana: "",
+        name: "" 
+    }
+}
+
+const CountryLogic = {
     getById,
     getMultiByKana,
-    getAll
-}
+    getAll,
+    initialize
+};
+
+export { CountryLogic };

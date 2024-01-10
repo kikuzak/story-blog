@@ -1,0 +1,15 @@
+$link-color: #377dff;
+
+.article-content {
+    a {
+        color: $link-color;
+        display: inline;
+        text-decoration: underline;
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    
+}

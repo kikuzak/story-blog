@@ -6,6 +6,7 @@ type Author = Zod.infer<typeof AuthorSchema>;
 const {
     getById,
     getAll,
+    getMultiByPage,
     getMultiByKana
 } = createReadMethods<Author>('author');
 
@@ -15,11 +16,23 @@ const {
     deleteById
 } = createWriteMethods<Author>('author');
 
-export {
+function initialize(): Author {
+    return {
+        id: 0,
+        kana: "",
+        name: "" 
+    }
+}
+
+const AuthorLogic = {
     getById,
     getAll,
+    getMultiByPage,
     getMultiByKana,
     post,
     update,
-    deleteById
-}
+    deleteById,
+    initialize
+};
+
+export { AuthorLogic };
