@@ -1,6 +1,10 @@
 $link-color: #377dff;
 
 .article-content {
+    h1, h2, h3, h4, h5 {
+        margin-block-end: 1rem;
+    }
+
     a {
         color: $link-color;
         display: inline;
@@ -11,5 +15,43 @@ $link-color: #377dff;
         font-weight: bold;
     }
 
-    
+    em {
+        font-style: italic;
+    }
+
+    s {
+        text-decoration: line-through;
+    }
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #cccccc;
+        margin: 1em 0;
+        padding: 0;
+    }
+
+    blockquote {
+        border-inline-start: 2px solid $admin-sub-border-color;
+        margin-block-end: 1rem;
+        padding-block: 1rem;
+        padding-inline: 1rem;
+    }
+
+    ul {
+        padding-inline-start: 1rem;
+
+        li {
+            list-style-type: disc;
+        }
+    }
+
+    ol {
+        padding-inline-start: 1rem;
+
+        li {
+            list-style-type: decimal;
+        }
+    }
 }

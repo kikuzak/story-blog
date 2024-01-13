@@ -31,6 +31,7 @@
                                 </th>
                                 <th class="kana-row"><p>かな</p></th>
                                 <th class="title-row"><p>タイトル</p></th>
+                                <th class="status-row">ステータス</th>
                                 <th class="edit-row">edit</th>
                             </tr>
                         </thead>
@@ -46,6 +47,7 @@
                                 </td>
                                 <td class="kana-row"><p>{{ article.kana }}</p></td>
                                 <td class="title-row"><p>{{ article.title }}</p></td>
+                                <td class="status-row article-status" ><div class="status-mark" :class="getStatusClass(article.status)"></div><p class="status">{{ getStatus(article.status) }}</p></td>
                                 <td class="edit-row">
                                     <p class="edit-button" v-show="!isChecked()">
                                         <nuxt-link :to="`/admin/article/edit/${article.id}`">編集</nuxt-link>
@@ -108,6 +110,29 @@ function selectCategory(name: string) {
     for (let i = 0; i < el.length; i++) {
         if (el[i].innerHTML === name) el[i].classList.add('selected');
         else el[i].classList.remove('selected');
+    }
+}
+
+// ステータスを設定
+function getStatus(status: number) {
+    switch (status) {
+        case ArticleLogic.Status.Draft:
+            return '下書き';
+        case ArticleLogic.Status.reserved:
+            return '投稿予約';
+        case ArticleLogic.Status.published:
+            return '公開済み';
+    }
+}
+
+function getStatusClass(status: number) {
+    switch (status) {
+        case ArticleLogic.Status.Draft:
+            return 'draft';
+        case ArticleLogic.Status.reserved:
+            return 'reserved';
+        case ArticleLogic.Status.published:
+            return 'published';
     }
 }
 
@@ -180,8 +205,12 @@ async function pageNext() {
     flex: 14;
 }
 
+.status-row {
+    flex: 4;
+}
+
 .edit-row {
-    flex: 1;
+    flex: 2;
 }
 
 .category-list {
@@ -207,4 +236,41 @@ async function pageNext() {
         }
     }
 }
+
+.article-status {
+    align-items: center;
+    display: flex;
+
+    .status-mark {
+        block-size: 0.7rem;
+        border-radius: 10rem;
+        inline-size: 0.7rem;
+        margin-inline-end: 0.4rem;
+        &.draft {
+            background-color: $draft-color;
+        }
+        &.reserved {
+            background-color: $notification-color;
+        }
+        &.published {
+            background-color: $safe-color;
+        }
+    }
+}
+
+// .status {
+//     padding-inline-start: 1rem;
+//     position: relative;
+//     &:before {
+//         content: "";
+//         block-size: 0.7rem;
+//         border: 1px solid $admin-main-border-color;
+//         border-radius: 10rem;
+//         display: block;
+//         inline-size: 0.7rem;
+//         inset-block-start: 1.1rem;
+//         inset-inline-start: 0;
+//         position: absolute;
+//     }
+// }
 </style>

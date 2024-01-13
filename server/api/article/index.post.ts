@@ -9,7 +9,7 @@ export default defineEventHandler(async (e): Promise<Article> => {
 
     try {
         let data: Article = await prisma.article.create({
-            data: body
+            data: body.data
         });
         return data;
     } catch (e) {

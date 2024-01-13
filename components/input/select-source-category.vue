@@ -1,9 +1,9 @@
 <template>
-    <div class="select-category">
-        <select name="article-category" @change="update">
+    <div class="select-source-category">
+        <select name="source-category" @change="update">
             <option value="0">--</option>
             <option
-                v-for="category in categories"
+                v-for="category in sourceCategories"
                 :value="category.id"
                 :selected="isSelected(category.id)"
             >{{ category.name }}</option>
@@ -13,27 +13,27 @@
 
 <script setup lang="ts">
 
-const props = defineProps<{categoryId: number | null}>();
+const props = defineProps<{sourceCategoryId: number | null}>();
 const emits = defineEmits<{
-    (e: 'update:categoryId', val: number): void
+    (e: 'update:sourceCategoryId', val: number): void
 }>();
 
-const categories = inject('articleCategories', ref([ArticleCategoryLogic.initialize()]));
+const sourceCategories = inject('sourceCategories', ref([SourceCategoryLogic.initialize()]));
 
 function isSelected(id: number): boolean {
-    if (!props.categoryId) return false;
-    if (props.categoryId === id) return true;
+    if (!props.sourceCategoryId) return false;
+    if (props.sourceCategoryId === id) return true;
     else return false;
 }
 
 const update = (event: Event) => {
     const element = event.target as HTMLInputElement;
-    emits('update:categoryId', Number(element.value));
+    emits('update:sourceCategoryId', Number(element.value));
 }
 </script>
 
 <style scoped lang="scss">
-.select-category {
+.select-source-category {
     position: relative;
     &:after {
         content: "\f0d7";

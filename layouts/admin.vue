@@ -20,6 +20,10 @@
         padding-block: 2rem;
     }
 
+    .main {
+        overflow-y: auto;
+    }
+
     h1 {
         flex: 0 0 auto;
         margin-block-end: 1rem;

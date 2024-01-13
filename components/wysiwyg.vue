@@ -9,12 +9,12 @@
                         @blur="toggleHeadingFocus(false)"
                     >段落</button>
                     <ul class="heading-list" v-show="isHeadingFocus">
-                        <li class="heading-item h1" @mousedown="e => setHead(e, 1)">見出し1</li>
-                        <li class="heading-item h2" @mousedown="e => setHead(e, 2)">見出し2</li>
-                        <li class="heading-item h3" @mousedown="e => setHead(e, 3)">見出し3</li>
-                        <li class="heading-item h4" @mousedown="e => setHead(e, 4)">見出し4</li>
-                        <li class="heading-item h5" @mousedown="e => setHead(e, 5)">見出し5</li>
-                        <li class="heading-item p selected" @mousedown="e => setHead(e, 0)">段落</li>
+                        <li class="heading-item h1" @mousedown="e => setHead(1)">見出し1</li>
+                        <li class="heading-item h2" @mousedown="e => setHead(2)">見出し2</li>
+                        <li class="heading-item h3" @mousedown="e => setHead(3)">見出し3</li>
+                        <li class="heading-item h4" @mousedown="e => setHead(4)">見出し4</li>
+                        <li class="heading-item h5" @mousedown="e => setHead(5)">見出し5</li>
+                        <li class="heading-item p selected" @mousedown="e => setHead(6)">段落</li>
                     </ul>
                 </div>
                 <div class="separator"></div>
@@ -22,7 +22,7 @@
                     <p class="label">太字</p>
                     <button
                         id="button-bold"
-                        class="button"
+                        class="button-mark"
                         @click="e => {toggleActive(e.target); editor.chain().focus().toggleBold().run();}"
                     >
                         <i class="fa fa-bold ignore-click" aria-hidden="true"></i>
@@ -31,8 +31,8 @@
                 <div class="editor-menu-button italic">
                     <p class="label">斜体</p>
                     <button
-                        id="button-em"
-                        class="button"
+                        id="button-italic"
+                        class="button-mark"
                         @click="e => {toggleActive(e.target); editor.chain().focus().toggleItalic().run();}"
                     >
                         <i class="fa fa-italic ignore-click" aria-hidden="true"></i>
@@ -42,7 +42,7 @@
                     <p class="label">打ち消し線</p>
                     <button
                         id="button-strike"
-                        class="button"
+                        class="button-mark"
                         @click="e => {toggleActive(e.target); editor.chain().focus().toggleStrike().run();}">
                         <i class="fa fa-strikethrough ignore-click" aria-hidden="true"></i>
                     </button>
@@ -52,7 +52,6 @@
                     <p class="label">区切り線</p>
                     <button
                         id="button-horizon"
-                        class="button"
                         @click="editor.chain().focus().setHorizontalRule().run()"
                     >
                         ━
@@ -61,9 +60,9 @@
                 <div class="editor-menu-button quote">
                     <p class="label">引用</p>
                     <button
-                        id="button-quote"
-                        class="button"
-                        @click="e => {toggleActive(e.target); editor.chain().focus().setBlockquote().run();}"
+                        id="button-blockquote"
+                        class="button-block"
+                        @click="e => {toggleActive(e.target); editor.chain().focus().toggleBlockquote().run();}"
                     >
                         <i class="fa fa-quote-right ignore-click" aria-hidden="true"></i>
                     </button>
@@ -72,7 +71,7 @@
                     <p class="label">リスト</p>
                     <button
                         id="button-ul"
-                        class="button"
+                        class="button-block"
                         @click="e => {toggleActive(e.target); editor.chain().focus().toggleBulletList().run();}"
                     >
                         <i class="fa fa-list-ul ignore-click" aria-hidden="true"></i>
@@ -82,8 +81,8 @@
                     <p class="label">番号付きリスト</p>
                     <button
                         id="button-ol"
-                        class="button"
-                        @click="e => {toggleActive(e.target); editor.chain().focus().toggleBulletList().run();}">
+                        class="button-block"
+                        @click="e => {toggleActive(e.target); editor.chain().focus().toggleOrderedList().run();}">
                         <i class="fa fa-list-ol ignore-click" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -101,7 +100,7 @@
                     />
                 </div>
             </div>
-            <EditorContent :editor="editor" class="article-content" ref="editor"/>
+            <EditorContent :editor="editor" class="article-content"/>
         </ClientOnly>
     </div>
 </template>
@@ -110,6 +109,9 @@
 import { Editor, EditorContent } from '@tiptap/vue-3';
 import Link from '@tiptap/extension-link';
 import StarterKit from '@tiptap/starter-kit';
+import type { Node } from '@tiptap/pm/model';
+
+const props = defineProps<{content: string | null}>();
 
 const isHeadingFocus = ref(false);
 const isLinkFocus = ref(false);
@@ -122,89 +124,147 @@ let editor: Editor;
 
 onMounted(() => {
     editor = new Editor({
-        content: '',
+        content: props.content,
         extensions: [
             StarterKit,
             Link
         ],
+        onUpdate: () => {
+            const content = editor.getHTML();
+            emits('update:content', content);
+        },
+        onSelectionUpdate: () => {
+            const { from, to } = editor.state.selection;
+            // 現在地のタグを調べる
+            let nodes: Node[] = [];
+            editor.state.doc.nodesBetween(from, to, (node, pos) => {
+                if (!node.type.isBlock) return;
+                nodes.push(node);
+            });
+            checkTag(nodes);
+
+            if (from === to) {
+                // 現在位置のマークを調べる
+                let marks = editor.state.selection.$from.marks().map((v) => v.type.name);
+                checkMarks(marks);
+            } else {
+                // 範囲すべてに含まれるマークを調べる
+                let marks: string[][] = [];
+                editor.state.doc.nodesBetween(from, to, (node, pos) => {
+                    if (node.type.isInline) marks.push(node.marks.map(v => v.type.name));
+                });
+                let commonMarks: string[] = [];
+                if (marks.length > 0) commonMarks = marks[0].filter((e) => marks.every((v) => v.includes(e)));
+                checkMarks(commonMarks);
+            }
+            
+        }
     });
-    const target = document.getElementById('wysiwyg') as HTMLElement;
-    target.addEventListener('click', updateContent);
 });
 
 onBeforeUnmount(() => {
     editor.destroy();
-    const target = document.getElementById('wysiwyg') as HTMLElement;
-    target.removeEventListener('click', updateContent);
 });
 
+// ヘッダーが選択されていれば、選択肢を表示
 function toggleHeadingFocus(value: boolean) {
     isHeadingFocus.value = value;
 }
 
+// リンクが選択されていれば、メニューを表示
 function toggleLinkFocus(value: boolean) {
     isLinkFocus.value = value;
 }
 
-function setHead(e: any, num: number) {
+// 段落・見出しを設定
+function setHead(num: number) {
     let el = document.getElementById('heading-button') as HTMLElement;
-    if (num === 0) {
+    if (num === 6) {
+        // 6は段落
         editor.chain().focus().setParagraph().run();
-        el.innerHTML = "段落";
+        
     } else {
         type Level = 1 | 2 | 3 | 4 | 5;
         editor.chain().focus().toggleHeading({level: num as Level}).run();
-        el.innerHTML = `見出し${num}`;
     }
 
-    let els = document.getElementsByClassName('heading-item');
-    for (let i = 0; i < els.length; i++) {
-        els[i].classList.remove('selected');
-    }
-    e.target.classList.add('selected');
+    setHeadItem(num);
 }
 
+function setHeadItem(num: number) {
+    let el = document.getElementById('heading-button') as HTMLElement;
+    if (num === 6) {
+        el.innerHTML = "段落";
+    } else {
+        el.innerHTML = `見出し${num}`;
+    }
+    let els = document.getElementsByClassName('heading-item');
+    for (let i = 0; i < els.length; i++) {
+        if (i === num - 1) els[i].classList.add('selected');
+        else els[i].classList.remove('selected');
+    }
+}
+
+// 要素にactiveクラスを設定
 function setActive(target: Element | EventTarget | null) {
     let el = target as Element;
     el.classList.add('active');
 }
 
+// 要素のactiveクラスをtoggle
 function toggleActive(target: Element | EventTarget | null) {
     let el = target as Element;
-    if (el.classList.contains('active')) el.classList.remove('active');
-    else el.classList.add('active');
+    if (el.classList.contains('active')) {el.classList.remove('active');console.log(true);}
+    else {el.classList.add('active'); console.log(false)}
 }
 
+// リンクを入力した
 function enterLink(url: string, isTargetBlank: boolean) {
     editor.chain().focus().setLink({href: url, target: (isTargetBlank) ? '_blank' : undefined}).run();
 }
 
-function updateContent() {
-    const content = editor.getHTML();
-    emits('update:content', content);
-}
-
-function checkCursor() {
-    const marks = editor.state.doc.resolve(editor.state.selection.from).marks();
-    let buttons = document.getElementsByClassName('button') as HTMLCollection;
+// 与えられた名前のマークのボタンをactiveにする
+function checkMarks(markNames: string[]) {
+    let buttons = document.getElementsByClassName('button-mark') as HTMLCollection;
+    // 既存のactiveクラスを削除
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove('active');
     }
-    for (let i = 0; i < marks.length; i++) {
-        let target: Element = document.getElementById(`button-${marks[0].type.name}`) as Element;
+    // 新しくactiveをつける
+    for (let i = 0; i < markNames.length; i++) {
+        let target: Element = document.getElementById(`button-${markNames[i]}`) as Element;
         if (target) setActive(target);
     }
 }
-
-function checkKeyDown(e: KeyboardEvent) {
-    // let idName: string;
-    // if (e.ctrlKey && e.key === 'b')  idName = 'button-bold';
-    // else if (e.ctrlKey && e.key === 'i')  idName = 'button-italic';
-    // else idName = "";
-    // const target = document.getElementById(idName);
-    // if (target) toggle(target);
-    const marks = editor.state.doc.resolve(editor.state.selection.to).marks();
-    console.log(marks);
+// 現在地のブロックタグをチェックする
+function checkTag(nodes: Node[]) {
+    let buttons = document.getElementsByClassName('button-block') as HTMLCollection;
+    // 既存のactiveクラスを削除
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+    }
+    // 新しくactiveをつける
+    for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].type.name === 'heading') {
+            setHeadItem(nodes[i].attrs.level);
+            continue;
+        } else if (nodes[i].type.name === 'paragraph') {
+            setHeadItem(6);
+            continue;
+        }
+        let target: Element = document.getElementById(`button-${nodes[i].type.name}`) as Element;
+        if (target) setActive(target);
+    }
+    //  else {
+    //     let buttons = document.getElementsByClassName('button-block') as HTMLCollection;
+    //     for (let i = 0; i < buttons.length; i++) {
+    //         buttons[i].classList.remove('active');
+    //     }
+    //     for (let i = 0; i < markNames.length; i++) {
+    //         let target: Element = document.getElementById(`button-${markNames[i]}`) as Element;
+    //         if (target) setActive(target);
+    //     }
+    // }
 }
 
 </script>
@@ -362,7 +422,8 @@ button {
     border: 1px solid $admin-main-border-color;
     border-end-end-radius: 4px;
     border-end-start-radius: 4px;
-    padding: 0.5rem;
+    padding-block: 2rem;
+    padding-inline: 2rem;
     z-index: 1;
 }
 

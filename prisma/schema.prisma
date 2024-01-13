@@ -29,11 +29,12 @@ model Article {
   source_category     SourceCategoryMaster?   @relation(fields: [source_category_id], references: [id])
   source              String?
   title               String
-  kana                String                    @db.VarChar(1)
-  content             String?                   @db.Text
-  created_at          DateTime                  @default(now()) @db.Timestamp(0)
-  updated_at          DateTime                  @default(now()) @updatedAt @db.Timestamp(0)
-  is_public           Boolean                   @default(false)
+  kana                String                  @db.VarChar(1)
+  content             String?                 @db.Text
+  created_at          DateTime                @default(now()) @db.Timestamp(0)
+  updated_at          DateTime                @default(now()) @updatedAt @db.Timestamp(0)
+  status              Int                     @default(0)
+  published_at        DateTime?
   @@map("article")
 }
 

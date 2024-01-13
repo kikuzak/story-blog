@@ -37,8 +37,31 @@ function initialize(): Article {
         content: null,
         created_at: new Date(),
         updated_at: new Date(),
-        is_public: false
+        published_at: null,
+        status: 0
     }
+}
+
+const Status = {
+    Draft: 0,
+    reserved: 1,
+    published: 2
+}
+
+async function getPublishedById(id: number): Promise<Ref<Article>> {
+    const { data, error } = await useFetch('api/article', {
+        query: {id: id, status: Status.published}
+    });
+    if (error.value) throw(error.value);
+    return data as Ref<Article>;
+}
+
+async function getPublised(): Promise<Ref<Article[]>> {
+    const { data, error } = await useFetch('api/article', {
+        query: {status: Status.published}
+    });
+    if (error.value) throw(error.value);
+    return data as Ref<Article[]>;
 }
 
 const ArticleLogic = {
@@ -53,7 +76,10 @@ const ArticleLogic = {
     post,
     update,
     deleteById,
-    initialize
+    initialize,
+    Status,
+    getPublishedById,
+    getPublised
 }
 
 export { ArticleLogic };

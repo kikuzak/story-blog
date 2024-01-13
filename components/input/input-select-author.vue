@@ -3,16 +3,18 @@
         type="text"
         id="author-input"
         class="text-box"
+        autocomplete="off"
         v-model="inputText"
         :class="[isFocus? 'active' : 'inactive', canUpdate? 'ok' : 'error']"
         @focus="toggleFocus(true)"
+        @blur="toggleFocus(false)"
         @input="canUpdate = false"
     >
     <ul class="input-select-list" v-show="isFocus">
-        <li class="input-select-item" @click="updateSelectedAuthor(0); toggleFocus(false)">--</li>
+        <li class="input-select-item" @mousedown="updateSelectedAuthor(0); toggleFocus(false)">--</li>
         <li class="input-select-item"
             v-for="author in filteredAuthors"
-            @click="updateSelectedAuthor(author.id); toggleFocus(false)"
+            @mousedown="updateSelectedAuthor(author.id); toggleFocus(false)"
         >{{ author.name}}</li>
     </ul>
 </template>
@@ -24,7 +26,7 @@ const emits = defineEmits<{
     (e: 'update:authorId', val: number): void
 }>();
 
-const authors = await AuthorLogic.getAll();
+const authors = inject('authors', ref([AuthorLogic.initialize()]));
 const inputText = ref("");
 const isFocus = ref(false);
 const canUpdate = ref(true);
@@ -40,7 +42,7 @@ function updateSelectedAuthor(id: number): void {
         return;
     }
     const index = authors.value.findIndex((v) => v.id === id);
-    if (index < 0) throw ("InputSelectAuthor: updateSelectedAuthor");
+    if (index < 0) throw ("InputSelectCoutnry: updateSelectedAuthor");
     inputText.value = authors.value[index].name;
     emits('update:authorId', id);
 }
@@ -64,5 +66,12 @@ input {
     font-size: 1rem;
     line-height: 2.4rem;
     padding-inline: 0.6rem;
+}
+
+.input-select-list {
+    box-shadow: 0 0 10px $admin-shadow-color;
+    min-inline-size: 12rem;
+    position: absolute;
+    z-index: 10;
 }
 </style>

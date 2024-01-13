@@ -18,7 +18,7 @@ const emits = defineEmits<{
     (e: 'update:regionId', val: number): void
 }>();
 
-const regions = await RegionLogic.getAll();
+const regions = inject('regions', ref([RegionLogic.initialize()]));
 
 function isSelected(id: number): boolean {
     if (!props.regionId) return false;

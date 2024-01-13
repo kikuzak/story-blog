@@ -18,7 +18,7 @@ const emits = defineEmits<{
     (e: 'update:periodId', val: number): void
 }>();
 
-const periods = await PeriodLogic.getAll();
+const periods = inject('periods', ref([PeriodLogic.initialize()]));
 
 function isSelected(id: number): boolean {
     if (!props.periodId) return false;

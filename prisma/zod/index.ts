@@ -12,7 +12,7 @@ import type { Prisma } from '@prisma/client';
 
 export const TransactionIsolationLevelSchema = z.enum(['ReadUncommitted','ReadCommitted','RepeatableRead','Serializable']);
 
-export const ArticleScalarFieldEnumSchema = z.enum(['id','class_number','article_category_id','region_id','country_id','period_id','prefecture_id','author_id','source_category_id','source','title','kana','content','created_at','updated_at','is_public']);
+export const ArticleScalarFieldEnumSchema = z.enum(['id','class_number','article_category_id','region_id','country_id','period_id','prefecture_id','author_id','source_category_id','source','title','kana','content','created_at','updated_at','status','published_at']);
 
 export const ArticleCategoryMasterScalarFieldEnumSchema = z.enum(['id','name']);
 
@@ -55,7 +55,8 @@ export const ArticleSchema = z.object({
   content: z.string().nullable(),
   created_at: z.coerce.date(),
   updated_at: z.coerce.date(),
-  is_public: z.boolean(),
+  status: z.number().int(),
+  published_at: z.coerce.date().nullable(),
 })
 
 export type Article = z.infer<typeof ArticleSchema>

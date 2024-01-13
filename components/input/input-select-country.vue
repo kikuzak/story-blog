@@ -3,6 +3,7 @@
         type="text"
         id="country-input"
         class="text-box"
+        autocomplete="off"
         v-model="inputText"
         :class="[isFocus? 'active' : 'inactive', canUpdate? 'ok' : 'error']"
         @focus="toggleFocus(true)"
@@ -25,7 +26,7 @@ const emits = defineEmits<{
     (e: 'update:countryId', val: number): void
 }>();
 
-const countries = await CountryLogic.getAll();
+const countries = inject('countries', ref([CountryLogic.initialize()]));
 const inputText = ref("");
 const isFocus = ref(false);
 const canUpdate = ref(true);
@@ -34,7 +35,6 @@ if (props.countryId) updateSelectedCountry(props.countryId);
 
 // 選択中のカテゴリを変更する
 function updateSelectedCountry(id: number): void {
-    console.log("っｌｐ")
     canUpdate.value = true;
     if (id === 0) {
         inputText.value = "";

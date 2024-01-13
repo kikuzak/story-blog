@@ -3,6 +3,7 @@
         type="text"
         id="prefecture-input"
         class="text-box"
+        autocomplete="off"
         v-model="inputText"
         :class="[isFocus? 'active' : 'inactive', canUpdate? 'ok' : 'error', enable? 'enable' : 'disable']"
         :disabled="!enable"
@@ -26,7 +27,7 @@ const emits = defineEmits<{
     (e: 'update:prefectureId', val: number): void
 }>();
 
-const prefectures = await PrefectureLogic.getAll();
+const prefectures = inject('prefectures', ref([PrefectureLogic.initialize()]));
 const inputText = ref("");
 const isFocus = ref(false);
 const canUpdate = ref(true);

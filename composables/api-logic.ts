@@ -100,7 +100,7 @@ export function createWriteMethods<T>(name: string) {
             method: 'post',
             body: {data: withoutIdData}
         });
-        await refreshNuxtData();
+        // await refreshNuxtData();
         return res as T;
     }
     
@@ -113,7 +113,7 @@ export function createWriteMethods<T>(name: string) {
                 data: data
             }
         });
-        await refreshNuxtData();
+        // await refreshNuxtData();
         return res as T;
     }
 
@@ -123,7 +123,7 @@ export function createWriteMethods<T>(name: string) {
             method: 'delete',
             body: {id: id}
         });
-        await refreshNuxtData();
+        // await refreshNuxtData();
         return res as T;
     }
 
