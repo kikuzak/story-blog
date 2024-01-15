@@ -83,12 +83,10 @@ import {useToast} from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-const route = useRoute();
 const router = useRouter();
 const toast = useToast();
 const validation = useValidation();
 
-const articleId = Number(route.params.id);
 const article = ref(ArticleLogic.initialize());
 const publishDateString = ref<string>('');
 if (article.value.published_at) publishDateString.value = stringifyDate(article.value.published_at);
@@ -159,12 +157,20 @@ async function createArticle(isPublish: boolean) {
     } else {
         article.value.status = ArticleLogic.Status.Draft;
     }
+    article.value.created_at = now;
     article.value.updated_at = now;
+
     console.log(article.value)
     let data = await ArticleLogic.post(article.value);
     toast.success('記事の更新に成功しました。');
     router.push('/admin/article');
 }
+
+// function checkUpdate() {
+//     const now = new Date();
+//     article.value.created_at = now;
+//     article.value.updated_at = now;
+// }
 
 </script>
 

@@ -87,7 +87,7 @@
                     </button>
                 </div>
                 <div id="link" class="editor-menu-button link">
-                    <p class="label">リンク</p>
+                    <p class="label">外部リンク</p>
                     <button
                         @focus="toggleLinkFocus(true)"
                     >
@@ -98,6 +98,15 @@
                         v-model:isFocus="isLinkFocus"
                         @emitLink="enterLink"
                     />
+                </div>
+                <div class="editor-menu-button list-ol">
+                    <p class="label">サイト内リンク</p>
+                    <button
+                        id="button-ol"
+                        class="button-block"
+                        @click="e => {toggleActive(e.target); editor.chain().focus().toggleOrderedList().run();}">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </button>
                 </div>
             </div>
             <EditorContent :editor="editor" class="article-content"/>
@@ -414,6 +423,10 @@ button {
             color: $admin-sub-text-color;
         }
     }
+}
+
+#link button {
+    font-weight: 400;
 }
 
 .tiptap {

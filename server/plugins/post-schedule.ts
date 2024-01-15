@@ -10,7 +10,6 @@ const headers = {
 
 export default defineNitroPlugin(async (nitroApp) => {
     cron.schedule('0 30 * * * *', async () => {
-        console.log("==========================");
         try {
             const prisma = new PrismaClient();
 

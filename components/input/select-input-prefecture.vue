@@ -12,7 +12,7 @@
         @input="canUpdate = false"
     >
     <ul class="input-select-list" v-show="isFocus">
-        <li class="input-select-item" @mousedown="updateSelectedPrefecture(0); toggleFocus(false)">--</li>
+        <li class="input-select-item" @mousedown="updateSelectedPrefecture(null); toggleFocus(false)">--</li>
         <li class="input-select-item"
             v-for="country in filteredCoutries"
             @mousedown="updateSelectedPrefecture(country.id); toggleFocus(false)"
@@ -24,7 +24,7 @@
 
 const props = defineProps<{prefectureId: number | null, countryId: number | null}>();
 const emits = defineEmits<{
-    (e: 'update:prefectureId', val: number): void
+    (e: 'update:prefectureId', val: number | null): void
 }>();
 
 const prefectures = inject('prefectures', ref([PrefectureLogic.initialize()]));
@@ -40,15 +40,15 @@ watch(() => props.countryId, () => {
     if (props.countryId === 123) {
         enable.value = true;
     } else {
-        updateSelectedPrefecture(0);
+        updateSelectedPrefecture(null);
         enable.value = false;
     }
 });
 
 // 選択中のカテゴリを変更する
-function updateSelectedPrefecture(id: number): void {
+function updateSelectedPrefecture(id: number | null): void {
     canUpdate.value = true;
-    if (id === 0) {
+    if (!id) {
         inputText.value = "";
         emits('update:prefectureId', id);
         return;

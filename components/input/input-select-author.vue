@@ -11,7 +11,7 @@
         @input="canUpdate = false"
     >
     <ul class="input-select-list" v-show="isFocus">
-        <li class="input-select-item" @mousedown="updateSelectedAuthor(0); toggleFocus(false)">--</li>
+        <li class="input-select-item" @mousedown="updateSelectedAuthor(null); toggleFocus(false)">--</li>
         <li class="input-select-item"
             v-for="author in filteredAuthors"
             @mousedown="updateSelectedAuthor(author.id); toggleFocus(false)"
@@ -23,7 +23,7 @@
 
 const props = defineProps<{authorId: number | null}>();
 const emits = defineEmits<{
-    (e: 'update:authorId', val: number): void
+    (e: 'update:authorId', val: number | null): void
 }>();
 
 const authors = inject('authors', ref([AuthorLogic.initialize()]));
@@ -34,9 +34,9 @@ const canUpdate = ref(true);
 if (props.authorId) updateSelectedAuthor(props.authorId);
 
 // 選択中のカテゴリを変更する
-function updateSelectedAuthor(id: number): void {
+function updateSelectedAuthor(id: number | null): void {
     canUpdate.value = true;
-    if (id === 0) {
+    if (!id) {
         inputText.value = "";
         emits('update:authorId', id);
         return;

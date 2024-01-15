@@ -11,7 +11,7 @@
         @input="canUpdate = false"
     >
     <ul class="input-select-list" v-show="isFocus">
-        <li class="input-select-item" @mousedown="updateSelectedCountry(0); toggleFocus(false)">--</li>
+        <li class="input-select-item" @mousedown="updateSelectedCountry(null); toggleFocus(false)">--</li>
         <li class="input-select-item"
             v-for="country in filteredCoutries"
             @mousedown="updateSelectedCountry(country.id); toggleFocus(false)"
@@ -23,7 +23,7 @@
 
 const props = defineProps<{countryId: number | null}>();
 const emits = defineEmits<{
-    (e: 'update:countryId', val: number): void
+    (e: 'update:countryId', val: number | null): void
 }>();
 
 const countries = inject('countries', ref([CountryLogic.initialize()]));
@@ -34,9 +34,9 @@ const canUpdate = ref(true);
 if (props.countryId) updateSelectedCountry(props.countryId);
 
 // 選択中のカテゴリを変更する
-function updateSelectedCountry(id: number): void {
+function updateSelectedCountry(id: number | null): void {
     canUpdate.value = true;
-    if (id === 0) {
+    if (!id) {
         inputText.value = "";
         emits('update:countryId', id);
         return;
