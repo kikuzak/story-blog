@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from '../../util/prisma-client';
 import { convertType } from "@/server/util/convert-type";
 import { RegionMasterSchema } from "~/prisma/zod";
 
@@ -6,7 +6,6 @@ type Region = Zod.infer<typeof RegionMasterSchema>;
 
 export default defineEventHandler(async (e): Promise<Region | Region[] | null> => {
     try {
-        const prisma = new PrismaClient();
         const query = getQuery(e);
         const keys = Object.keys(query);
 

@@ -1,6 +1,6 @@
 import cron from 'node-cron';
 import axios from 'axios';
-import { PrismaClient } from "@prisma/client";
+import { prisma } from '../util/prisma-client';
 
 const url = "https://discord.com/api/webhooks/1195657086277783583/QRKMf4Jm5BAZaG_3X1xJXkTQ0pOUU7O5kC3DU00dfNQLVkBvtxrnV7IGT6Mm1gNh6ve-";
 
@@ -9,10 +9,8 @@ const headers = {
 };
 
 export default defineNitroPlugin(async (nitroApp) => {
-    cron.schedule('0 30 * * * *', async () => {
+    cron.schedule('30 * * * *', async () => {
         try {
-            const prisma = new PrismaClient();
-
             // データの取得
             const reservedArticles = await prisma.article.findMany({
                 where: {
@@ -64,11 +62,11 @@ export default defineNitroPlugin(async (nitroApp) => {
                     {
                         title: "記事の投稿に失敗しました･･･",
                         color: parseInt("fa113d", 16),
-                        description: e
+                        description: "記事投稿失敗のテスト"
                     }
                 ]
             }
-            axios.post(url, {content: "記事投稿に失敗しました。"}, {
+            axios.post(url, data, {
                 headers: headers
             });
         }

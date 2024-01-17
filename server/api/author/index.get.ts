@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from '../../util/prisma-client';
 import { convertType } from "@/server/util/convert-type";
 import { AuthorSchema } from "~/prisma/zod";
 
@@ -6,7 +6,6 @@ type Author = Zod.infer<typeof AuthorSchema>;
 
 export default defineEventHandler(async (e): Promise<Author | Author[] | null> => {
     try {
-        const prisma = new PrismaClient();
         const query = getQuery(e);
         const keys = Object.keys(query);
 

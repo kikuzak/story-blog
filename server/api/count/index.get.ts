@@ -1,8 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from '../../util/prisma-client';
 
 export default defineEventHandler(async (e): Promise<number | null> => {
     try {
-        const prisma = new PrismaClient();
         const query = getQuery(e);
 
         switch (query.name) {
