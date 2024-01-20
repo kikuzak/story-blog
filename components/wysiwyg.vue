@@ -62,17 +62,17 @@
                     <button
                         id="button-blockquote"
                         class="button-block"
-                        @click="e => {toggleActive(e.target); editor.chain().focus().toggleBlockquote().run();}"
+                        @click="e => {editor.chain().focus().toggleBlockquote().run();}"
                     >
                         <i class="fa fa-quote-right ignore-click" aria-hidden="true"></i>
                     </button>
                 </div>
-                <div class="editor-menu-button list">
+                <div class="editor-menu-button listItem">
                     <p class="label">リスト</p>
                     <button
-                        id="button-ul"
+                        id="button-bulletList"
                         class="button-block"
-                        @click="e => {toggleActive(e.target); editor.chain().focus().toggleBulletList().run();}"
+                        @click="e => {editor.chain().focus().toggleBulletList().run(); updateSelect();}"
                     >
                         <i class="fa fa-list-ul ignore-click" aria-hidden="true"></i>
                     </button>
@@ -80,13 +80,22 @@
                 <div class="editor-menu-button list-ol">
                     <p class="label">番号付きリスト</p>
                     <button
-                        id="button-ol"
+                        id="button-orderedList"
                         class="button-block"
-                        @click="e => {toggleActive(e.target); editor.chain().focus().toggleOrderedList().run();}">
+                        @click="e => {editor.chain().focus().toggleOrderedList().run(); updateSelect();}">
                         <i class="fa fa-list-ol ignore-click" aria-hidden="true"></i>
                     </button>
                 </div>
-                <div id="link" class="editor-menu-button link">
+                <div class="editor-menu-button inner-link">
+                    <p class="label">サイト内リンク</p>
+                    <button
+                        id="button-ol"
+                        class="button-block"
+                        @click="e => {editor.chain().focus().toggleOrderedList().run();}">
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div id="link" class="editor-menu-button outer-link">
                     <p class="label">外部リンク</p>
                     <button
                         @focus="toggleLinkFocus(true)"
@@ -98,15 +107,6 @@
                         v-model:isFocus="isLinkFocus"
                         @emitLink="enterLink"
                     />
-                </div>
-                <div class="editor-menu-button list-ol">
-                    <p class="label">サイト内リンク</p>
-                    <button
-                        id="button-ol"
-                        class="button-block"
-                        @click="e => {toggleActive(e.target); editor.chain().focus().toggleOrderedList().run();}">
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </button>
                 </div>
             </div>
             <EditorContent :editor="editor" class="article-content"/>
@@ -143,7 +143,17 @@ onMounted(() => {
             emits('update:content', content);
         },
         onSelectionUpdate: () => {
-            const { from, to } = editor.state.selection;
+            updateSelect();
+        },
+    });
+});
+
+onBeforeUnmount(() => {
+    editor.destroy();
+});
+
+function updateSelect() {
+    const { from, to } = editor.state.selection;
             // 現在地のタグを調べる
             let nodes: Node[] = [];
             editor.state.doc.nodesBetween(from, to, (node, pos) => {
@@ -166,14 +176,7 @@ onMounted(() => {
                 if (marks.length > 0) commonMarks = marks[0].filter((e) => marks.every((v) => v.includes(e)));
                 checkMarks(commonMarks);
             }
-            
-        }
-    });
-});
-
-onBeforeUnmount(() => {
-    editor.destroy();
-});
+}
 
 // ヘッダーが選択されていれば、選択肢を表示
 function toggleHeadingFocus(value: boolean) {
@@ -223,12 +226,19 @@ function setActive(target: Element | EventTarget | null) {
 // 要素のactiveクラスをtoggle
 function toggleActive(target: Element | EventTarget | null) {
     let el = target as Element;
-    if (el.classList.contains('active')) {el.classList.remove('active');console.log(true);}
-    else {el.classList.add('active'); console.log(false)}
+    if (el.classList.contains('active')) {
+        el.classList.remove('active');
+        console.log("ture")
+    }
+    else {
+        el.classList.add('active');
+    }
 }
 
 // リンクを入力した
 function enterLink(url: string, isTargetBlank: boolean) {
+    const { from, to } = editor.state.selection;
+    if (from === to) return;
     editor.chain().focus().setLink({href: url, target: (isTargetBlank) ? '_blank' : undefined}).run();
 }
 
@@ -261,19 +271,11 @@ function checkTag(nodes: Node[]) {
             setHeadItem(6);
             continue;
         }
+        console.log(nodes[i].type.name);
         let target: Element = document.getElementById(`button-${nodes[i].type.name}`) as Element;
+        console.log(target)
         if (target) setActive(target);
     }
-    //  else {
-    //     let buttons = document.getElementsByClassName('button-block') as HTMLCollection;
-    //     for (let i = 0; i < buttons.length; i++) {
-    //         buttons[i].classList.remove('active');
-    //     }
-    //     for (let i = 0; i < markNames.length; i++) {
-    //         let target: Element = document.getElementById(`button-${markNames[i]}`) as Element;
-    //         if (target) setActive(target);
-    //     }
-    // }
 }
 
 </script>
@@ -328,19 +330,23 @@ function checkTag(nodes: Node[]) {
             inline-size: 2.2rem;
         }
     }
-    &.strike .label {
-        inline-size: 4.6rem;
-    }
-    &.horizon .label {
-        inline-size: 3.8rem;
-    }
-    &.list, &.link {
+    &.listItem, &.link {
         .label {
             inline-size: 3rem;
         }
     }
-    &.list-ol .label {
-        inline-size: 6.2rem;
+    &.horizon .label {
+        inline-size: 3.8rem;
+    }
+    &.strike, &.outer-link {
+        .label {
+            inline-size: 4.6rem;
+        }
+    } 
+    &.list-ol, &.inner-link {
+        .label {
+            inline-size: 6.2rem;
+        }
     }
 }
 
