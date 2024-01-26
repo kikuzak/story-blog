@@ -86,6 +86,16 @@
                         <i class="fa fa-list-ol ignore-click" aria-hidden="true"></i>
                     </button>
                 </div>
+                <div class="editor-menu-button image-upload">
+                    <p class="label">画像</p>
+                    <button
+                        id="button-image"
+                        class="button-block"
+                        @click="openImageUploader">
+                        <i class="fa-regular fa-image"></i>
+                    </button>
+                    <WysiwygImageUploader v-show="isImageUploaderOpen" v-model:isOpen="isImageUploaderOpen"/>
+                </div>
                 <div class="editor-menu-button inner-link">
                     <p class="label">サイト内リンク</p>
                     <button
@@ -124,6 +134,7 @@ const props = defineProps<{content: string | null}>();
 
 const isHeadingFocus = ref(false);
 const isLinkFocus = ref(false);
+const isImageUploaderOpen = ref(false);
 
 const emits = defineEmits<{
     (e: 'update:content', val: string): void
@@ -186,6 +197,10 @@ function toggleHeadingFocus(value: boolean) {
 // リンクが選択されていれば、メニューを表示
 function toggleLinkFocus(value: boolean) {
     isLinkFocus.value = value;
+}
+
+function openImageUploader() {
+    isImageUploaderOpen.value = true;
 }
 
 // 段落・見出しを設定
@@ -325,7 +340,7 @@ function checkTag(nodes: Node[]) {
         position: absolute;
         text-align: center;
     }
-    &.bold, &.italic, &.quote {
+    &.bold, &.italic, &.image-upload, &.quote {
         .label {
             inline-size: 2.2rem;
         }

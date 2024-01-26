@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     "@/assets/css/k-framework.scss",
     "@/assets/css/article.scss"
   ],
+  modules: [ '@nuxt/image'],
   vite: {
     css: {
       preprocessorOptions: {

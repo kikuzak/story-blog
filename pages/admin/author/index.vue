@@ -48,7 +48,7 @@
                     </table>
                 </div>
                 <div class="pager-wrapper" v-show="!isChecked()">
-                    <Pager
+                    <AdminPager
                         :count="authorCount"
                         :currentPage="pager.currentPage.value"
                         :numPerPage="pager.numberPerPage.value"
