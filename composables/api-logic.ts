@@ -27,6 +27,14 @@ export function createReadMethods<T>(name: string) {
         return data as Ref<T[]>;
     }
 
+    async function getMultiByArticleCategory(articleCategory: number): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri, {
+            query: {article_category_id: articleCategory}
+        });
+        if (error.value) throw(error.value);
+        return data as Ref<T[]>;
+    }
+
     async function getMultiByKana(kana: string): Promise<Ref<T[]>> {
         const { data, error } = await useFetch(uri, {
             query: {kana: kana}
@@ -79,6 +87,7 @@ export function createReadMethods<T>(name: string) {
         getById,
         getAll,
         getMultiByPage,
+        getMultiByArticleCategory,
         getMultiByKana,
         getMultiByRegion,
         getMultiByCountry,

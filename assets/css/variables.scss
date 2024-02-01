@@ -1,9 +1,26 @@
+// レスポンシブサイズ
+$sp-max-size: 768px;
+$tb-max-size: 1280px;
+
+// 共通設定
 $main-color: #FFF000;
 $sub-color: #FFF;
 $base-text-color: #000;
 $base-font-family: "Noto Sans JP", "Helvetica Neue","Hiragino Sans",sans-serif;
 $base-font-size: 14px;
 
+$safe-color: #00b7ff;
+$notification-color: #ff8f45;
+$alert-color: #e25300;
+$admin-disabled-color: #DDD;
+$draft-color: #00e043;
+
+// フロント
+$main-text-color: #000;
+$sub-text-color: #888;
+$search-box-color: #000;
+
+// 管理画面
 $admin-main-color: #093e9e;
 $admin-sub-color: #2f58a3;
 $admin-accent-color: #ebf3ff;
@@ -17,12 +34,5 @@ $admin-sub-text-hover-color: #BBB;
 $admin-main-border-color: #888;
 $admin-sub-border-color: #DDD;
 $admin-shadow-color: #BBB;
-
-$safe-color: #00b7ff;
-$notification-color: #ff8f45;
-$alert-color: #e25300;
-$admin-disabled-color: #DDD;
-$draft-color: #00e043;
-
 $admin-sidebar-size: 13rem;
 

@@ -1,3 +1,5 @@
-id,class_number,article_category_id,region_id,country_id,period_id,prefecture_id,author_id,source_category_id,source,title,kana,content,created_at,updated_at,published_at,status
-1,SAMPE_1,1,3,1,1,1,1,2,https://google.com,テストの記事,て,<h2>テストの見出し</h2><p>こんにちは</p>
+id,class_number,article_category_id,region_id,country_id,period_id,prefecture_id,author_id,source_category_id,source,title,kana,content,created_at,updated_at,is_public
+1,SAMPE_1,1,3,1,1,1,1,2,https://google.com,テストの記事,て,"<h2>テストの見出し</h2><p>こんにちは</p>"
 2,SAMPLE_2,2,5,6,3,16,4,1,『神統記』,テストの記事2,な,"<h2>テストの見出し2</h2><p>こんにちは</p><p><a href=""#"">こちら<a/>をクリック</p>"
+3,民話_1,1,1,1,1,1,1,1,た,タイトル1,あ,test
+4,民話_2,1,2,132,2,23,1,1,た,タイトル2,い,test

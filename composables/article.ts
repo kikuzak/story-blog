@@ -6,6 +6,7 @@ type Article = Zod.infer<typeof ArticleSchema>;
 const {
     getById,
     getMultiByPage,
+    getMultiByArticleCategory,
     getMultiByRegion,
     getMultiByCountry,
     getMultiByPrefecture,
@@ -67,6 +68,7 @@ async function getPublised(): Promise<Ref<Article[]>> {
 const ArticleLogic = {
     getById,
     getMultiByPage,
+    getMultiByArticleCategory,
     getMultiByRegion,
     getMultiByCountry,
     getMultiByPrefecture,
