@@ -63,20 +63,6 @@ function toggleIndex() {
     else navElement.classList.add('active');
 }
 
-// onMounted(() => {
-//     const buttonElement = document.getElementsByClassName('index-button')[0];
-//     const bgElement = document.getElementsByClassName('navigation-bg')[0];
-//     buttonElement.addEventListener('click', toggleIndex);
-//     bgElement.addEventListener('click', toggleIndex);
-// });
-
-// onBeforeUnmount(() => {
-//     const buttonElement = document.getElementsByClassName('index-button')[0];
-//     const bgElement = document.getElementsByClassName('navigation-bg')[0];
-//     buttonElement.removeEventListener('click', toggleIndex);
-//     bgElement.removeEventListener('click', toggleIndex);
-// });
-
 </script>
 
 <style scoped lang="scss">
@@ -144,11 +130,10 @@ aside {
 .side-bar {
     inset-inline-start: -70%;
     position: absolute;
-    box-shadow: 8px 0 5px rgba(0, 0, 0, 0.4);
-    
     .active & {
+        box-shadow: 8px 0 5px rgba(0, 0, 0, 0.4);
         inset-inline-start: 0;
-        transition: inset-inline-start 140ms 0s ease;
+        transition: all 140ms 0s ease;
     }
 }
 
