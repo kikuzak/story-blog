@@ -1,21 +1,27 @@
 <template>
     <div class="view">
+        <aside class="side-bar-container" @click="toggleIndex">
+            <SideBar />
+        </aside>
         <div class="base-container">
             <header class="flex-container">
-                <nav>
-                    <ul class="flex-container category-list">
-                    <li
-                        v-for="n in categoryKeys.length"
-                        :key="n"
-                        @click="linkTo(categoryKeys[n - 1])"
-                    >
-                        <CategoryButton
-                            :page="'top'"
-                            :category="categoryKeys[n - 1]"
-                            :isInitailActive="false"
-                        />
-                    </li>
-                </ul>
+                <nav class="navigation">
+                    <div class="navigation-bg">
+                        <ul class="flex-container category-list">
+                            <li
+                                class="category-item"
+                                v-for="n in categoryKeys.length"
+                                :key="n"
+                                @click="linkTo(categoryKeys[n - 1])"
+                            >
+                                <CategoryButton
+                                    :page="'top'"
+                                    :category="categoryKeys[n - 1]"
+                                    :isInitailActive="false"
+                                />
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
                 <div class="header-search-area">
                     <NuxtImg
@@ -27,13 +33,14 @@
                     <SearchBox />
                 </div>
             </header>
-            <aside>
-                <SideBar />
-            </aside>
             <article>
                 <slot />
             </article>
         </div>
+        <footer class="flex-container">
+            <p class="back-button"><nuxt-link :to="'/'">戻る</nuxt-link></p>
+            <p class="index-button" @click="toggleIndex">索引</p>
+        </footer>
     </div>
 </template>
 
@@ -49,6 +56,27 @@ const categoryKeys = Conf.getCategoryKeys();
 const linkTo = (category: string) => {
     router.push(`/${category}`);
 }
+
+function toggleIndex() {
+    const navElement = document.getElementsByClassName('side-bar-container')[0];
+    if (navElement.classList.contains('active')) navElement.classList.remove('active');
+    else navElement.classList.add('active');
+}
+
+// onMounted(() => {
+//     const buttonElement = document.getElementsByClassName('index-button')[0];
+//     const bgElement = document.getElementsByClassName('navigation-bg')[0];
+//     buttonElement.addEventListener('click', toggleIndex);
+//     bgElement.addEventListener('click', toggleIndex);
+// });
+
+// onBeforeUnmount(() => {
+//     const buttonElement = document.getElementsByClassName('index-button')[0];
+//     const bgElement = document.getElementsByClassName('navigation-bg')[0];
+//     buttonElement.removeEventListener('click', toggleIndex);
+//     bgElement.removeEventListener('click', toggleIndex);
+// });
+
 </script>
 
 <style scoped lang="scss">
@@ -62,8 +90,12 @@ body {
     background-size: cover;
     block-size: 100vh;
     font-family: "Sawarabi Mincho";;
-    inline-size: 100vw;
+    inline-size: 100%;
+    overflow-y: auto;
     position: relative;
+    &:hover {
+        overflow: auto;
+    }
 }
 
 header {
@@ -71,7 +103,10 @@ header {
 }
 
 nav {
-    margin-block-end: 1rem;
+    margin-block-end: 0.4rem;
+    &.active {
+        
+    }
 }
 
 .header-search-area {
@@ -80,9 +115,53 @@ nav {
     }
 }
 
+.category-list {
+    justify-content: space-between;
+    gap: 0.4rem;
+}
+
 .category-button {
-    $size: 15vw;
-    block-size: $size;
-    inline-size: $size;
+    block-size: 100%;
+    inline-size: auto;
+}
+
+aside {
+    background-color: rgba(0, 0, 0, 0.6);
+    block-size: 100vh;
+    inline-size: 100%;
+    opacity: 0;
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: -100%;
+    transition: opacity 100ms 0s ease;
+    z-index: 10;
+    &.active {
+        inset-inline-start: 0%;
+        opacity: 255;
+    }
+}
+
+.side-bar {
+    inset-inline-start: -70%;
+    position: absolute;
+    box-shadow: 8px 0 5px rgba(0, 0, 0, 0.4);
+    
+    .active & {
+        inset-inline-start: 0;
+        transition: inset-inline-start 140ms 0s ease;
+    }
+}
+
+footer {
+    background-color: $sub-color;
+    block-size: 2rem;
+    inline-size: 100%;
+    inset-block-end: 0;
+    padding-inline: 1rem;
+    position: absolute;
+
+    p {
+        line-height: 2rem;
+    }
 }
 </style>

@@ -35,7 +35,7 @@ const articles = await ArticleViewLogic.getMultiByArticleCategory(categoryId);
 }
 
 h1 {
-    background-color: #7C4B00;
+    background-color: $main-color;
     color: #FFF;
     font-size: 0.7rem;
     font-weight: normal;

@@ -15,7 +15,7 @@
     color: $admin-main-text-color;
     article {
         block-size: 100vh;
-        inline-size: calc(100vw - $admin-sidebar-size);
+        inline-size: calc(100% - $admin-sidebar-size);
         background-color: $admin-bg-color;
         padding-block: 2rem;
     }

@@ -49,7 +49,7 @@ const linkTo = (category: string) => {
     background-image: url('@/assets/img/background.png');
     background-size: cover;
     block-size: 100vh;
-    inline-size: 100vw;
+    inline-size: 100%;
 }
 
 h1 {
@@ -62,7 +62,7 @@ h1 {
 }
 
 .category-button {
-    $size: 35vw;
+    $size: 35%;
     block-size: $size;
     inline-size: $size;
 }

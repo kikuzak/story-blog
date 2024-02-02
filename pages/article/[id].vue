@@ -11,8 +11,7 @@
                     <p class="article-attribute-item" v-if="article.author">著者：</p>
                 </div>
             </header>
-            <div class="article-text">
-                {{ article.content }}
+            <div class="article-text" v-html="article.content">
             </div>
         </div>
 
@@ -21,21 +20,8 @@
 
 <script setup lang="ts">
 const route = useRoute();
-// const router = useRouter();
 const id = Number(route.params.id);
 const article = await ArticleViewLogic.getById(id);
-console.log(article.value)
-
-const formatText = (text: string) => {
-    const range = document.createRange();
-    const fragment = range.createContextualFragment(text);
-    const parentElement = document.getElementsByClassName('article-text')[0];
-    parentElement.appendChild(fragment);
-}
-
-onMounted(() => {
-    formatText(article.value.content as string);
-});
 
 </script>
 
@@ -44,7 +30,7 @@ header {
     margin-block-end: 1rem;
 
     h1 {
-        font-size: 1.2rem;
+        // font-size: 1.2rem;
         margin-block-end: 0.2rem;
     }
 }

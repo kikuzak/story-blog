@@ -36,7 +36,7 @@ const setHover = (value: boolean) => {
 <style scoped lang="scss">
 .category-button {
     block-size: 10vw;
-    inline-size: 10vw;
+    inline-size: 10vw; // 後で上書きする前提
     position: relative;
     &:hover {
         cursor: pointer;

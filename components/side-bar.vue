@@ -69,10 +69,9 @@
 .side-bar {
     $side-bar-size: 70%;
     background-color: #FFF;
-    block-size: 100vh;
+    block-size: 100%;
     inline-size: $side-bar-size;
-    inset-block-start: 0;
-    inset-inline-start: -$side-bar-size;
-    position: absolute;
+    overflow: auto;
+    transition: inset-block-start 200ms 0s ease;
 }
 </style>
