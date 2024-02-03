@@ -63,8 +63,8 @@ export default defineEventHandler(async (e): Promise<Article | Article[] | null>
         }
 
         if (data.length === 0) return null;
-        else if (query.page && query.size || query.length === 0) return data;
-        else if (data.length === 1) return data[0];
+        // else if (query.page && query.size || query.length === 0) return data;
+        // else if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);
