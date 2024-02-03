@@ -22,11 +22,16 @@
 
 <script setup lang="ts">
 const route = useRoute();
-
-const key = route.params.key as string;
-const categoryId = Conf.getCategoryIdFromKey(key) as number;
-const articleCategory = await ArticleCategoryLogic.getById(categoryId);
-const articles = await ArticleViewLogic.getMultiByArticleCategory(categoryId);
+let articleCategory = ref({name: "", id: 0});
+let articles = ref([ArticleViewLogic.initialize()]);
+if (process.client) {
+    const categoryKey = route.params.category as string;
+    const categoryId = Conf.getCategoryIdFromKey(categoryKey) as number;
+    articleCategory = await ArticleCategoryLogic.getById(categoryId);
+    console.log(articleCategory);
+    articles = await ArticleViewLogic.getMultiByArticleCategory(categoryId);
+    console.log(articles);
+}
 </script>
 
 <style scoped lang="scss">

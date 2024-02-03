@@ -27,14 +27,63 @@ type ArticleView = {
     status: number
 }
 
+function initialize(): ArticleView {
+    return {
+        id: 0,
+        class_number: null,
+        article_category_id: null,
+        article_category: {name: null},
+        region_id: null,
+        region: {name: null},
+        country_id: null,
+        country: {name: null},
+        period_id: null,
+        period: {name: null},
+        prefecture_id: null,
+        prefecture: {name: null},
+        author_id: null,
+        author: {name: null},
+        source_category_id: null,
+        source_category: {name: null},
+        source: null,
+        title: "",
+        kana: "",
+        content: null,
+        created_at: new Date(),
+        updated_at: new Date(),
+        published_at: null,
+        status: 0
+    }
+}
+
+async function getMultiByText(text: string) {
+    const { data, error } = await useFetch('api/article', {
+        query: {text: text, status: ArticleLogic.Status.published}
+    });
+    if (error.value) throw(error.value);
+    return data as Ref<ArticleView[]>;
+}
+
 const {
     getById,
+    getMultiByKana,
+    getMultiByPrefecture,
+    getMultiByCountry,
+    getMultiByPeriod,
+    getMultiByRegion,
     getMultiByArticleCategory
 } = createReadMethods<ArticleView>('article-view');
 
 const ArticleViewLogic = {
+    initialize,
     getById,
-    getMultiByArticleCategory
+    getMultiByKana,
+    getMultiByPrefecture,
+    getMultiByCountry,
+    getMultiByPeriod,
+    getMultiByRegion,
+    getMultiByArticleCategory,
+    getMultiByText
 }
 
 export { ArticleViewLogic };

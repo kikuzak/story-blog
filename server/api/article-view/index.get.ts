@@ -13,29 +13,44 @@ export default defineEventHandler(async (e): Promise<Article | Article[] | null>
         let where: any = {};
         let pageNumber: number = 0;
         let pageSize: number = 0;
+        let searchText: string = "";
         for (let i = 0; i < keys.length; i++) {
             if (keys[i] == 'page') {
                 pageNumber = Number(query[keys[i]]);
             } else if (keys[i] == 'size') {
                 pageSize = Number(query[keys[i]]);
+            } else if (keys[i] == 'text') {
+                searchText = String(query[keys[i]]);
             } else {
                 where[keys[i]] = convertType(query[keys[i]] as string);
             }
         }
+        // where['status'] = 2;
+
+        const include = {
+            article_category: {select: {name: true}},
+            region: {select: {name: true}},
+            country: {select: {name: true}},
+            period: {select: {name: true}},
+            prefecture: {select: {name: true}},
+            source_category: {select: {name: true}}
+        }
 
         // データの取得
         let data: any;
-        if (pageNumber === 0 && pageSize === 0) {
+        if (searchText) {
+            data = await prisma.article.findMany({
+                where: {
+                    content: {
+                        contains: searchText
+                    }
+                },
+                include: include
+            });
+        } else if (pageNumber === 0 && pageSize === 0) {
             data = await prisma.article.findMany({
                 where: where,
-                include: {
-                    article_category: {select: {name: true}},
-                    region: {select: {name: true}},
-                    country: {select: {name: true}},
-                    period: {select: {name: true}},
-                    prefecture: {select: {name: true}},
-                    source_category: {select: {name: true}}
-                }
+                include: include
             },);
         } else {
             data = await prisma.article.findMany({
@@ -43,14 +58,7 @@ export default defineEventHandler(async (e): Promise<Article | Article[] | null>
                 skip: (pageNumber - 1) * pageSize,
                 take: pageSize,
                 orderBy: {kana: 'asc'},
-                include: {
-                    article_category: {select: {name: true}},
-                    region: {select: {name: true}},
-                    country: {select: {name: true}},
-                    period: {select: {name: true}},
-                    prefecture: {select: {name: true}},
-                    source_category: {select: {name: true}}
-                }
+                include: include
             });
         }
 

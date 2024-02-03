@@ -8,6 +8,16 @@ export function useValidation() {
         else return false;
     }
 
+    const id = (value: string) => {
+        if (value.match(/^\d+$/)) return true;
+        else return false;
+    }
+
+    const text = (value: string) => {
+        if (value.match(/^[a-zA-Z0-9ぁ-んァ-ン一-龠々]+$/)) return true;
+        else return false;
+    }
+
     const blank = (value: string) => {
         if (value) return true;
         else return false;
@@ -25,7 +35,9 @@ export function useValidation() {
     }
 
     return {
+        id,
         kana,
+        text,
         blank,
         nameInList,
         url

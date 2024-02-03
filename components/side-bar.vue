@@ -10,58 +10,63 @@
                 </ul>
             </li>
             <li class="index-category-item prefecture">
-                <p class="label">日本</p>
+                <p class="label" @click="toggleSearchList('prefecture-list')">日本</p>
                 <ul class="search-list prefecture-list">
-                    <li v-for="kana in Conf.kana">
-                        <nuxt-link :to="`search?prefecture=`">{{ kana }}</nuxt-link>
+                    <li v-for="prefecture in prefectures" :key="prefecture.id">
+                        <nuxt-link :to="`search?prefecture=${prefecture.id}`">{{ prefecture.name }}</nuxt-link>
                     </li>
                 </ul>
             </li>
             <li class="index-category-item region">
-                <p class="label">世界(地域)</p>
+                <p class="label" @click="toggleSearchList('region-list')">世界(地域)</p>
                 <ul class="search-list region-list">
-                    <li v-for="kana in Conf.kana">
-                        <nuxt-link :to="`search?`">{{ kana }}</nuxt-link>
+                    <li v-for="region in regions" :key="region.id">
+                        <nuxt-link :to="`search?region=${region.id}`">{{ region.name }}</nuxt-link>
                     </li>
                 </ul>
             </li>
             <li class="index-category-item country">
-                <p class="label">世界(国名)</p>
+                <p class="label" @click="toggleSearchList('country-list')">世界(国名)</p>
                 <ul class="search-list country-list">
-                    <li v-for="kana in Conf.kana">
-                        <nuxt-link :to="`search?`">{{ kana }}</nuxt-link>
+                    <li v-for="country in countries" :key="country.id">
+                        <nuxt-link :to="`search?country=${country.id}`">{{ country.name }}</nuxt-link>
                     </li>
                 </ul>
             </li>
             <li class="index-category-item period">
-                <p class="label">時代</p>
+                <p class="label" @click="toggleSearchList('period-list')">時代</p>
                 <ul class="search-list period-list">
-                    <li v-for="kana in Conf.kana">
-                        <nuxt-link :to="`search?`">{{ kana }}</nuxt-link>
+                    <li v-for="period in periods" :key="period.id">
+                        <nuxt-link :to="`search?period=${period.id}`">{{ period.name }}</nuxt-link>
                     </li>
                 </ul>
             </li>
-            <li class="index-category-item source_category">
+            <!-- <li class="index-category-item source_category">
                 <p class="label">出典ジャンル</p>
                 <ul class="search-list">
                     <li v-for="kana in Conf.kana">
                         <nuxt-link :to="`search?`">{{ kana }}</nuxt-link>
                     </li>
                 </ul>
-            </li>
-            <li class="index-category-item author">
+            </li> -->
+            <!-- <li class="index-category-item author">
                 <p class="label">著者・編者</p>
                 <ul class="search-list author-list">
-                    <li v-for="kana in Conf.kana">
-                        <nuxt-link :to="`search?`">{{ kana }}</nuxt-link>
+                    <li v-for="author in authors">
+                        <nuxt-link :to="`search?`">{{ author }}</nuxt-link>
                     </li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
     </div>
 </template>
 
 <script setup lang="ts">
+const regions = await RegionLogic.getAll();
+const countries = await CountryLogic.getAll();
+const prefectures = await PrefectureLogic.getAll();
+const periods = await PeriodLogic.getAll();
+
 function toggleSearchList(className: string) {
     const listElement = document.getElementsByClassName(className)[0];
     if (listElement.classList.contains('active')) listElement.classList.remove('active');

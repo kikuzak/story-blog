@@ -11,7 +11,7 @@ const {
     getMultiByCountry,
     getMultiByPrefecture,
     getMultiBySourceCategory,
-    getByAuthorId,
+    getByAuthor,
     getAll
 } = createReadMethods<Article>('article');
 
@@ -49,22 +49,6 @@ const Status = {
     published: 2
 }
 
-async function getPublishedById(id: number): Promise<Ref<Article>> {
-    const { data, error } = await useFetch('api/article', {
-        query: {id: id, status: Status.published}
-    });
-    if (error.value) throw(error.value);
-    return data as Ref<Article>;
-}
-
-async function getPublised(): Promise<Ref<Article[]>> {
-    const { data, error } = await useFetch('api/article', {
-        query: {status: Status.published}
-    });
-    if (error.value) throw(error.value);
-    return data as Ref<Article[]>;
-}
-
 const ArticleLogic = {
     getById,
     getMultiByPage,
@@ -73,15 +57,15 @@ const ArticleLogic = {
     getMultiByCountry,
     getMultiByPrefecture,
     getMultiBySourceCategory,
-    getByAuthorId,
+    getByAuthor,
     getAll,
     post,
     update,
     deleteById,
     initialize,
     Status,
-    getPublishedById,
-    getPublised
+    // getPublishedById,
+    // getPublised
 }
 
 export { ArticleLogic };

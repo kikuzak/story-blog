@@ -45,7 +45,15 @@ export function createReadMethods<T>(name: string) {
 
     async function getMultiByRegion(region: number): Promise<Ref<T[]>> {
         const { data, error } = await useFetch(uri, {
-            query: {region: region}
+            query: {region_id: region}
+        });
+        if (error.value) throw(error.value);
+        return data as Ref<T[]>;
+    }
+
+    async function getMultiByPeriod(period: number): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(uri, {
+            query: {period_id: period}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
@@ -53,7 +61,7 @@ export function createReadMethods<T>(name: string) {
     
     async function getMultiByCountry(country: number): Promise<Ref<T[]>> {
         const { data, error } = await useFetch(uri, {
-            query: {country: country}
+            query: {country_id: country}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
@@ -61,7 +69,7 @@ export function createReadMethods<T>(name: string) {
     
     async function getMultiByPrefecture(prefecture: number): Promise<Ref<T[]>> {
         const { data, error } = await useFetch(uri, {
-            query: {prefecture: prefecture}
+            query: {prefecture_id: prefecture}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
@@ -69,13 +77,13 @@ export function createReadMethods<T>(name: string) {
     
     async function getMultiBySourceCategory(sourceCategory: number): Promise<Ref<T[]>> {
         const { data, error } = await useFetch(uri, {
-            query: {source_category: sourceCategory}
+            query: {source_category_id: sourceCategory}
         });
         if (error.value) throw(error.value);
         return data as Ref<T[]>;
     }
     
-    async function getByAuthorId(authorId: number): Promise<Ref<T>> {
+    async function getByAuthor(authorId: number): Promise<Ref<T>> {
         const { data, error } = await useFetch(uri, {
             query: {author_id: authorId}
         });
@@ -90,10 +98,11 @@ export function createReadMethods<T>(name: string) {
         getMultiByArticleCategory,
         getMultiByKana,
         getMultiByRegion,
+        getMultiByPeriod,
         getMultiByCountry,
         getMultiByPrefecture,
         getMultiBySourceCategory,
-        getByAuthorId
+        getByAuthor
     };
 }
 
