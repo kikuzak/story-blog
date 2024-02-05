@@ -2,7 +2,7 @@
     <NuxtLayout name="search">
         <div class="category">
             <h1>{{ articleCategory.name }}の一覧</h1>
-            <ul class="article-list">
+            <ul class="article-list" v-if="articles">
                 <li class="article-item" v-for="article in articles" :key="article.id">
                     <nuxt-link :to="`/article/${article.id}`">
                         <p class="title">{{ article.title }}</p>
@@ -16,6 +16,7 @@
                     </nuxt-link>
                 </li>
             </ul>
+            <p v-else>お探しの記事は見つかりませんでした。</p>
         </div>
     </NuxtLayout>
 </template>

@@ -1,6 +1,6 @@
-import { createReadMethods, createWriteMethods } from "./api-logic";
+import { createReadMethods } from "./api-logic";
 
-type ArticleView = {
+export type ArticleView = {
     id: number,
     class_number: string | null,
     article_category_id: number | null

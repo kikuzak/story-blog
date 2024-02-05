@@ -1,8 +1,8 @@
 <template>
     <NuxtLayout name="search">
         <div class="search-result">
-            <h1>{{ headText() }}</h1>
-            <ul class="article-list">
+            <h1>{{ headText }}</h1>
+            <ul class="article-list" v-if="articles">
                 <li class="article-item" v-for="article in articles" :key="article.id">
                     <nuxt-link :to="`/article/${article.id}`">
                         <p class="title">{{ article.title }}</p>
@@ -16,57 +16,56 @@
                     </nuxt-link>
                 </li>
             </ul>
+            <p v-else>お探しの記事は見つかりませんでした。</p>
         </div>
     </NuxtLayout>
 </template>
 
 <script setup lang="ts">
 let articles = ref([ArticleViewLogic.initialize()]);
+const headText = ref("");
 
-// onMounted(async () => {
-    const validation = useValidation();
-    if (process.client) {
-        const params = new URLSearchParams(window.location.search);
-        if (params.size > 1) throw new Error('あきまへん');
-        console.log(params);
-        for (const [key, value] of params.entries()) {
-            console.log(key + " : " + value);
-            switch (key) {
-                case 'country':
-                if (!validation.id(value)) throw new Error("だめ");
-                    articles = await ArticleViewLogic.getMultiByCountry(Number(value));
-                    break;
+const validation = useValidation();
+onMounted(async () =>{
+    const params = new URLSearchParams(window.location.search);
+    if (params.size > 1) throw new Error('あきまへん');
+    for await (const [key, value] of params.entries()) {
+        switch (key) {
+            case 'country':
+            if (!validation.id(value)) throw new Error("だめ");
+                articles = await ArticleViewLogic.getMultiByCountry(Number(value));
+                break;
                 case 'region':
-                if (!validation.id(value)) throw new Error("だめ");
-                    articles = await ArticleViewLogic.getMultiByRegion(Number(value));
-                    break;
-                case 'period':
-                if (!validation.id(value)) throw new Error("だめ");
-                    articles = await ArticleViewLogic.getMultiByPeriod(Number(value));
-                    break;
-                case 'prefecture':
-                if (!validation.id(value)) throw new Error("だめ");
-                    articles = await ArticleViewLogic.getMultiByPrefecture(Number(value));
-                    break;
-                case 'kana':
-                    if (!validation.kana(value)) throw new Error("だめ");
-                    articles = await ArticleViewLogic.getMultiByKana(value);
-                    break;
-                case 'text':
-                    if (!validation.text(value)) throw new Error("だめ");
-                    articles = await ArticleViewLogic.getMultiByText(value);
-                    break
-            }
+            if (!validation.id(value)) throw new Error("だめ");
+                articles = await ArticleViewLogic.getMultiByRegion(Number(value));
+                break;
+            case 'period':
+            if (!validation.id(value)) throw new Error("だめ");
+                articles = await ArticleViewLogic.getMultiByPeriod(Number(value));
+                break;
+            case 'prefecture':
+            if (!validation.id(value)) throw new Error("だめ");
+                articles = await ArticleViewLogic.getMultiByPrefecture(Number(value));
+                break;
+            case 'kana':
+                if (!validation.kana(value)) throw new Error("だめ");
+                articles = await ArticleViewLogic.getMultiByKana(value);
+                break;
+            case 'text':
+                if (!validation.text(value)) throw new Error("だめ");
+                articles = await ArticleViewLogic.getMultiByText(value);
+                break;
         }
+        headText.value = `「${value}」の検索結果`
     }
-// });
-
-function headText() {
-    return "";
-}
+})
 </script>
 
 <style scoped lang="scss">
+.search-result {
+    padding-block: 1rem;
+}
+
 h1 {
     background-color: $main-color;
     color: #FFF;
