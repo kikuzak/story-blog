@@ -33,18 +33,7 @@ jobs:
         SSH_PATH: ${{ secrets.SSH_PATH }}
   
     - name: Notification to Discord
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        STATUS: ${{ steps.status.outputs.status }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
-        GITHUB_RUN_ID: ${{ github.run_id }}
-      run: |
-          STATUS=${{ steps.status.outputs.status }}
-          if [ "$STATUS" = "success" ]; then
-            STATUS_MESSAGE="成功"
-          else
-            STATUS_MESSAGE="失敗"
-          fi
-          curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "ワークフローが${STATUS_MESSAGE}しました。リンク: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-          }' $DISCORD_WEBHOOK
+      uses: sarisia/actions-status-discord@v1
+      if: always()
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
