@@ -35,6 +35,9 @@ jobs:
     - name: Notification to Discord
       env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          STATUS: ${{ steps.status.outputs.status }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
       run: |
           STATUS=${{ steps.status.outputs.status }}
           if [ "$STATUS" = "success" ]; then
