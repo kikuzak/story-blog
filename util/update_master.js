@@ -14,7 +14,6 @@ async function main() {
 
     let deleteFlg = false;
     if (args[0] == "-d") {
-        console.log("koko")
         deleteFlg = true;
     }
     for (let i = 1; i < args.length; i++) {
