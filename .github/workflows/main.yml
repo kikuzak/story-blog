@@ -16,7 +16,7 @@ jobs:
       - name: Setup SSH Key
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Deploy
         run: |
@@ -26,6 +26,7 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
           SSH_PATH: ${{ secrets.SSH_PATH }}
+          SSH_KEY:  ${{ secrets.SSH_KEY }}
     
       # - name: Notification to Discord
       #   uses: sarisia/actions-status-discord@v1
