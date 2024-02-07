@@ -8,12 +8,20 @@ async function main() {
     if (args[0] == "all") {
         await updateMasterAll();
         return;
+    } else if (args[0] == "-d" && args[1] == "all") {
+        await deleteMasterAll();
     }
 
-    for (let i = 0; i < args.length; i++) {
+    let deleteFlg = false;
+    if (args[0] == "-d") {
+        console.log("koko")
+        deleteFlg = true;
+    }
+    for (let i = 1; i < args.length; i++) {
         const tableName = args[i];
         const tableData = await parseCSV(tableName);
-        await updateMaster(tableName, tableData);
+        if (!deleteFlg) await updateMaster(tableName, tableData);
+        else await deleteMaster(tableName);
     }
 }
 
@@ -75,6 +83,32 @@ async function updateMasterAll() {
         const tableName = fileNames[i].replace(/^(.+)\..+$/, '$1');
         const tableData = await parseCSV(tableName);
         await updateMaster(tableName, tableData);
+    }
+}
+
+async function deleteMaster(tableName) {
+    const prisma = new PrismaClient();
+    try {
+        let table = tableName.replace(/_([a-zA-Z])/g, (_, match) => match.toUpperCase());
+        await prisma[table].deleteMany();
+        console.log(`table: ${tableName} is initialized.`);
+    } catch(error) {
+        console.log(`Error: ${tableName}`)
+        console.log(error);
+    } finally {
+        await prisma.$disconnect();
+    }
+}
+
+async function deleteMasterAll() {
+    let fileNames = await fs.readdirSync(MASTER_CSV_PATH, (err, files) => {
+        return files;
+    });
+
+    for (let i = 0; i < fileNames.length; i++) {
+        const tableName = fileNames[i].replace(/^(.+)\..+$/, '$1');
+        const tableData = await parseCSV(tableName);
+        await deleteMaster(tableName);
     }
 }
 
