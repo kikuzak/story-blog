@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy
         run: |
-          ssh -o StrictHostKeyChecking=no -p $SSH_PORT $SSH_USER@$SSH_HOST 'cd $SSH_PATH && npm run build && cp .env.prod ./output/server/.env'
+          ssh -o StrictHostKeyChecking=no -p $SSH_PORT $SSH_USER@$SSH_HOST 'ls -l'
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
