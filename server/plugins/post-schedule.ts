@@ -62,7 +62,7 @@ export default defineNitroPlugin(async (nitroApp) => {
                     {
                         title: "記事の投稿に失敗しました･･･",
                         color: parseInt("fa113d", 16),
-                        description: "記事投稿失敗のテスト"
+                        description: e
                     }
                 ]
             }
