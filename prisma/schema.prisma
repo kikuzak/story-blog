@@ -23,6 +23,8 @@ model Article {
   period              PeriodMaster?           @relation(fields: [period_id], references: [id])
   prefecture_id       Int?                    @db.UnsignedInt
   prefecture          PrefectureMaster?       @relation(fields: [prefecture_id], references: [id])
+  old_prefecture_id   Int?                    @db.UnsignedInt
+  old_prefecture      OldPrefectureMaster?    @relation(fields: [old_prefecture_id], references: [id])
   author_id           Int?                    @db.UnsignedInt
   author              Author?                 @relation(fields: [author_id], references: [id])
   source_category_id  Int?                    @db.UnsignedInt
@@ -72,6 +74,13 @@ model PrefectureMaster {
   name       String
   articles   Article[]
   @@map("prefecture_master")
+}
+
+model OldPrefectureMaster {
+  id         Int       @id @default(autoincrement()) @db.UnsignedInt
+  name       String
+  articles   Article[]
+  @@map("old_prefecture_master")
 }
 
 model Author {

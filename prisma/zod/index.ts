@@ -12,7 +12,7 @@ import type { Prisma } from '@prisma/client';
 
 export const TransactionIsolationLevelSchema = z.enum(['ReadUncommitted','ReadCommitted','RepeatableRead','Serializable']);
 
-export const ArticleScalarFieldEnumSchema = z.enum(['id','class_number','article_category_id','region_id','country_id','period_id','prefecture_id','author_id','source_category_id','source','title','kana','content','created_at','updated_at','status','published_at']);
+export const ArticleScalarFieldEnumSchema = z.enum(['id','class_number','article_category_id','region_id','country_id','period_id','prefecture_id','old_prefecture_id','author_id','source_category_id','source','title','kana','content','created_at','updated_at','status','published_at']);
 
 export const ArticleCategoryMasterScalarFieldEnumSchema = z.enum(['id','name']);
 
@@ -23,6 +23,8 @@ export const CountryMasterScalarFieldEnumSchema = z.enum(['id','kana','name']);
 export const PeriodMasterScalarFieldEnumSchema = z.enum(['id','name']);
 
 export const PrefectureMasterScalarFieldEnumSchema = z.enum(['id','name']);
+
+export const OldPrefectureMasterScalarFieldEnumSchema = z.enum(['id','name']);
 
 export const AuthorScalarFieldEnumSchema = z.enum(['id','kana','name']);
 
@@ -47,6 +49,7 @@ export const ArticleSchema = z.object({
   country_id: z.number().int().nullable(),
   period_id: z.number().int().nullable(),
   prefecture_id: z.number().int().nullable(),
+  old_prefecture_id: z.number().int().nullable(),
   author_id: z.number().int().nullable(),
   source_category_id: z.number().int().nullable(),
   source: z.string().nullable(),
@@ -116,6 +119,17 @@ export const PrefectureMasterSchema = z.object({
 })
 
 export type PrefectureMaster = z.infer<typeof PrefectureMasterSchema>
+
+/////////////////////////////////////////
+// OLD PREFECTURE MASTER SCHEMA
+/////////////////////////////////////////
+
+export const OldPrefectureMasterSchema = z.object({
+  id: z.number().int(),
+  name: z.string(),
+})
+
+export type OldPrefectureMaster = z.infer<typeof OldPrefectureMasterSchema>
 
 /////////////////////////////////////////
 // AUTHOR SCHEMA
