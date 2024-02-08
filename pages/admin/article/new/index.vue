@@ -160,17 +160,37 @@ async function createArticle(isPublish: boolean) {
     article.value.created_at = now;
     article.value.updated_at = now;
 
-    console.log(article.value)
     let data = await ArticleLogic.post(article.value);
+
+    // 投稿済み処理
+    // 地域
+    let region = await RegionLogic.getById(article.value.region_id as number);
+    if (region.value) {
+        region.value.is_posted = true;
+        await RegionLogic.update(region.value);
+    }
+    // 国
+    let country = await CountryLogic.getById(article.value.country_id as number);
+    if (country.value) {
+        country.value.is_posted = true;
+        await CountryLogic.update(country.value);
+    }
+    // 県
+    let prefecture = await PrefectureLogic.getById(article.value.prefecture_id as number);
+    if (prefecture.value) {
+        prefecture.value.is_posted = true;
+        await PrefectureLogic.update(prefecture.value);
+    }
+    // 時代
+    let period = await PeriodLogic.getById(article.value.period_id as number);
+    if (period.value) {
+        period.value.is_posted = true;
+        await PeriodLogic.update(period.value);
+    }
+
     toast.success('記事の更新に成功しました。');
     router.push('/admin/article');
 }
-
-// function checkUpdate() {
-//     const now = new Date();
-//     article.value.created_at = now;
-//     article.value.updated_at = now;
-// }
 
 </script>
 

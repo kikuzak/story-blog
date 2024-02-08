@@ -4,7 +4,7 @@ import { SourceCategoryMasterSchema } from "~/prisma/zod";
 
 type SourceCategory = Zod.infer<typeof SourceCategoryMasterSchema>;
 
-export default defineEventHandler(async (e): Promise<SourceCategory | SourceCategory[] | null> => {
+export default defineEventHandler(async (e): Promise<SourceCategory[] | null> => {
     try {
         const query = getQuery(e);
         const keys = Object.keys(query);
@@ -21,7 +21,6 @@ export default defineEventHandler(async (e): Promise<SourceCategory | SourceCate
         });
 
         if (data.length === 0) return null;
-        if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);

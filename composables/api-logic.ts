@@ -6,7 +6,8 @@ export function createReadMethods<T>(name: string) {
             query: {id: id}
         });
         if (error.value) throw(error.value);
-        return data as Ref<T>;
+        const typedData = data as Ref<T[]>;
+        return ref<T>(typedData.value[0]) as Ref<T>;
     }
 
     async function getAll(): Promise<Ref<T[]>> {
@@ -109,7 +110,8 @@ export function createReadMethods<T>(name: string) {
         getMultiByCountry,
         getMultiByPrefecture,
         getMultiBySourceCategory,
-        getByAuthor
+        getByAuthor,
+        getMultiByPosted
     };
 }
 

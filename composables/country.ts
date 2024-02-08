@@ -6,8 +6,11 @@ type Country = Zod.infer<typeof CountryMasterSchema>;
 const {
     getById,
     getMultiByKana,
-    getAll
+    getAll,
+    getMultiByPosted
 } = createReadMethods<Country>('country');
+
+const { update } = createWriteMethods<Country>('country');
 
 function initialize(): Country {
     return {
@@ -22,6 +25,8 @@ const CountryLogic = {
     getById,
     getMultiByKana,
     getAll,
+    getMultiByPosted,
+    update,
     initialize
 };
 

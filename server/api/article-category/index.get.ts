@@ -4,7 +4,7 @@ import { ArticleCategoryMasterSchema } from "~/prisma/zod";
 
 type ArticleCategory = Zod.infer<typeof ArticleCategoryMasterSchema>;
 
-export default defineEventHandler(async (e): Promise<ArticleCategory | ArticleCategory[] | null> => {
+export default defineEventHandler(async (e): Promise<ArticleCategory[] | null> => {
     try {
         const query = getQuery(e);
         const keys = Object.keys(query);
@@ -21,7 +21,6 @@ export default defineEventHandler(async (e): Promise<ArticleCategory | ArticleCa
         });
 
         if (data.length === 0) return null;
-        if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);

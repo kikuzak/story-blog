@@ -4,7 +4,7 @@ import { RegionMasterSchema } from "~/prisma/zod";
 
 type Region = Zod.infer<typeof RegionMasterSchema>;
 
-export default defineEventHandler(async (e): Promise<Region | Region[] | null> => {
+export default defineEventHandler(async (e): Promise<Region[] | null> => {
     try {
         const query = getQuery(e);
         const keys = Object.keys(query);
@@ -21,7 +21,6 @@ export default defineEventHandler(async (e): Promise<Region | Region[] | null> =
         });
 
         if (data.length === 0) return null;
-        if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);

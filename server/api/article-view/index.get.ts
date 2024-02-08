@@ -2,9 +2,7 @@ import { prisma } from '../../util/prisma-client';
 import { convertType } from "@/server/util/convert-type";;
 import { ArticleView } from '@/composables/article-view';
 
-// type Article = Zod.infer<typeof ArticleSchema>;
-
-export default defineEventHandler(async (e): Promise<ArticleView | ArticleView[] | null> => {
+export default defineEventHandler(async (e): Promise<ArticleView[] | null> => {
     try {
         const query = getQuery(e);
         const keys = Object.keys(query);
@@ -61,8 +59,6 @@ export default defineEventHandler(async (e): Promise<ArticleView | ArticleView[]
                 include: include
             });
         }
-
-        // console.log("da,e0");
 
         if (data.length === 0) return null;
         // else if (query.page && query.size || query.length === 0) return data;

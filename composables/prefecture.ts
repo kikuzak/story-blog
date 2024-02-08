@@ -6,8 +6,11 @@ type Prefecture = Zod.infer<typeof PrefectureMasterSchema>;
 const {
     getById,
     getMultiByKana,
-    getAll
+    getAll,
+    getMultiByPosted
 } = createReadMethods<Prefecture>('prefecture');
+
+const { update } = createWriteMethods<Prefecture>('prefecture');
 
 function initialize(): Prefecture {
     return {
@@ -21,6 +24,8 @@ const PrefectureLogic = {
     getById,
     getMultiByKana,
     getAll,
+    getMultiByPosted,
+    update,
     initialize
 };
 

@@ -4,7 +4,7 @@ import { PrefectureMasterSchema } from "~/prisma/zod";
 
 type Prefecture = Zod.infer<typeof PrefectureMasterSchema>;
 
-export default defineEventHandler(async (e): Promise<Prefecture | Prefecture[] | null> => {
+export default defineEventHandler(async (e): Promise<Prefecture[] | null> => {
     try {
         const query = getQuery(e);
         const keys = Object.keys(query);
@@ -21,7 +21,6 @@ export default defineEventHandler(async (e): Promise<Prefecture | Prefecture[] |
         });
 
         if (data.length === 0) return null;
-        if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);

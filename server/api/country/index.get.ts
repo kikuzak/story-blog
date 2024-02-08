@@ -4,7 +4,7 @@ import { CountryMasterSchema } from "~/prisma/zod";
 
 type Country = Zod.infer<typeof CountryMasterSchema>;
 
-export default defineEventHandler(async (e): Promise<Country | Country[] | null> => {
+export default defineEventHandler(async (e): Promise<Country[] | null> => {
     try {
         const query = getQuery(e);
         const keys = Object.keys(query);
@@ -21,7 +21,6 @@ export default defineEventHandler(async (e): Promise<Country | Country[] | null>
         });
 
         if (data.length === 0) return null;
-        if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);

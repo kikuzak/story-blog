@@ -4,7 +4,7 @@ import { ArticleSchema } from "~/prisma/zod";
 
 type Article = Zod.infer<typeof ArticleSchema>;
 
-export default defineEventHandler(async (e): Promise<Article | Article[] | null> => {
+export default defineEventHandler(async (e): Promise<Article[] | null> => {
     try {
         const query = getQuery(e);
         const keys = Object.keys(query);
@@ -39,8 +39,6 @@ export default defineEventHandler(async (e): Promise<Article | Article[] | null>
         }
 
         if (data.length === 0) return null;
-        else if (query.page && query.size || query.length === 0) return data;
-        else if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);
