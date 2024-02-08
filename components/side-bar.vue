@@ -41,27 +41,12 @@
                     </li>
                 </ul>
             </li>
-            <!-- <li class="index-category-item source_category">
-                <p class="label">出典ジャンル</p>
-                <ul class="search-list">
-                    <li v-for="kana in Conf.kana">
-                        <nuxt-link :to="`search?`">{{ kana }}</nuxt-link>
-                    </li>
-                </ul>
-            </li> -->
-            <!-- <li class="index-category-item author">
-                <p class="label">著者・編者</p>
-                <ul class="search-list author-list">
-                    <li v-for="author in authors">
-                        <nuxt-link :to="`search?`">{{ author }}</nuxt-link>
-                    </li>
-                </ul>
-            </li> -->
         </ul>
     </div>
 </template>
 
 <script setup lang="ts">
+
 const regions = await RegionLogic.getAll();
 const countries = await CountryLogic.getAll();
 const prefectures = await PrefectureLogic.getAll();

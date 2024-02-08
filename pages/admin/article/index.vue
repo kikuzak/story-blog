@@ -159,6 +159,7 @@ function checkAll() {
 }
 
 async function deleteArticle() {
+    console.log(selectedArticles);
     let isDelete = window.confirm("本当に削除しますか？");
     if (!isDelete) return;
 

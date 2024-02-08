@@ -37,8 +37,6 @@ const categoryGroup = computed(() => {
     ];
 });
 
-console.log(await CountryLogic.getMultiByPosted());
-
 const linkTo = (category: string) => {
     router.push(`/${category}`);
 }

@@ -49,32 +49,28 @@ model RegionMaster {
   id        Int       @id @default(autoincrement()) @db.UnsignedInt
   name      String
   articles  Article[]
-  is_posted Boolean   @default(false)
   @@map("region_master")
 }
 
 model CountryMaster {
-  id        Int       @id @default(autoincrement()) @db.UnsignedInt
-  kana      String    @db.VarChar(1)
-  name      String
-  articles  Article[]
-  is_posted Boolean   @default(false)
+  id         Int       @id @default(autoincrement()) @db.UnsignedInt
+  kana       String    @db.VarChar(1)
+  name       String
+  articles   Article[]
   @@map("country_master")
 }
 
 model PeriodMaster {
-  id        Int       @id @default(autoincrement()) @db.UnsignedInt
-  name      String
-  articles  Article[]
-  is_posted Boolean   @default(false)
+  id         Int       @id @default(autoincrement()) @db.UnsignedInt
+  name       String
+  articles   Article[]
   @@map("period_master")
 }
 
 model PrefectureMaster {
-  id        Int       @id @default(autoincrement()) @db.UnsignedInt
-  name      String
-  articles  Article[]
-  is_posted Boolean   @default(false)
+  id         Int       @id @default(autoincrement()) @db.UnsignedInt
+  name       String
+  articles   Article[]
   @@map("prefecture_master")
 }
 
@@ -91,12 +87,6 @@ model SourceCategoryMaster {
   name      String
   articles  Article[]
   @@map("source_category_master")
-}
-
-model KanaLineMaster {
-  id        Int     @id @default(autoincrement()) @db.UnsignedInt
-  name      String
-  is_posted Boolean @default(false)
 }
 
 generator zod {

@@ -83,7 +83,6 @@ import {useToast} from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-import { KanaLineLogic } from '~/composables/kana-line';
 const router = useRouter();
 const toast = useToast();
 const validation = useValidation();
@@ -162,40 +161,6 @@ async function createArticle(isPublish: boolean) {
     article.value.updated_at = now;
 
     let data = await ArticleLogic.post(article.value);
-
-    // 投稿済み処理
-    if (article.value.status == ArticleLogic.Status.published) {
-        // 索引
-        let line = await KanaLineLogic.getByName(Conf.getLineByKana(article.value.kana) as string);
-        if (line.value && !line.value.is_posted) {
-            line.value.is_posted = true;
-            await KanaLineLogic.update(line.value);
-        }
-        // 地域
-        let region = await RegionLogic.getById(article.value.region_id as number);
-        if (region.value && !region.value.is_posted) {
-            region.value.is_posted = true;
-            await RegionLogic.update(region.value);
-        }
-        // 国
-        let country = await CountryLogic.getById(article.value.country_id as number);
-        if (country.value && !country.value.is_posted) {
-            country.value.is_posted = true;
-            await CountryLogic.update(country.value);
-        }
-        // 県
-        let prefecture = await PrefectureLogic.getById(article.value.prefecture_id as number);
-        if (prefecture.value && !prefecture.value.is_posted) {
-            prefecture.value.is_posted = true;
-            await PrefectureLogic.update(prefecture.value);
-        }
-        // 時代
-        let period = await PeriodLogic.getById(article.value.period_id as number);
-        if (period.value && !period.value.is_posted) {
-            period.value.is_posted = true;
-            await PeriodLogic.update(period.value);
-        }
-    }
 
     toast.success('記事の更新に成功しました。');
     router.push('/admin/article');

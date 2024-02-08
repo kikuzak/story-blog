@@ -160,7 +160,9 @@ async function createArticle(isPublish: boolean) {
         article.value.status = ArticleLogic.Status.Draft;
     }
     article.value.updated_at = now;
+    
     let data = await ArticleLogic.update(article.value);
+
     toast.success('記事の更新に成功しました。');
     router.push('/admin/article');
 }

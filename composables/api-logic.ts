@@ -7,7 +7,11 @@ export function createReadMethods<T>(name: string) {
         });
         if (error.value) throw(error.value);
         const typedData = data as Ref<T[]>;
-        return ref<T>(typedData.value[0]) as Ref<T>;
+        if (typedData.value) {
+            return ref<T>(typedData.value[0]) as Ref<T>;
+        } else {
+            throw("存在しない");
+        }
     }
 
     async function getAll(): Promise<Ref<T[]>> {
@@ -91,14 +95,6 @@ export function createReadMethods<T>(name: string) {
         return data as Ref<T>;
     }
 
-    async function getMultiByPosted(): Promise<Ref<T[]>> {
-        const { data, error} = await useFetch(uri, {
-            query: {is_posted: true}
-        });
-        if (error.value) throw(error.value);
-        return data as Ref<T[]>;
-    }
-
     return {
         getById,
         getAll,
@@ -110,8 +106,7 @@ export function createReadMethods<T>(name: string) {
         getMultiByCountry,
         getMultiByPrefecture,
         getMultiBySourceCategory,
-        getByAuthor,
-        getMultiByPosted
+        getByAuthor
     };
 }
 
