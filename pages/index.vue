@@ -8,6 +8,20 @@
                         <img src="~/assets/img/title_sp.png" alt="MARINTO GOA">
                     </picture>
                 </h1>
+                <div class="text-area">
+                    <p class="text-1">
+                        <picture>
+                            <source srcset="~/assets/img/title_text_1_sp.png">
+                            <img src="~/assets/img/title_text_1_sp.png" alt="マリントゴアには管理者の蒐集した物語が">
+                        </picture>
+                    </p>
+                    <p class="text-2">
+                        <picture>
+                            <source srcset="~/assets/img/title_text_2_sp.png">
+                            <img src="~/assets/img/title_text_2_sp.png" alt="記録されていきます。">
+                        </picture>
+                    </p>
+                </div>
                 <div v-for="(group, index) in categoryGroup" :key="index" class="category-group flex-container">
                     <CategoryButton
                         v-for="(category, innerIndex) in group"
@@ -52,7 +66,23 @@ const linkTo = (category: string) => {
 }
 
 h1 {
-    padding-block: 1rem;
+    padding-block-start: 1rem;
+}
+
+.text-area {
+    margin-block-end: 1rem;
+}
+
+.text-1 {
+    block-size: auto;
+    inline-size: 80%;
+    margin-inline: auto;
+}
+
+.text-2 {
+    block-size: auto;
+    inline-size: 40%;
+    margin-inline: auto;
 }
 
 .category-group {
