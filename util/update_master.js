@@ -16,7 +16,8 @@ async function main() {
     if (args[0] == "-d") {
         deleteFlg = true;
     }
-    for (let i = 1; i < args.length; i++) {
+    for (let i = 0; i < args.length; i++) {
+        if (deleteFlg && i === 0) continue; 
         const tableName = args[i];
         const tableData = await parseCSV(tableName);
         if (!deleteFlg) await updateMaster(tableName, tableData);

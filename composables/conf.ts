@@ -28,13 +28,27 @@ const getCategoryKeys= (): string[] => {
 }
 
 const kana = ['あ', 'か', 'さ', 'た', 'な', 'は', 'ま', 'や', 'ら', 'わ', ];
+const getLineByKana = (kana: string): string | null => {
+    if (kana.match(/[あ-お]/)) return 'あ';
+    else if (kana.match(/[か-こ]/)) return 'か';
+    else if (kana.match(/[さ-そ]/)) return 'さ';
+    else if (kana.match(/[た-と]/)) return 'た';
+    else if (kana.match(/[な-の]/)) return 'な';
+    else if (kana.match(/[は-ほ]/)) return 'は';
+    else if (kana.match(/[ま-も]/)) return 'ま';
+    else if (kana.match(/[や-よ]/)) return 'や';
+    else if (kana.match(/[ら-ろ]/)) return 'ら';
+    else if (kana.match(/[わ-ん]/)) return 'わ';
+    else return null
+}
 
 const Conf = {
     CategoryType,
     getCategoryKeyFromId,
     getCategoryIdFromKey,
     getCategoryKeys,
-    kana
+    kana,
+    getLineByKana
 }
 
 export { Conf };
