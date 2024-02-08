@@ -48,6 +48,12 @@ useHead({
         {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Sawarabi+Mincho'}
     ]
 });
+
+onBeforeRouteUpdate(async () => {
+    const navElement = document.getElementsByClassName('side-bar-container')[0];
+    navElement.classList.remove('active');
+});
+
 const router = useRouter();
 const categoryKeys = Conf.getCategoryKeys();
 

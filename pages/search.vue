@@ -26,40 +26,57 @@ let articles = ref([ArticleViewLogic.initialize()]);
 const headText = ref("");
 
 const validation = useValidation();
+
 onMounted(async () =>{
     const params = new URLSearchParams(window.location.search);
-    console.log(params)
+    await search(params);
+});
+onBeforeRouteUpdate(async (newRoute) => {
+    const queryString = newRoute.fullPath.substring(newRoute.fullPath.indexOf("?"));
+    const params = new URLSearchParams(queryString);
+    await search(params);
+});
+
+const search = async (params: URLSearchParams) => {
     if (params.size > 1) throw new Error('あきまへん');
     for await (const [key, value] of params.entries()) {
         switch (key) {
             case 'country':
-            if (!validation.id(value)) throw new Error("だめ");
+                if (!validation.id(value)) throw new Error("だめ");
                 articles = await ArticleViewLogic.getMultiByCountry(Number(value));
+                const country = await CountryLogic.getById(Number(value));
+                headText.value = `「${country.value.name}」の検索結果`;
                 break;
-                case 'region':
-            if (!validation.id(value)) throw new Error("だめ");
+            case 'region':
+                if (!validation.id(value)) throw new Error("だめ");
                 articles = await ArticleViewLogic.getMultiByRegion(Number(value));
+                const region = await RegionLogic.getById(Number(value));
+                headText.value = `「${region.value.name}」の検索結果`;
                 break;
             case 'period':
-            if (!validation.id(value)) throw new Error("だめ");
+                if (!validation.id(value)) throw new Error("だめ");
                 articles = await ArticleViewLogic.getMultiByPeriod(Number(value));
+                const period = await PeriodLogic.getById(Number(value));
+                headText.value = `「${period.value.name}」の検索結果`;
                 break;
             case 'prefecture':
-            if (!validation.id(value)) throw new Error("だめ");
+                if (!validation.id(value)) throw new Error("だめ");
                 articles = await ArticleViewLogic.getMultiByPrefecture(Number(value));
+                const prefecture = await PrefectureLogic.getById(Number(value));
+                headText.value = `「${prefecture.value.name}」の検索結果`;
                 break;
             case 'kana':
                 if (!validation.kana(value)) throw new Error("だめ");
                 articles = await ArticleViewLogic.getMultiByKana(value);
+                headText.value = `「${value}」の検索結果`;
                 break;
             case 'text':
                 if (!validation.text(value)) throw new Error("だめ");
                 articles = await ArticleViewLogic.getMultiByText(value);
                 break;
         }
-        headText.value = `「${value}」の検索結果`
     }
-})
+}
 </script>
 
 <style scoped lang="scss">
