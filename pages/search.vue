@@ -28,6 +28,7 @@ const headText = ref("");
 const validation = useValidation();
 onMounted(async () =>{
     const params = new URLSearchParams(window.location.search);
+    console.log(params)
     if (params.size > 1) throw new Error('あきまへん');
     for await (const [key, value] of params.entries()) {
         switch (key) {

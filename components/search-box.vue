@@ -1,16 +1,19 @@
 <template>
-    <form action="search" method="get">
-        <div class="search-box">
-            <input class="search-text" type="text" placeholder="フリーワード検索">
-            <button class="search-button" type="submit">
-                <i class="fa fa-regular fa-magnifying-glass"></i>
-            </button>
-        </div>
-    </form>
+    <div class="search-box">
+        <input name="query" class="search-text" type="text" v-model="searchText" placeholder="フリーワード検索">
+        <button class="search-button" @click="search">
+            <i class="fa fa-regular fa-magnifying-glass"></i>
+        </button>
+    </div>
 </template>
 
 <script setup lang="ts">
+const searchText = ref("");
+const router = useRouter();
 
+const search = () => {
+    router.push(`/search?text=${searchText.value}`);
+}
 </script>
 
 <style scoped lang="scss">

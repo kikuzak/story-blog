@@ -23,7 +23,7 @@ export default defineEventHandler(async (e): Promise<ArticleView[] | null> => {
                 where[keys[i]] = convertType(query[keys[i]] as string);
             }
         }
-        // where['status'] = 2;
+        where['status'] = 2;
 
         const include = {
             article_category: {select: {name: true}},
@@ -39,6 +39,7 @@ export default defineEventHandler(async (e): Promise<ArticleView[] | null> => {
         if (searchText) {
             data = await prisma.article.findMany({
                 where: {
+                    status: 2,
                     content: {
                         contains: searchText
                     }
@@ -61,8 +62,6 @@ export default defineEventHandler(async (e): Promise<ArticleView[] | null> => {
         }
 
         if (data.length === 0) return null;
-        // else if (query.page && query.size || query.length === 0) return data;
-        // else if (data.length === 1) return data[0];
         else return data;
     } catch (e) {
         console.error(e);

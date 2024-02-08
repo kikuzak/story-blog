@@ -57,7 +57,7 @@ function initialize(): ArticleView {
 }
 
 async function getMultiByText(text: string) {
-    const { data, error } = await useFetch('api/article', {
+    const { data, error } = await useFetch('api/article-view', {
         query: {text: text, status: ArticleLogic.Status.published}
     });
     if (error.value) throw(error.value);
