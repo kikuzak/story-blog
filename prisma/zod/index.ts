@@ -16,17 +16,19 @@ export const ArticleScalarFieldEnumSchema = z.enum(['id','class_number','article
 
 export const ArticleCategoryMasterScalarFieldEnumSchema = z.enum(['id','name']);
 
-export const RegionMasterScalarFieldEnumSchema = z.enum(['id','name']);
+export const RegionMasterScalarFieldEnumSchema = z.enum(['id','name','is_posted']);
 
-export const CountryMasterScalarFieldEnumSchema = z.enum(['id','kana','name']);
+export const CountryMasterScalarFieldEnumSchema = z.enum(['id','kana','name','is_posted']);
 
-export const PeriodMasterScalarFieldEnumSchema = z.enum(['id','name']);
+export const PeriodMasterScalarFieldEnumSchema = z.enum(['id','name','is_posted']);
 
-export const PrefectureMasterScalarFieldEnumSchema = z.enum(['id','name']);
+export const PrefectureMasterScalarFieldEnumSchema = z.enum(['id','name','is_posted']);
 
 export const AuthorScalarFieldEnumSchema = z.enum(['id','kana','name']);
 
 export const SourceCategoryMasterScalarFieldEnumSchema = z.enum(['id','name']);
+
+export const KanaLineMasterScalarFieldEnumSchema = z.enum(['id','name','is_posted']);
 
 export const SortOrderSchema = z.enum(['asc','desc']);
 
@@ -79,6 +81,7 @@ export type ArticleCategoryMaster = z.infer<typeof ArticleCategoryMasterSchema>
 export const RegionMasterSchema = z.object({
   id: z.number().int(),
   name: z.string(),
+  is_posted: z.boolean(),
 })
 
 export type RegionMaster = z.infer<typeof RegionMasterSchema>
@@ -91,6 +94,7 @@ export const CountryMasterSchema = z.object({
   id: z.number().int(),
   kana: z.string(),
   name: z.string(),
+  is_posted: z.boolean(),
 })
 
 export type CountryMaster = z.infer<typeof CountryMasterSchema>
@@ -102,6 +106,7 @@ export type CountryMaster = z.infer<typeof CountryMasterSchema>
 export const PeriodMasterSchema = z.object({
   id: z.number().int(),
   name: z.string(),
+  is_posted: z.boolean(),
 })
 
 export type PeriodMaster = z.infer<typeof PeriodMasterSchema>
@@ -113,6 +118,7 @@ export type PeriodMaster = z.infer<typeof PeriodMasterSchema>
 export const PrefectureMasterSchema = z.object({
   id: z.number().int(),
   name: z.string(),
+  is_posted: z.boolean(),
 })
 
 export type PrefectureMaster = z.infer<typeof PrefectureMasterSchema>
@@ -139,3 +145,15 @@ export const SourceCategoryMasterSchema = z.object({
 })
 
 export type SourceCategoryMaster = z.infer<typeof SourceCategoryMasterSchema>
+
+/////////////////////////////////////////
+// KANA LINE MASTER SCHEMA
+/////////////////////////////////////////
+
+export const KanaLineMasterSchema = z.object({
+  id: z.number().int(),
+  name: z.string(),
+  is_posted: z.boolean(),
+})
+
+export type KanaLineMaster = z.infer<typeof KanaLineMasterSchema>

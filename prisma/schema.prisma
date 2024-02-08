@@ -39,43 +39,47 @@ model Article {
 }
 
 model ArticleCategoryMaster {
-  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  id        Int       @id @default(autoincrement()) @db.UnsignedInt
   name      String
   articles  Article[]
   @@map("article_category_master")
 }
 
 model RegionMaster {
-  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  id        Int       @id @default(autoincrement()) @db.UnsignedInt
   name      String
   articles  Article[]
+  is_posted Boolean   @default(false)
   @@map("region_master")
 }
 
 model CountryMaster {
-  id        Int @id @default(autoincrement()) @db.UnsignedInt
-  kana      String  @db.VarChar(1)
+  id        Int       @id @default(autoincrement()) @db.UnsignedInt
+  kana      String    @db.VarChar(1)
   name      String
   articles  Article[]
+  is_posted Boolean   @default(false)
   @@map("country_master")
 }
 
 model PeriodMaster {
-  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  id        Int       @id @default(autoincrement()) @db.UnsignedInt
   name      String
   articles  Article[]
+  is_posted Boolean   @default(false)
   @@map("period_master")
 }
 
 model PrefectureMaster {
-  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  id        Int       @id @default(autoincrement()) @db.UnsignedInt
   name      String
   articles  Article[]
+  is_posted Boolean   @default(false)
   @@map("prefecture_master")
 }
 
 model Author {
-  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  id        Int     @id @default(autoincrement()) @db.UnsignedInt
   kana      String  @db.VarChar(1)
   name      String
   articles  Article[]
@@ -83,10 +87,16 @@ model Author {
 }
 
 model SourceCategoryMaster {
-  id        Int @id @default(autoincrement()) @db.UnsignedInt
+  id        Int       @id @default(autoincrement()) @db.UnsignedInt
   name      String
   articles  Article[]
   @@map("source_category_master")
+}
+
+model KanaLineMaster {
+  id        Int     @id @default(autoincrement()) @db.UnsignedInt
+  name      String
+  is_posted Boolean @default(false)
 }
 
 generator zod {

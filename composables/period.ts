@@ -11,7 +11,8 @@ const {
 function initialize(): Period {
     return {
         id: 0,
-        name: "" 
+        name: "",
+        is_posted: false
     }
 }
 

@@ -12,7 +12,8 @@ const {
 function initialize(): Prefecture {
     return {
         id: 0,
-        name: "" 
+        name: "",
+        is_posted: false
     }
 }
 

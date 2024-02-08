@@ -13,7 +13,8 @@ function initialize(): Country {
     return {
         id: 0,
         kana: "",
-        name: "" 
+        name: "",
+        is_posted: false
     }
 }
 

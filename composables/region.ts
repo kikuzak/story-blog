@@ -11,7 +11,8 @@ const {
 function initialize(): Region {
     return {
         id: 0,
-        name: "" 
+        name: "",
+        is_posted: false
     }
 }
 

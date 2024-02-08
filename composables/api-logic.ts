@@ -1,7 +1,6 @@
 export function createReadMethods<T>(name: string) {
     const uri = `/api/${name}`;
     
-    // idとallは汎用なので作成
     async function getById(id: number): Promise<Ref<T>> {
         const { data, error } = await useFetch(uri, {
             query: {id: id}
@@ -89,6 +88,14 @@ export function createReadMethods<T>(name: string) {
         });
         if (error.value) throw(error.value);
         return data as Ref<T>;
+    }
+
+    async function getMultiByPosted(): Promise<Ref<T[]>> {
+        const { data, error} = await useFetch(uri, {
+            query: {is_posted: true}
+        });
+        if (error.value) throw(error.value);
+        return data as Ref<T[]>;
     }
 
     return {
