@@ -101,7 +101,7 @@
                     <button
                         id="button-ol"
                         class="button-block"
-                        @click="e => {editor.chain().focus().toggleOrderedList().run();}">
+                        @click="internalLink">
                         <i class="fa fa-edit" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -255,6 +255,14 @@ function enterLink(url: string, isTargetBlank: boolean) {
     const { from, to } = editor.state.selection;
     if (from === to) return;
     editor.chain().focus().setLink({href: url, target: (isTargetBlank) ? '_blank' : undefined}).run();
+}
+
+// 内部リンクを設定
+function internalLink() {
+    const { from, to } = editor.state.selection;
+    const selectedText = editor.state.doc.textBetween(from, to);
+    const url = `/search?text=${selectedText}`;
+    editor.chain().focus().toggleLink({href: url, target: null}).run();
 }
 
 // 与えられた名前のマークのボタンをactiveにする
