@@ -7,6 +7,7 @@ const {
     getById,
     getMultiByKana,
     getAll,
+    getPosted,
 } = createReadMethods<Prefecture>('prefecture');
 
 function initialize(): Prefecture {
@@ -20,6 +21,7 @@ const PrefectureLogic = {
     getById,
     getMultiByKana,
     getAll,
+    getPosted,
     initialize
 };
 

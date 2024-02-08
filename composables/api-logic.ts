@@ -20,6 +20,12 @@ export function createReadMethods<T>(name: string) {
         return data as Ref<T[]>;
     }
 
+    async function getPosted(): Promise<Ref<T[]>> {
+        const { data, error } = await useFetch(`/api/posted-${name}`);
+        if (error.value) throw(error.value);
+        return data as Ref<T[]>;
+    }
+
     async function getMultiByPage(pageNumber: number, pageSize: number): Promise<Ref<T[]>> {
         const { data, error } = await useFetch(uri, {
             query: {
@@ -106,7 +112,8 @@ export function createReadMethods<T>(name: string) {
         getMultiByCountry,
         getMultiByPrefecture,
         getMultiBySourceCategory,
-        getByAuthor
+        getByAuthor,
+        getPosted
     };
 }
 

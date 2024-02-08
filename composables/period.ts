@@ -6,6 +6,7 @@ type Period = Zod.infer<typeof PeriodMasterSchema>;
 const {
     getById,
     getAll,
+    getPosted
 } = createReadMethods<Period>('period');
 
 function initialize(): Period {
@@ -18,6 +19,7 @@ function initialize(): Period {
 const PeriodLogic = {
     getById,
     getAll,
+    getPosted,
     initialize
 }
 export { PeriodLogic };

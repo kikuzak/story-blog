@@ -6,6 +6,7 @@ type Region = Zod.infer<typeof RegionMasterSchema>;
 const {
     getById,
     getAll,
+    getPosted,
 } = createReadMethods<Region>('region');
 
 function initialize(): Region {
@@ -18,6 +19,7 @@ function initialize(): Region {
 const RegionLogic = {
     getById,
     getAll,
+    getPosted,
     initialize
 }
 

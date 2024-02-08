@@ -7,6 +7,7 @@ const {
     getById,
     getMultiByKana,
     getAll,
+    getPosted
 } = createReadMethods<Country>('country');
 
 function initialize(): Country {
@@ -21,7 +22,8 @@ const CountryLogic = {
     getById,
     getMultiByKana,
     getAll,
-    initialize
+    getPosted,
+    initialize,
 };
 
 export { CountryLogic };

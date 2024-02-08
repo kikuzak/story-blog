@@ -47,10 +47,10 @@
 
 <script setup lang="ts">
 
-const regions = await RegionLogic.getAll();
-const countries = await CountryLogic.getAll();
-const prefectures = await PrefectureLogic.getAll();
-const periods = await PeriodLogic.getAll();
+const regions = await RegionLogic.getPosted();
+const countries = await CountryLogic.getPosted();
+const prefectures = await PrefectureLogic.getPosted();
+const periods = await PeriodLogic.getPosted();
 
 function toggleSearchList(className: string) {
     const listElement = document.getElementsByClassName(className)[0];

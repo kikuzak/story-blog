@@ -64,8 +64,6 @@ const ArticleLogic = {
     deleteById,
     initialize,
     Status,
-    // getPublishedById,
-    // getPublised
 }
 
 export { ArticleLogic };
