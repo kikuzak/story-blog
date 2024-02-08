@@ -3,11 +3,10 @@
         <div class="top">
             <div class="base-container">
                 <h1>
-                    <NuxtImg
-                        src="title.png"
-                        sizes="md:350px xl:1200px"
-                        alt="MARINT GOA"
-                    />
+                    <picture>
+                        <source srcset="~/assets/img/title_sp.png">
+                        <img src="~/assets/img/title_sp.png" alt="MARINTO GOA">
+                    </picture>
                 </h1>
                 <div v-for="(group, index) in categoryGroup" :key="index" class="category-group flex-container">
                     <CategoryButton

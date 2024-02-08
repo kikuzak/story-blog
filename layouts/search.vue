@@ -24,12 +24,10 @@
                     </div>
                 </nav>
                 <div class="header-search-area">
-                    <NuxtImg
-                        class="logo"
-                        src="title.png"
-                        sizes="md:350px xl:1200px"
-                        alt="MARINT GOA"
-                    />
+                    <picture class="logo">
+                        <source srcset="~/assets/img/title_sp.png">
+                        <img src="~/assets/img/title_sp.png" alt="MARINTO GOA">
+                    </picture>
                     <SearchBox />
                 </div>
             </header>

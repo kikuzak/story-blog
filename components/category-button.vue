@@ -5,17 +5,14 @@
         @mouseleave="setHover(false)"
         @click="setHover(true)"
     >
-        <NuxtImg
-            :class="`icon-${props.page}`"
-            v-show="!isActrive"
-            :src="`icon_category_${props.category}_${props.page}.png`"
-            sizes="md:200px xl:400px"
-        />
-        <NuxtImg
-            v-show="isActrive"
-            :src="`icon_category_${props.category}_hover.png`"
-            sizes="md:200px xl:400px"
-        />
+        <picture :class="`icon-${props.page}`" v-show="!isActrive">
+            <!-- <source srcset="~/assets/img/title_sp.png"> -->
+            <img :src="imageDefault.default" :alt="props.category">
+        </picture>
+        <picture :class="`icon-${props.page}-hover`" v-show="isActrive">
+            <!-- <source srcset="~/assets/img/title_sp.png"> -->
+            <img :src="imageHover.default" :alt="props.category">
+        </picture>
     </div>
 </template>
 
@@ -27,6 +24,20 @@ type Props = {
 }
 const props = defineProps<Props>();
 const isActrive = ref(props.isInitailActive);
+let imageDefault: any = {};
+let imageHover: any = {};
+
+// 画像のロード
+const loadImage = async (target: string) => {
+    try {
+        imageDefault = await import(`~/assets/img/icon_category_${props.category}_${props.page}_${target}.png`);
+        imageHover = await import(`~/assets/img/icon_category_${props.category}_hover_${target}.png`);
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+await loadImage('sp');
 
 const setHover = (value: boolean) => {
     isActrive.value = value
