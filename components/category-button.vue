@@ -54,12 +54,12 @@ const setHover = (value: boolean) => {
     }
 }
 
-.icon-search {
-    $icon-size: 70%;
-    inset-block-start: calc((100% - $icon-size) / 2);
-    inset-inline-start: calc((100% - $icon-size) / 2);
-    position: absolute;
-    block-size: $icon-size;
-    inline-size: $icon-size;
-}
+// .icon-search {
+//     $icon-size: 70%;
+//     inset-block-start: calc((100% - $icon-size) / 2);
+//     inset-inline-start: calc((100% - $icon-size) / 2);
+//     position: absolute;
+//     block-size: $icon-size;
+//     inline-size: $icon-size;
+// }
 </style>

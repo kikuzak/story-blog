@@ -55,6 +55,21 @@ const linkTo = (category: string) => {
     router.push(`/${category}`);
 }
 
+// windowの高さを調節する
+function resize() {
+    const topElement = document.getElementsByClassName('top')[0] as HTMLElement;
+    topElement.style.blockSize = `${window.innerHeight}px`;
+}
+
+onMounted(() => {
+    resize();
+    window.addEventListener('resize', resize);
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', resize);
+});
+
 </script>
 
 <style scoped lang="scss">

@@ -73,6 +73,7 @@ const search = async (params: URLSearchParams) => {
             case 'text':
                 if (!validation.text(value)) throw new Error("だめ");
                 articles = await ArticleViewLogic.getMultiByText(value);
+                headText.value = `「${value}」の検索結果`;
                 break;
         }
     }

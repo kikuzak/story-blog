@@ -67,7 +67,6 @@ function toggleSearchList(className: string) {
     inline-size: $side-bar-size;
     overflow: auto;
     padding-block: 2rem;
-    transition: inset-block-start 200ms 0s ease;
 }
 
 .index-category-item {

@@ -38,6 +38,10 @@ header {
     padding-block: 1rem;
 }
 
+.article-text {
+    padding-bottom: 1rem;
+}
+
 .article-attribute-list {
     justify-content: left;
 }
