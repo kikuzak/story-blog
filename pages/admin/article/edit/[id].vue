@@ -73,6 +73,9 @@
                     <p class="label">本文</p>
                     <Wysiwyg v-model:content="article.content"/>
                 </div>
+                <div class="content-row content-area">
+                    <p class="preview-button" @click="preview">プレビュー</p>
+                </div>
             </div>
         </div>
     </NuxtLayout>
@@ -167,6 +170,11 @@ async function createArticle(isPublish: boolean) {
     router.push('/admin/article');
 }
 
+function preview() {
+    localStorage.setItem('edit-article', JSON.stringify(article.value));
+    window.open('/admin/article/preview', 'target=_new');
+}
+
 </script>
 
 <style scoped lang="scss">
@@ -241,9 +249,6 @@ h1 {
     margin-block-end: 2rem;
 }
 
-.content-area {
-    margin-block-end: 0;
-}
 
 .label {
     font-size: 1.1rem;
@@ -263,6 +268,25 @@ h1 {
     }
     &.error {
         border-color: $alert-color;
+    }
+}
+
+.preview-button {
+    background-color: $notification-color;
+    block-size: 2.4rem;
+    border-radius: 4px;
+    color: $admin-sub-text-color;
+    line-height: 2.4rem;
+    inline-size: 6rem;
+    text-align: center;
+    &.active {
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    &.inactive {
+        opacity: 0.4;
     }
 }
 
