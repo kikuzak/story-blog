@@ -12,7 +12,7 @@
                 <div class="content-row">
                     <div class="content-item name-area">
                         <p class="label">著者名</p>
-                        <input type="text" class="text-box" v-model="author.name">
+                        <input type="text" class="text-box" :class="[validation.blank(author.name)? 'ok' : 'error']" v-model="author.name">
                     </div>
                     <div class="content-item kana-area">
                         <p class="label">かな</p>

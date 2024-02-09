@@ -9,13 +9,15 @@
                 <p class="update-button" :class="[canUpdate()? 'active' : 'inactive']" @click="createAuthor()">作成</p>
             </div>
             <div class="content">
-                <div class="content-item">
-                    <p class="label">著者名</p>
-                    <input type="text" class="text-box" :class="[validation.blank(author.name)? 'ok' : 'error']" v-model="author.name">
-                </div>
-                <div class="content-item">
-                    <p class="label">かな</p>
-                    <input type="text" class="text-box" :class="[validation.kana(author.kana)? 'ok' : 'error']" v-model="author.kana">
+                <div class="content-row">
+                    <div class="content-item name-area">
+                        <p class="label">著者名</p>
+                        <input type="text" class="text-box" :class="[validation.blank(author.name)? 'ok' : 'error']" v-model="author.name">
+                    </div>
+                    <div class="content-item kana-area">
+                        <p class="label">かな</p>
+                        <input type="text" class="text-box" :class="[validation.kana(author.kana)? 'ok' : 'error']" v-model="author.kana">
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,6 +98,21 @@ h1 {
 
 .content-item {
     margin-block-end: 2rem;
+}
+
+.content-row {
+    display: flex;
+    flex-flow: row;
+    gap: 0 3rem;
+    margin-block-end: 2rem;
+}
+
+.name-area {
+    flex: 4;
+}
+
+.kana-area {
+    flex: 1;
 }
 
 .label {
