@@ -16,10 +16,12 @@
                 </ul>
             </nav>
             <div class="header-search-area">
-                <picture class="logo">
-                    <source srcset="~/assets/img/title_sp.png">
-                    <img src="~/assets/img/title_sp.png" alt="MARINTO GOA">
-                </picture>
+                <nuxt-link to="/">
+                    <picture class="logo">
+                        <source srcset="~/assets/img/title_sp.png">
+                        <img src="~/assets/img/title_sp.png" alt="MARINTO GOA">
+                    </picture>
+                </nuxt-link>
                 <SearchBox />
             </div>
         </header>

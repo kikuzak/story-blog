@@ -40,8 +40,22 @@ const loadImage = async (target: string) => {
 await loadImage('sp');
 
 const setHover = (value: boolean) => {
-    isActrive.value = value
+    isActrive.value = value;
 }
+
+function resize() {
+    if (window.innerWidth >= 1280) isActrive.value = false;
+    else isActrive.value = true;
+}
+
+onMounted(() => {
+    resize();
+    window.removeEventListener('resize', resize);
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', resize);
+});
 </script>
 
 <style scoped lang="scss">
@@ -53,13 +67,4 @@ const setHover = (value: boolean) => {
         cursor: pointer;
     }
 }
-
-// .icon-search {
-//     $icon-size: 70%;
-//     inset-block-start: calc((100% - $icon-size) / 2);
-//     inset-inline-start: calc((100% - $icon-size) / 2);
-//     position: absolute;
-//     block-size: $icon-size;
-//     inline-size: $icon-size;
-// }
 </style>

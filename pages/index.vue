@@ -22,16 +22,19 @@
                         </picture>
                     </p>
                 </div>
-                <div v-for="(group, index) in categoryGroup" :key="index" class="category-group flex-container">
-                    <CategoryButton
-                        v-for="(category, innerIndex) in group"
-                        :key="innerIndex"
-                        :page="'top'"
-                        :category="category"
-                        :isInitailActive="true"
-                        @click="linkTo(category)"
-                    />
+                <div class="category-area">
+                    <div v-for="(group, index) in categoryGroup" :key="index" class="category-group flex-container">
+                        <CategoryButton
+                            v-for="(category, innerIndex) in group"
+                            :key="innerIndex"
+                            :page="'top'"
+                            :category="category"
+                            :isInitailActive="true"
+                            @click="linkTo(category)"
+                        />
+                    </div>
                 </div>
+                
             </div>
         </div>
     </NuxtLayout>
@@ -55,19 +58,37 @@ const linkTo = (category: string) => {
     router.push(`/${category}`);
 }
 
+let topElement: HTMLElement;
+let buttonElements: HTMLCollectionOf<HTMLElement>;
+
 // windowの高さを調節する
 function resize() {
-    const topElement = document.getElementsByClassName('top')[0] as HTMLElement;
     topElement.style.blockSize = `${window.innerHeight}px`;
 }
 
+// ボタン配置
+function setButton() {
+    if (window.innerWidth >= 1280) {
+        buttonElements[1].classList.add('second');
+        buttonElements[3].classList.add('fourth');
+    } else {
+        buttonElements[1].classList.remove('second');
+        buttonElements[3].classList.remove('fourth');
+    }
+}
+
 onMounted(() => {
+    topElement = document.getElementsByClassName('top')[0] as HTMLElement;
+    buttonElements = document.getElementsByClassName('category-button') as HTMLCollectionOf<HTMLElement>;
     resize();
+    setButton();
     window.addEventListener('resize', resize);
+    window.addEventListener('resize', setButton);
 });
 
 onBeforeUnmount(() => {
     window.removeEventListener('resize', resize);
+    window.removeEventListener('resize', setButton);
 });
 
 </script>
@@ -77,21 +98,35 @@ onBeforeUnmount(() => {
     background-image: url('@/assets/img/background.png');
     background-size: cover;
     block-size: 100vh;
+    overflow-y: auto;
     inline-size: 100%;
 }
 
 h1 {
     padding-block-start: 1rem;
+    text-align: center;
 }
 
 .text-area {
+    display: flex;
+    flex-direction: column;
     margin-block-end: 1rem;
+    text-align: center;
+    @include mq(pc) {
+        flex-direction: row;
+        inline-size: 60%;
+        justify-content: center;
+        margin-inline: auto;
+    }
 }
 
 .text-1 {
     block-size: auto;
     inline-size: 80%;
     margin-inline: auto;
+    @include mq(pc) {
+        display: inline;
+    }
 }
 
 .text-2 {
@@ -100,15 +135,46 @@ h1 {
     margin-inline: auto;
 }
 
+.category-area {
+    display: flex;
+    flex-direction: column;
+    @include mq(pc) {
+        flex-direction: row;
+        margin-block-start: 3rem;
+    }
+}
+
 .category-group {
+    flex: 1;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    @include mq(pc) {;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
 }
 
 .category-button {
     $size: 35%;
     block-size: $size;
     inline-size: $size;
+    text-align: center;
+    @include mq(pc) {
+        block-size: auto;
+        inline-size: auto;
+        position: absolute;
+    }
+
+    &.second {
+        margin-block-start: 50%;
+        margin-inline-end: -100%;
+    }
+
+    &.fourth {
+        margin-block-start: 50%;
+        margin-inline-start: -100%;
+    }
 }
 </style>
 
