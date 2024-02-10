@@ -9,12 +9,20 @@
     </div>
 </template>
 
+<script setup lang="ts">
+useHead({
+    link: [
+        {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP'}
+    ]
+});
+</script>
+
 <style lang="scss">
 .admin {
     font-family: $base-font-family;
     color: $admin-main-text-color;
     article {
-        block-size: 100vh;
+        block-size:%;
         inline-size: calc(100% - $admin-sidebar-size);
         background-color: $admin-bg-color;
         padding-block: 2rem;

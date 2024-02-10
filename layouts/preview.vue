@@ -113,7 +113,7 @@ body {
 .view {
     background-image: url('@/assets/img/background.png');
     background-size: cover;
-    block-size: 100vh;
+    block-size: 100%;
     font-family: "Sawarabi Mincho";;
     inline-size: 100%;
     overflow-y: auto;
@@ -149,7 +149,7 @@ nav {
 
 aside {
     background-color: rgba(0, 0, 0, 0.6);
-    block-size: 100vh;
+    block-size: 100%;
     inline-size: 100%;
     position: absolute;
     inset-block-start: 0;

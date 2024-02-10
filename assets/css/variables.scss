@@ -2,9 +2,22 @@
 $sp-max-size: 768px;
 $tb-max-size: 1280px;
 
+// ブレークポイント
+$breakpoint: (
+    sp:  'screen and (max-width: 767px)',
+    tab: 'screen and (min-width: 768px)',
+    pc:  'screen and (min-width: 1280px)'
+);
+
+@mixin mq($bp) {
+    @media #{map-get($breakpoint, $bp)} {
+        @content;
+    }
+}
+
 // 共通設定
 $main-color: #FFF000;
-$sub-color: #FFF;
+$sub-color: #B28D5D;
 $base-text-color: #000;
 $base-font-family: "Noto Sans JP", "Helvetica Neue","Hiragino Sans",sans-serif;
 $base-font-size: 14px;

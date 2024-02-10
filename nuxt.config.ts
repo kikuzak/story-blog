@@ -7,15 +7,14 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "ja"
       },
+      meta: [
+        {charset: 'utf-8'},
+        {}
+      ],
       link: [
         {
           rel: "preconnect",
           href: "https://fonts.googleapis.com"
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Noto+Sans+JP",
-          crossorigin: "",
         },
         {
           rel: "stylesheet",

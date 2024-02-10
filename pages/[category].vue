@@ -32,6 +32,9 @@ const articles = await ArticleViewLogic.getMultiByArticleCategory(categoryId);
 <style scoped lang="scss">
 .category {
     padding-block: 1rem;
+    @include mq(pc) {
+        padding: 0;
+    }
 }
 
 h1 {
