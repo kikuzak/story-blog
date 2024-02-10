@@ -9,7 +9,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="index-category-item prefecture">
+            <li class="index-category-item prefecture" v-show="prefectures">
                 <p class="label" @click="toggleSearchList('prefecture-list')">日本</p>
                 <ul class="search-list prefecture-list">
                     <li v-for="prefecture in prefectures" :key="prefecture.id">
@@ -17,7 +17,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="index-category-item region">
+            <li class="index-category-item region" v-show="regions">
                 <p class="label" @click="toggleSearchList('region-list')">世界(地域)</p>
                 <ul class="search-list region-list">
                     <li v-for="region in regions" :key="region.id">
@@ -25,7 +25,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="index-category-item country">
+            <li class="index-category-item country" v-show="countries">
                 <p class="label" @click="toggleSearchList('country-list')">世界(国名)</p>
                 <ul class="search-list country-list">
                     <li v-for="country in countries" :key="country.id">
@@ -33,7 +33,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="index-category-item period">
+            <li class="index-category-item period" v-show="periods">
                 <p class="label" @click="toggleSearchList('period-list')">時代</p>
                 <ul class="search-list period-list">
                     <li v-for="period in periods" :key="period.id">
