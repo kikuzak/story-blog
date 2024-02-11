@@ -1,446 +1,436 @@
-[2024/02/10 20:47:10]  Already on 'main'
-[2024/02/10 20:47:10]  Your branch is up to date with 'origin/main'.
-[2024/02/10 20:47:12]  From github.com:kikuzak/story-blog
-[2024/02/10 20:47:12]   * branch            main       -> FETCH_HEAD
-[2024/02/10 20:47:12]     af07e63..6ab358e  main       -> origin/main
-[2024/02/10 20:47:12]  Updating af07e63..6ab358e
-[2024/02/10 20:47:12]  Fast-forward
-[2024/02/10 20:47:12]   assets/css/k-framework.scss    |   2 +-
-[2024/02/10 20:47:12]   assets/css/variables.scss      |  15 ++++-
-[2024/02/10 20:47:12]   components/category-button.vue |  25 +++++---
-[2024/02/10 20:47:12]   components/side-bar.vue        |   8 +--
-[2024/02/10 20:47:12]   layouts/admin.vue              |  10 ++-
-[2024/02/10 20:47:12]   layouts/preview.vue            |   4 +-
-[2024/02/10 20:47:12]   layouts/search.vue             | 135 ++++++++++++++++++++++++++++++++---------
-[2024/02/10 20:47:12]   nuxt.config.ts                 |   9 ++-
-[2024/02/10 20:47:12]   pages/[category].vue           |   3 +
-[2024/02/10 20:47:12]   pages/admin/index.vue          |  25 ++++----
-[2024/02/10 20:47:12]   pages/index.vue                |  86 +++++++++++++++++++++++---
-[2024/02/10 20:47:12]   11 files changed, 249 insertions(+), 73 deletions(-)
-[2024/02/10 20:47:13]  
-[2024/02/10 20:47:13]  > build
-[2024/02/10 20:47:13]  > nuxt build
-[2024/02/10 20:47:13]  
-[2024/02/10 20:47:13]  
-[2024/02/10 20:47:13]   WARN  Current version of Node.js (16.20.2) is unsupported and might cause issues.
-[2024/02/10 20:47:13]         Please upgrade to a compatible version >= 18.0.0.
-[2024/02/10 20:47:13]  
-[2024/02/10 20:47:13]  Nuxt 3.9.0 with Nitro 2.8.1
-[2024/02/10 20:47:16]  
-[2024/02/10 20:47:16]   WARN  Node fetch compatibility is enabled. Please consider upgrading to Node.js >= 18.
-[2024/02/10 20:47:16]  
-[2024/02/10 20:47:19]  ℹ Building client...
-[2024/02/10 20:47:19]  ℹ vite v5.0.10 building for production...
-[2024/02/10 20:47:19]  ℹ transforming...
-[2024/02/10 20:47:27]  ℹ ✓ 395 modules transformed.
-[2024/02/10 20:47:27]  Inspect report generated at /home/gituser/nuxt/story-blog/.nuxt/analyze/.vite-inspect
-[2024/02/10 20:47:27]  ℹ rendering chunks...
-[2024/02/10 20:47:28]  ℹ computing gzip size...
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_top_sp.FoaQnZgQ.png          4.19 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_folklore_hover_sp.P2RW3VpD.png      6.37 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_writer_hover_sp.yCqiAiIc.png        7.05 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_others_hover_sp.CBb2bH5Y.png        7.08 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_myth_hover_sp.zyz3T8o3.png          7.09 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/title_text_1_sp.BGfZPmOO.png                      7.64 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_hover_sp.d-47Ipx_.png        8.15 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/manifest.json                                          17.49 kB │ gzip:   2.13 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/title_sp.Eaa23mi-.png                            32.78 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/background.b3j6KV_U.png                       1,506.63 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.ONWfkvr3.css                                0.21 kB │ gzip:   0.13 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/preview.HbjFP_AH.css                              0.34 kB │ gzip:   0.17 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/_id_.09f4u1vE.css                                 0.34 kB │ gzip:   0.17 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/search.ezHZQ4BP.css                               0.56 kB │ gzip:   0.26 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/_category_.uTxP5K0L.css                           0.63 kB │ gzip:   0.29 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/search-box.b1uEkhbp.css                           0.96 kB │ gzip:   0.38 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/page-num-count.QEfzvkkW.css                       1.04 kB │ gzip:   0.43 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.W2LGjuuS.css                                1.14 kB │ gzip:   0.38 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/_id_.hi0FmZFz.css                                 1.24 kB │ gzip:   0.44 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.UDIjhnIC.css                                1.31 kB │ gzip:   0.46 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/preview.ylnbt-4r.css                              1.34 kB │ gzip:   0.52 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.0SAIPXSy.css                                1.63 kB │ gzip:   0.49 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/error-500.V0P2JAtD.css                            1.95 kB │ gzip:   0.74 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/_id_.-ZiccOED.css                                 2.30 kB │ gzip:   0.60 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.vhjx3iUc.css                                2.34 kB │ gzip:   0.60 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/error-404.qFGwA4uS.css                            3.62 kB │ gzip:   1.12 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/search.T-iXiTJH.css                               3.64 kB │ gzip:   0.98 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/admin.TvaGfbP3.css                                4.06 kB │ gzip:   1.13 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/theme-sugar.Qk-Q00_e.css                          4.15 kB │ gzip:   1.54 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/flatpickr.VF-re9is.css                           21.59 kB │ gzip:   4.05 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_myth_hover_sp.tL3Ex3u2.js           0.13 kB │ gzip:   0.15 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_top_sp.dUpVX1IN.js           0.13 kB │ gzip:   0.15 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_hover_sp.bRDWQPUK.js         0.14 kB │ gzip:   0.15 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_others_hover_sp.lUpEH1Zs.js         0.14 kB │ gzip:   0.15 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_writer_hover_sp.xJVuuxah.js         0.14 kB │ gzip:   0.15 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_folklore_hover_sp._A-K3Gh3.js       0.14 kB │ gzip:   0.15 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/article.VdwY5vjJ.js                               0.18 kB │ gzip:   0.17 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/article-category.bysq3k5j.js                      0.18 kB │ gzip:   0.17 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/default._W0AIEmy.js                               0.19 kB │ gzip:   0.17 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/validation.H7B8nqmX.js                            0.24 kB │ gzip:   0.22 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/author.wfXGuXbO.js                                0.33 kB │ gzip:   0.22 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/title_sp.EywIDsy_.js                              0.34 kB │ gzip:   0.27 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/vue.f36acd1f.rlFiypnP.js                          0.39 kB │ gzip:   0.28 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.Nhpk-9ao.js                                 0.50 kB │ gzip:   0.43 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/conf.f9LPpFH4.js                                  0.60 kB │ gzip:   0.39 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/period.3GEBl3h8.js                                0.70 kB │ gzip:   0.29 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/article.IBWpnvLv.js                               0.84 kB │ gzip:   0.38 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/article-view.ROqalkS4.js                          1.04 kB │ gzip:   0.46 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/admin.1k7Do4Hl.js                                 1.04 kB │ gzip:   0.62 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/_id_.DXdTsRlq.js                                  1.26 kB │ gzip:   0.68 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/preview.LMoiTO5J.js                               1.33 kB │ gzip:   0.70 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_folklore_search_sp.UO-a-2eH.js      1.36 kB │ gzip:   1.01 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/_category_.Uifa07zh.js                            1.66 kB │ gzip:   0.92 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/preview.ab7p8aJ1.js                               1.75 kB │ gzip:   1.01 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/_id_.cVU6O6Iv.js                                  1.78 kB │ gzip:   1.03 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index._VbmqAZU.js                                 1.80 kB │ gzip:   1.02 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_writer_search_sp.jhBoQYTv.js        1.82 kB │ gzip:   1.36 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_myth_search_sp.YlSUQMM3.js          1.84 kB │ gzip:   1.36 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/page-num-count.d_jM-MwF.js                        1.85 kB │ gzip:   0.94 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_others_search_sp.uNcYrwxT.js        1.89 kB │ gzip:   1.40 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/error-500.nvPVJVdJ.js                             1.92 kB │ gzip:   1.01 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_search_sp.JFUXIVs8.js        2.05 kB │ gzip:   1.52 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/error-404.ARaa3Rg_.js                             2.30 kB │ gzip:   1.19 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/search-box.oX5DROSL.js                            2.35 kB │ gzip:   1.08 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/search.-1ZEyeUH.js                                2.68 kB │ gzip:   1.24 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.FD-QejAP.js                                 3.64 kB │ gzip:   1.76 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/nuxt-link.Jfg2QiYJ.js                             4.23 kB │ gzip:   1.79 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_folklore_top_sp.P2iYgFTs.js         4.32 kB │ gzip:   3.24 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.KM7qRk-E.js                                 4.66 kB │ gzip:   2.18 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/search.tUlqfRiq.js                                4.92 kB │ gzip:   1.85 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_writer_top_sp.Bi2FIYmr.js           4.96 kB │ gzip:   3.69 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_myth_top_sp.vMlLsNU6.js             5.12 kB │ gzip:   3.80 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/icon_category_others_top_sp.e_yqqTjF.js           5.13 kB │ gzip:   3.84 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.Au7joRnq.js                                 6.39 kB │ gzip:   2.54 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/_id_.E8RC8j9-.js                                  6.43 kB │ gzip:   2.56 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/theme-sugar.-hvrCg_4.js                          10.78 kB │ gzip:   4.28 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/index.6i1jICJJ.js                                11.70 kB │ gzip:   5.99 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/api-logic.fDEXQ6wD.js                            14.36 kB │ gzip:   5.65 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/entry.ZQB47jH_.js                               169.49 kB │ gzip:  63.82 kB
-[2024/02/10 20:47:28]  ℹ .nuxt/dist/client/_nuxt/flatpickr.min.4HM_Ysnk.js                       363.74 kB │ gzip: 113.96 kB
-[2024/02/10 20:47:28]  ℹ ✓ built in 9.63s
-[2024/02/10 20:47:28]  ✔ Client built in 9674ms
-[2024/02/10 20:47:28]  ℹ Building server...
-[2024/02/10 20:47:28]  ℹ vite v5.0.10 building SSR bundle for production...
-[2024/02/10 20:47:28]  ℹ transforming...
-[2024/02/10 20:47:33]  ℹ ✓ 232 modules transformed.
-[2024/02/10 20:47:33]  Inspect report generated at /home/gituser/nuxt/story-blog/.nuxt/analyze/.vite-inspect
-[2024/02/10 20:47:33]  ℹ rendering chunks...
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-styles.gsLWFwkS.mjs                       0.14 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-styles.Un9mcW46.mjs                       0.14 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-styles.bCPnYvsB.mjs                       0.14 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles.ynp5BxCt.mjs                      0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles.Mr2jfVQs.mjs                      0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles.PQorCxj3.mjs                      0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles.QzYNg7ni.mjs                      0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/search-styles.MQGTcHfP.mjs                     0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/preview-styles.YTz3KmLG.mjs                    0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/preview-styles.FZfhFOTa.mjs                    0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/error-404-styles.XRz1-5H_.mjs                  0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/error-500-styles.vMIeuOQq.mjs                  0.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_category_-styles.lpSfmQFN.mjs                 0.16 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/entry-styles.FsmlKikS.mjs                      0.21 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles.Vn2JMyJ5.mjs                      0.21 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/admin-styles.TOhTy5bQ.mjs                      0.21 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/search-styles.0hR0GOuk.mjs                     0.21 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/styles.mjs                                           1.91 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_legend_top_sp-KMPmthP-.js        0.22 kB │ map:   0.25 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_myth_hover_sp-o80NeD7_.js        0.22 kB │ map:   0.25 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_legend_hover_sp-yRQhq93V.js      0.23 kB │ map:   0.26 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_others_hover_sp-h0bHrUkH.js      0.23 kB │ map:   0.26 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_writer_hover_sp-ow5IFwVw.js      0.23 kB │ map:   0.26 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_folklore_hover_sp-UkkoJIzv.js    0.24 kB │ map:   0.26 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-edFF6Bg1.js                 0.36 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/article-category-2gae7FPe.js                   0.37 kB │ map:   0.85 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-cwJhOZ2y.js                 0.41 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-styles-1.mjs-fOzrkvi0.js                  0.54 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/author-JVfkjpL-.js                             0.54 kB │ map:   1.15 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/title_sp-8Q8wzEgW.js                           0.55 kB │ map:   0.22 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/preview-styles-1.mjs-PVVdqQkQ.js               0.55 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/search-styles-1.mjs-sGB-ruKz.js                0.76 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/search-styles-1.mjs-ITHZ1gYD.js                0.81 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/entry-styles-3.mjs-8hXiD876.js                 0.84 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_category_-styles-1.mjs-h8pRCa5W.js            0.84 kB │ map:   0.12 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/entry-styles-2.mjs-76BQ0Ce_.js                 0.85 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/validation-SeQchZ6A.js                         0.93 kB │ map:   1.96 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-tbNGurtz.js                              0.98 kB │ map:   5.93 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/article-P2PzmGZ9.js                            1.04 kB │ map:   0.13 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/default-Frk4XnkW.js                            1.04 kB │ map:   0.13 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/island-renderer--oE2KIX0.js                    1.04 kB │ map:   1.55 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/admin-styles-1.mjs-Yr39ubOI.js                 1.05 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/entry-styles-1.mjs-pqvKbEiI.js                 1.08 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/article-QA79pmBS.js                            1.22 kB │ map:   2.46 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/conf-ToKWs9i_.js                               1.33 kB │ map:   2.80 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-S8eDnNTD.js                 1.34 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-styles-1.mjs-Dp4KfIuv.js                  1.44 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/period-A9T2wMbS.js                             1.44 kB │ map:   3.64 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_folklore_search_sp-DAjyz2oB.js   1.50 kB │ map:   1.55 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-T0HAWDzR.js                 1.51 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/article-view-Gl36MrVU.js                       1.52 kB │ map:   3.64 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/preview-styles-1.mjs-pnd4vFHT.js               1.59 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles-2.mjs-PKrzT0Is.js                 1.71 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_writer_search_sp-VxWu1PP5.js     1.95 kB │ map:   2.00 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_myth_search_sp-CJtOscXO.js       1.97 kB │ map:   2.02 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_others_search_sp-H2Khyt_Y.js     2.02 kB │ map:   2.07 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/error-500-styles-1.mjs-jbzM5VPC.js             2.17 kB │ map:   0.12 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_legend_search_sp-gN4WjSB3.js     2.19 kB │ map:   2.24 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-styles-1.mjs-fJWp0l7g.js                  2.50 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-vROcq7VN.js                 2.54 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-KTUUZTZ7.js                              2.65 kB │ map:   0.59 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/error-500-2D6dcp2B.js                          3.04 kB │ map:   3.79 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/preview-Ifv9IazH.js                            3.18 kB │ map:   5.86 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/search-styles-2.mjs-SN1TZ2wl.js                3.29 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/admin-styles-2.mjs-LCrvitSA.js                 3.40 kB │ map:   0.11 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/search-box-UzBJRbUW.js                         3.47 kB │ map:   3.48 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/admin-gcc0Z9CK.js                              3.53 kB │ map:   8.87 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/error-404-styles-1.mjs-gy0NFO_4.js             3.86 kB │ map:   0.12 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/error-404-vOfP9MOS.js                          3.93 kB │ map:   5.83 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/page-num-count-2nYjycCC.js                     4.41 kB │ map:   6.75 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_folklore_top_sp-8QquO17x.js      4.45 kB │ map:   4.50 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_writer_top_sp-GfDuV4RQ.js        5.08 kB │ map:   5.14 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/preview-6Le1mTxP.js                            5.22 kB │ map:   2.18 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_myth_top_sp-Lne3wNmu.js          5.24 kB │ map:   5.30 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/icon_category_others_top_sp-cMGxvd7t.js        5.25 kB │ map:   5.31 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-gEDemQOz.js                               5.41 kB │ map:   2.05 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/nuxt-link-CXWnO8QZ.js                          6.53 kB │ map:  14.70 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-G_oO3sFj.js                              6.56 kB │ map:   4.52 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-iYkhp-gC.js                               6.64 kB │ map:   4.33 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_category_-4VSG4sgp.js                         9.52 kB │ map:   3.06 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/search-KtSYiZ7d.js                            10.28 kB │ map:  12.50 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/api-logic-zcG-oO8Y.js                         11.00 kB │ map:  25.67 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/search-Sk-ymsAJ.js                            11.40 kB │ map:   6.64 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-NK68IuP_.js                             14.39 kB │ map:   8.01 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/flatpickr.min-2F9bRLI0.js                     15.86 kB │ map:  36.93 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index--gnBzzVL.js                             15.90 kB │ map:  13.40 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-ygHDFPRG.js                             17.31 kB │ map:  12.06 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/index-_4Oq1TtZ.js                             21.93 kB │ map:  13.69 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/_nuxt/_id_-Pz0QJfBo.js                              22.08 kB │ map:  13.74 kB
-[2024/02/10 20:47:34]  ℹ .nuxt/dist/server/server.mjs                                          42.86 kB │ map: 101.14 kB
-[2024/02/10 20:47:34]  ℹ ✓ built in 5.64s
-[2024/02/10 20:47:34]  ✔ Server built in 5713ms
-[2024/02/10 20:47:34]  [nitro] ✔ Generated public .output/public
-[2024/02/10 20:47:34]  [nitro] ℹ Building Nitro Server (preset: node-server)
-[2024/02/10 20:47:43]  [nitro] ✔ Nitro server built
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_category_-4VSG4sgp.mjs (10.1 kB) (1.99 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_category_-4VSG4sgp.mjs.map (7.43 kB) (1.52 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_category_-styles.lpSfmQFN.mjs (960 B) (423 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_category_-styles.lpSfmQFN.mjs.map (349 B) (220 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-gEDemQOz.mjs (5.73 kB) (1.44 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-gEDemQOz.mjs.map (4.58 kB) (1.05 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-iYkhp-gC.mjs (6.94 kB) (1.89 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-iYkhp-gC.mjs.map (5.22 kB) (1.37 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-Pz0QJfBo.mjs (22.9 kB) (3.83 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-Pz0QJfBo.mjs.map (17.1 kB) (3.05 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.bCPnYvsB.mjs (640 B) (296 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.bCPnYvsB.mjs.map (330 B) (211 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.gsLWFwkS.mjs (2.6 kB) (724 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.gsLWFwkS.mjs.map (331 B) (217 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.Un9mcW46.mjs (1.53 kB) (571 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.Un9mcW46.mjs.map (331 B) (212 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/admin-gcc0Z9CK.mjs (3.84 kB) (1.21 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/admin-gcc0Z9CK.mjs.map (3.26 kB) (856 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/admin-styles.TOhTy5bQ.mjs (4.46 kB) (1.28 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/admin-styles.TOhTy5bQ.mjs.map (459 B) (249 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/api-logic-zcG-oO8Y.mjs (11.3 kB) (3.08 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/api-logic-zcG-oO8Y.mjs.map (13.7 kB) (2.79 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/article-category-2gae7FPe.mjs (367 B) (247 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/article-category-2gae7FPe.mjs.map (450 B) (258 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/article-P2PzmGZ9.mjs (1.2 kB) (534 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/article-P2PzmGZ9.mjs.map (876 B) (386 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/article-QA79pmBS.mjs (1.22 kB) (485 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/article-QA79pmBS.mjs.map (1.31 kB) (405 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/article-view-Gl36MrVU.mjs (1.52 kB) (595 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/article-view-Gl36MrVU.mjs.map (1.62 kB) (503 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/author-JVfkjpL-.mjs (545 B) (296 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/author-JVfkjpL-.mjs.map (649 B) (278 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/conf-ToKWs9i_.mjs (1.47 kB) (547 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/conf-ToKWs9i_.mjs.map (1.96 kB) (465 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/default-Frk4XnkW.mjs (1.2 kB) (531 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/default-Frk4XnkW.mjs.map (876 B) (386 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/entry-styles.FsmlKikS.mjs (2.65 kB) (1.02 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/entry-styles.FsmlKikS.mjs.map (552 B) (266 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/error-404-styles.XRz1-5H_.mjs (3.97 kB) (1.26 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/error-404-styles.XRz1-5H_.mjs.map (346 B) (223 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/error-404-vOfP9MOS.mjs (4.09 kB) (1.7 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/error-404-vOfP9MOS.mjs.map (2.33 kB) (781 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/error-500-2D6dcp2B.mjs (3.19 kB) (1.39 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/error-500-2D6dcp2B.mjs.map (1.69 kB) (600 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/error-500-styles.vMIeuOQq.mjs (2.28 kB) (871 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/error-500-styles.vMIeuOQq.mjs.map (346 B) (220 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/flatpickr.min-2F9bRLI0.mjs (15.8 kB) (2.8 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/flatpickr.min-2F9bRLI0.mjs.map (15.9 kB) (2.21 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_hover_sp-UkkoJIzv.mjs (795 B) (339 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_hover_sp-UkkoJIzv.mjs.map (305 B) (197 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_search_sp-DAjyz2oB.mjs (1.5 kB) (1.08 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_search_sp-DAjyz2oB.mjs.map (238 B) (172 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_top_sp-8QquO17x.mjs (4.45 kB) (3.31 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_top_sp-8QquO17x.mjs.map (232 B) (172 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_hover_sp-yRQhq93V.mjs (787 B) (336 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_hover_sp-yRQhq93V.mjs.map (301 B) (196 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_search_sp-gN4WjSB3.mjs (2.19 kB) (1.59 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_search_sp-gN4WjSB3.mjs.map (234 B) (173 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_top_sp-KMPmthP-.mjs (779 B) (333 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_top_sp-KMPmthP-.mjs.map (297 B) (193 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_hover_sp-o80NeD7_.mjs (779 B) (335 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_hover_sp-o80NeD7_.mjs.map (297 B) (194 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_search_sp-CJtOscXO.mjs (1.97 kB) (1.43 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_search_sp-CJtOscXO.mjs.map (230 B) (171 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_top_sp-Lne3wNmu.mjs (5.24 kB) (3.87 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_top_sp-Lne3wNmu.mjs.map (224 B) (168 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_hover_sp-h0bHrUkH.mjs (787 B) (336 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_hover_sp-h0bHrUkH.mjs.map (301 B) (195 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_search_sp-H2Khyt_Y.mjs (2.02 kB) (1.47 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_search_sp-H2Khyt_Y.mjs.map (234 B) (172 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_top_sp-cMGxvd7t.mjs (5.25 kB) (3.92 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_top_sp-cMGxvd7t.mjs.map (228 B) (169 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_hover_sp-ow5IFwVw.mjs (787 B) (336 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_hover_sp-ow5IFwVw.mjs.map (301 B) (196 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_search_sp-VxWu1PP5.mjs (1.95 kB) (1.43 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_search_sp-VxWu1PP5.mjs.map (234 B) (173 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_top_sp-GfDuV4RQ.mjs (5.08 kB) (3.76 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_top_sp-GfDuV4RQ.mjs.map (228 B) (173 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-_4Oq1TtZ.mjs (22.8 kB) (3.8 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-_4Oq1TtZ.mjs.map (16.9 kB) (3.03 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index--gnBzzVL.mjs (16.5 kB) (6.61 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index--gnBzzVL.mjs.map (7.5 kB) (1.18 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-G_oO3sFj.mjs (6.92 kB) (1.87 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-G_oO3sFj.mjs.map (5.17 kB) (1.36 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-KTUUZTZ7.mjs (3.03 kB) (1.04 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-KTUUZTZ7.mjs.map (2.1 kB) (738 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-NK68IuP_.mjs (15 kB) (3.23 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-NK68IuP_.mjs.map (11.4 kB) (2.55 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.Mr2jfVQs.mjs (2.64 kB) (726 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.Mr2jfVQs.mjs.map (334 B) (214 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.PQorCxj3.mjs (516 B) (262 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.PQorCxj3.mjs.map (333 B) (213 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.QzYNg7ni.mjs (1.61 kB) (583 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.QzYNg7ni.mjs.map (334 B) (218 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.Vn2JMyJ5.mjs (2.65 kB) (822 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.Vn2JMyJ5.mjs.map (538 B) (274 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.ynp5BxCt.mjs (1.44 kB) (510 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-styles.ynp5BxCt.mjs.map (334 B) (214 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-tbNGurtz.mjs (979 B) (455 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-tbNGurtz.mjs.map (1.14 kB) (456 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-ygHDFPRG.mjs (18.1 kB) (3.77 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/index-ygHDFPRG.mjs.map (13.9 kB) (3 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/island-renderer--oE2KIX0.mjs (1.2 kB) (531 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/island-renderer--oE2KIX0.mjs.map (895 B) (404 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/nuxt-link-CXWnO8QZ.mjs (6.62 kB) (1.87 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/nuxt-link-CXWnO8QZ.mjs.map (6.39 kB) (1.58 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/page-num-count-2nYjycCC.mjs (4.43 kB) (1.35 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/page-num-count-2nYjycCC.mjs.map (4.38 kB) (1.11 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/period-A9T2wMbS.mjs (1.43 kB) (405 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/period-A9T2wMbS.mjs.map (1.66 kB) (374 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/preview-6Le1mTxP.mjs (5.53 kB) (1.36 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/preview-6Le1mTxP.mjs.map (4.35 kB) (1 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/preview-Ifv9IazH.mjs (3.48 kB) (1.34 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/preview-Ifv9IazH.mjs.map (2.15 kB) (765 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/preview-styles.FZfhFOTa.mjs (2.26 kB) (847 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/preview-styles.FZfhFOTa.mjs.map (420 B) (240 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/preview-styles.YTz3KmLG.mjs (658 B) (299 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/preview-styles.YTz3KmLG.mjs.map (339 B) (219 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-box-UzBJRbUW.mjs (3.51 kB) (1.19 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-box-UzBJRbUW.mjs.map (2.69 kB) (843 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-KtSYiZ7d.mjs (10.6 kB) (2.31 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-KtSYiZ7d.mjs.map (8.65 kB) (1.54 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-Sk-ymsAJ.mjs (12.3 kB) (2.34 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-Sk-ymsAJ.mjs.map (9.52 kB) (1.78 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-styles.0hR0GOuk.mjs (4.69 kB) (1.33 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-styles.0hR0GOuk.mjs.map (543 B) (277 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-styles.MQGTcHfP.mjs (866 B) (384 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/search-styles.MQGTcHfP.mjs.map (337 B) (216 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/title_sp-8Q8wzEgW.mjs (612 B) (386 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/title_sp-8Q8wzEgW.mjs.map (667 B) (274 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/validation-SeQchZ6A.mjs (952 B) (374 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/_nuxt/validation-SeQchZ6A.mjs.map (1.3 kB) (381 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/client.manifest.mjs (25.7 kB) (2.48 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/client.manifest.mjs.map (20.8 kB) (1.53 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/server.mjs (45.9 kB) (10.8 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/server.mjs.map (303 B) (207 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/styles.mjs (1.98 kB) (524 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/app/styles.mjs.map (1.41 kB) (348 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/convert-type.mjs (341 B) (201 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/convert-type.mjs.map (491 B) (256 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/error-500.mjs (4.26 kB) (1.82 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/error-500.mjs.map (193 B) (157 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/handlers/renderer.mjs (13 kB) (4.16 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/handlers/renderer.mjs.map (424 B) (227 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.delete.mjs (772 B) (372 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.delete.mjs.map (620 B) (254 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.delete2.mjs (772 B) (373 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.delete2.mjs.map (620 B) (256 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get.mjs (987 B) (473 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get.mjs.map (860 B) (299 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get10.mjs (1.06 kB) (483 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get10.mjs.map (938 B) (324 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get11.mjs (1.05 kB) (485 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get11.mjs.map (937 B) (322 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get12.mjs (1.09 kB) (490 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get12.mjs.map (946 B) (329 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get13.mjs (1.05 kB) (487 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get13.mjs.map (937 B) (322 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get14.mjs (984 B) (470 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get14.mjs.map (856 B) (296 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get15.mjs (980 B) (469 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get15.mjs.map (851 B) (292 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get16.mjs (988 B) (474 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get16.mjs.map (861 B) (298 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get2.mjs (2.13 kB) (732 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get2.mjs.map (2.34 kB) (452 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get3.mjs (1.45 kB) (585 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get3.mjs.map (1.5 kB) (366 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get4.mjs (1.45 kB) (585 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get4.mjs.map (1.5 kB) (368 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get5.mjs (813 B) (380 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get5.mjs.map (593 B) (245 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get6.mjs (980 B) (469 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get6.mjs.map (851 B) (293 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get7.mjs (981 B) (470 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get7.mjs.map (853 B) (295 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get8.mjs (986 B) (472 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get8.mjs.map (859 B) (300 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get9.mjs (979 B) (466 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.get9.mjs.map (850 B) (292 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.mjs (14.8 kB) (4.07 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.mjs.map (184 B) (156 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.post.mjs (745 B) (362 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.post.mjs.map (586 B) (241 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.post2.mjs (745 B) (363 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.post2.mjs.map (586 B) (242 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put.mjs (786 B) (378 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put.mjs.map (644 B) (252 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put2.mjs (786 B) (379 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put2.mjs.map (644 B) (256 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put3.mjs (793 B) (385 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put3.mjs.map (645 B) (255 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put4.mjs (794 B) (386 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put4.mjs.map (647 B) (259 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put5.mjs (792 B) (385 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put5.mjs.map (644 B) (254 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put6.mjs (796 B) (387 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put6.mjs.map (649 B) (261 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put7.mjs (792 B) (385 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/index.put7.mjs.map (644 B) (254 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/multipart-parser.mjs (5.1 kB) (2.12 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/multipart-parser.mjs.map (210 B) (167 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/nitro/node-server.mjs (289 kB) (73.1 kB gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/nitro/node-server.mjs.map (3.47 kB) (900 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/rollup/_virtual_spa-template.mjs (94 B) (100 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/chunks/rollup/_virtual_spa-template.mjs.map (112 B) (112 B gzip)
-[2024/02/10 20:47:44]    ├─ .output/server/index.mjs (450 B) (232 B gzip)
-[2024/02/10 20:47:44]    └─ .output/server/package.json (2.64 kB) (783 B gzip)
-[2024/02/10 20:47:44]  Σ Total size: 4.69 MB (1.19 MB gzip)
-[2024/02/10 20:47:44]  [nitro] ✔ You can preview this build using node .output/server/index.mjs
-[2024/02/10 20:47:46]  httpd is restarted.
-[2024/02/10 20:47:46]  Use --update-env to update environment variables
-[2024/02/10 20:47:46]  [PM2] Applying action restartProcessId on app [0](ids: [ '0' ])
-[2024/02/10 20:47:47]  [PM2] [story-blog](0) ✓
-[2024/02/10 20:47:47]  ┌────┬───────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
-[2024/02/10 20:47:47]  │ id │ name          │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
-[2024/02/10 20:47:47]  ├────┼───────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
-[2024/02/10 20:47:47]  │ 4  │ fairy-bot     │ default     │ 1.0.0   │ fork    │ 64170    │ 32h    │ 11   │ online    │ 0%       │ 12.6mb   │ gituser  │ disabled │
-[2024/02/10 20:47:47]  │ 0  │ story-blog    │ default     │ 0.0.0   │ cluster │ 67745    │ 0s     │ 18   │ online    │ 0%       │ 41.2mb   │ gituser  │ disabled │
-[2024/02/10 20:47:47]  └────┴───────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
-[2024/02/10 20:47:47]  pm2 is restarted.
-[2024/02/10 20:47:47]  Switched to branch 'log'
-[2024/02/10 20:47:49]  From github.com:kikuzak/story-blog
-[2024/02/10 20:47:49]   * branch            main       -> FETCH_HEAD
-[2024/02/10 20:47:49]  fatal: Not possible to fast-forward, aborting.
+[2024/02/11 21:52:41]  Already on 'main'
+[2024/02/11 21:52:41]  Your branch is up to date with 'origin/main'.
+[2024/02/11 21:52:43]  From github.com:kikuzak/story-blog
+[2024/02/11 21:52:43]   * branch            main       -> FETCH_HEAD
+[2024/02/11 21:52:43]     9806a26..2bb735c  main       -> origin/main
+[2024/02/11 21:52:43]  Updating 9806a26..2bb735c
+[2024/02/11 21:52:43]  Fast-forward
+[2024/02/11 21:52:43]   layouts/search.vue | 13 +++++--------
+[2024/02/11 21:52:43]   1 file changed, 5 insertions(+), 8 deletions(-)
+[2024/02/11 21:52:44]  
+[2024/02/11 21:52:44]  > build
+[2024/02/11 21:52:44]  > nuxt build
+[2024/02/11 21:52:44]  
+[2024/02/11 21:52:44]  
+[2024/02/11 21:52:44]   WARN  Current version of Node.js (16.20.2) is unsupported and might cause issues.
+[2024/02/11 21:52:44]         Please upgrade to a compatible version >= 18.0.0.
+[2024/02/11 21:52:44]  
+[2024/02/11 21:52:44]  Nuxt 3.9.0 with Nitro 2.8.1
+[2024/02/11 21:52:47]  
+[2024/02/11 21:52:47]   WARN  Node fetch compatibility is enabled. Please consider upgrading to Node.js >= 18.
+[2024/02/11 21:52:47]  
+[2024/02/11 21:52:49]  ℹ Building client...
+[2024/02/11 21:52:49]  ℹ vite v5.0.10 building for production...
+[2024/02/11 21:52:50]  ℹ transforming...
+[2024/02/11 21:52:58]  ℹ ✓ 395 modules transformed.
+[2024/02/11 21:52:58]  Inspect report generated at /home/gituser/nuxt/story-blog/.nuxt/analyze/.vite-inspect
+[2024/02/11 21:52:59]  ℹ rendering chunks...
+[2024/02/11 21:52:59]  ℹ computing gzip size...
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_top_sp.FoaQnZgQ.png          4.19 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_folklore_hover_sp.P2RW3VpD.png      6.37 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_writer_hover_sp.yCqiAiIc.png        7.05 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_others_hover_sp.CBb2bH5Y.png        7.08 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_myth_hover_sp.zyz3T8o3.png          7.09 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/title_text_1_sp.BGfZPmOO.png                      7.64 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_hover_sp.d-47Ipx_.png        8.15 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/manifest.json                                          17.49 kB │ gzip:   2.13 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/title_sp.Eaa23mi-.png                            32.78 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/background.b3j6KV_U.png                       1,506.63 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.ONWfkvr3.css                                0.21 kB │ gzip:   0.13 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/preview.HbjFP_AH.css                              0.34 kB │ gzip:   0.17 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/_id_.09f4u1vE.css                                 0.34 kB │ gzip:   0.17 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/search.ezHZQ4BP.css                               0.56 kB │ gzip:   0.26 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/_category_.uTxP5K0L.css                           0.63 kB │ gzip:   0.29 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/search-box.b1uEkhbp.css                           0.96 kB │ gzip:   0.38 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/page-num-count.QEfzvkkW.css                       1.04 kB │ gzip:   0.43 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.W2LGjuuS.css                                1.14 kB │ gzip:   0.38 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/_id_.hi0FmZFz.css                                 1.24 kB │ gzip:   0.44 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.UDIjhnIC.css                                1.31 kB │ gzip:   0.46 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/preview.ylnbt-4r.css                              1.34 kB │ gzip:   0.52 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.0SAIPXSy.css                                1.63 kB │ gzip:   0.49 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/error-500.V0P2JAtD.css                            1.95 kB │ gzip:   0.74 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/_id_.-ZiccOED.css                                 2.30 kB │ gzip:   0.60 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.vhjx3iUc.css                                2.34 kB │ gzip:   0.60 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/error-404.qFGwA4uS.css                            3.62 kB │ gzip:   1.12 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/search.lMGIrX3Q.css                               3.64 kB │ gzip:   0.98 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/admin.TvaGfbP3.css                                4.06 kB │ gzip:   1.13 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/theme-sugar.Qk-Q00_e.css                          4.15 kB │ gzip:   1.54 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/flatpickr.VF-re9is.css                           21.59 kB │ gzip:   4.05 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_top_sp.Z24TDkbV.js           0.13 kB │ gzip:   0.14 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_myth_hover_sp.1n0ftLQr.js           0.13 kB │ gzip:   0.15 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_hover_sp.ip6ea39R.js         0.14 kB │ gzip:   0.15 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_others_hover_sp.5cKeuqvE.js         0.14 kB │ gzip:   0.15 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_writer_hover_sp.4zyeOxQ3.js         0.14 kB │ gzip:   0.15 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_folklore_hover_sp.n2xlKJLM.js       0.14 kB │ gzip:   0.15 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/article.dZxSMoko.js                               0.18 kB │ gzip:   0.17 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/article-category.krDCApG1.js                      0.18 kB │ gzip:   0.17 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/default.d-2cIet4.js                               0.19 kB │ gzip:   0.17 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/validation.H7B8nqmX.js                            0.24 kB │ gzip:   0.22 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/author._cZj3EYW.js                                0.33 kB │ gzip:   0.22 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/title_sp.vyAQ48KE.js                              0.34 kB │ gzip:   0.27 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/vue.f36acd1f.rgHrfCHf.js                          0.39 kB │ gzip:   0.27 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.xc73jc0u.js                                 0.50 kB │ gzip:   0.43 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/conf.f9LPpFH4.js                                  0.60 kB │ gzip:   0.39 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/period.ooQbvs4V.js                                0.70 kB │ gzip:   0.29 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/article.8XFJM9CH.js                               0.84 kB │ gzip:   0.38 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/article-view.nyMzZBcm.js                          1.04 kB │ gzip:   0.46 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/admin.Tln6H4iJ.js                                 1.04 kB │ gzip:   0.62 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/_id_.WZX0GeZs.js                                  1.26 kB │ gzip:   0.68 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/preview.Hk3vk34F.js                               1.33 kB │ gzip:   0.70 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_folklore_search_sp.UO-a-2eH.js      1.36 kB │ gzip:   1.01 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/_category_.jSxw0nYL.js                            1.66 kB │ gzip:   0.92 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/preview.GsnAN7QD.js                               1.75 kB │ gzip:   1.01 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/_id_.VrF3x3Kd.js                                  1.78 kB │ gzip:   1.02 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.-3PKKrqW.js                                 1.80 kB │ gzip:   1.01 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_writer_search_sp.jhBoQYTv.js        1.82 kB │ gzip:   1.36 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_myth_search_sp.YlSUQMM3.js          1.84 kB │ gzip:   1.36 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/page-num-count.bJE_6jNI.js                        1.85 kB │ gzip:   0.94 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_others_search_sp.uNcYrwxT.js        1.89 kB │ gzip:   1.40 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/error-500.yehhyQzK.js                             1.92 kB │ gzip:   1.01 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_legend_search_sp.JFUXIVs8.js        2.05 kB │ gzip:   1.52 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/error-404.B81kXVY3.js                             2.30 kB │ gzip:   1.19 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/search-box.Wnom65rU.js                            2.35 kB │ gzip:   1.08 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/search.PQvmOZAR.js                                2.68 kB │ gzip:   1.24 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.vD_yr8rH.js                                 3.64 kB │ gzip:   1.76 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/nuxt-link.ySv4sjml.js                             4.23 kB │ gzip:   1.79 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_folklore_top_sp.P2iYgFTs.js         4.32 kB │ gzip:   3.24 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.T8PB33ja.js                                 4.66 kB │ gzip:   2.18 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/search.BBSyXZ-S.js                                4.85 kB │ gzip:   1.84 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_writer_top_sp.Bi2FIYmr.js           4.96 kB │ gzip:   3.69 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_myth_top_sp.vMlLsNU6.js             5.12 kB │ gzip:   3.80 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/icon_category_others_top_sp.e_yqqTjF.js           5.13 kB │ gzip:   3.84 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.wKle8GeO.js                                 6.39 kB │ gzip:   2.53 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/_id_.xcI99JSR.js                                  6.43 kB │ gzip:   2.55 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/theme-sugar.eGEWEAe-.js                          10.78 kB │ gzip:   4.28 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/index.RDU7kG9B.js                                11.70 kB │ gzip:   5.99 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/api-logic.GrNdQ8w6.js                            14.36 kB │ gzip:   5.65 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/entry.DvIX8hrb.js                               169.49 kB │ gzip:  63.81 kB
+[2024/02/11 21:52:59]  ℹ .nuxt/dist/client/_nuxt/flatpickr.min.Zn-QoGO_.js                       363.74 kB │ gzip: 113.96 kB
+[2024/02/11 21:52:59]  ℹ ✓ built in 9.93s
+[2024/02/11 21:52:59]  ✔ Client built in 9984ms
+[2024/02/11 21:52:59]  ℹ Building server...
+[2024/02/11 21:52:59]  ℹ vite v5.0.10 building SSR bundle for production...
+[2024/02/11 21:53:00]  ℹ transforming...
+[2024/02/11 21:53:05]  ℹ ✓ 232 modules transformed.
+[2024/02/11 21:53:05]  Inspect report generated at /home/gituser/nuxt/story-blog/.nuxt/analyze/.vite-inspect
+[2024/02/11 21:53:05]  ℹ rendering chunks...
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-styles.gsLWFwkS.mjs                       0.14 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-styles.Un9mcW46.mjs                       0.14 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-styles.bCPnYvsB.mjs                       0.14 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles.ynp5BxCt.mjs                      0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles.Mr2jfVQs.mjs                      0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles.PQorCxj3.mjs                      0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles.QzYNg7ni.mjs                      0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/search-styles.MQGTcHfP.mjs                     0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/preview-styles.YTz3KmLG.mjs                    0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/preview-styles.FZfhFOTa.mjs                    0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/error-404-styles.XRz1-5H_.mjs                  0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/error-500-styles.vMIeuOQq.mjs                  0.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_category_-styles.lpSfmQFN.mjs                 0.16 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/entry-styles.L5N0oDbV.mjs                      0.21 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles.Vn2JMyJ5.mjs                      0.21 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/admin-styles.TOhTy5bQ.mjs                      0.21 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/search-styles.O2pr3Wzs.mjs                     0.21 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/styles.mjs                                           1.91 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_myth_hover_sp-o80NeD7_.js        0.22 kB │ map:   0.25 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_legend_top_sp-KMPmthP-.js        0.22 kB │ map:   0.25 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_legend_hover_sp-yRQhq93V.js      0.23 kB │ map:   0.26 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_writer_hover_sp-ow5IFwVw.js      0.23 kB │ map:   0.26 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_others_hover_sp-h0bHrUkH.js      0.23 kB │ map:   0.26 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_folklore_hover_sp-UkkoJIzv.js    0.24 kB │ map:   0.26 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-edFF6Bg1.js                 0.36 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/article-category-2gae7FPe.js                   0.37 kB │ map:   0.85 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-cwJhOZ2y.js                 0.41 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-styles-1.mjs-fOzrkvi0.js                  0.54 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/author-JVfkjpL-.js                             0.54 kB │ map:   1.15 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/title_sp-8Q8wzEgW.js                           0.55 kB │ map:   0.22 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/preview-styles-1.mjs-PVVdqQkQ.js               0.55 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/search-styles-1.mjs-sGB-ruKz.js                0.76 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/search-styles-1.mjs-ITHZ1gYD.js                0.81 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_category_-styles-1.mjs-h8pRCa5W.js            0.84 kB │ map:   0.12 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/entry-styles-2.mjs-76BQ0Ce_.js                 0.85 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/entry-styles-3.mjs-g52gMu5p.js                 0.86 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/validation-SeQchZ6A.js                         0.93 kB │ map:   1.96 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-tbNGurtz.js                              0.98 kB │ map:   5.93 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/article-P2PzmGZ9.js                            1.04 kB │ map:   0.13 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/default-Frk4XnkW.js                            1.04 kB │ map:   0.13 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/island-renderer--oE2KIX0.js                    1.04 kB │ map:   1.55 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/admin-styles-1.mjs-Yr39ubOI.js                 1.05 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/entry-styles-1.mjs-pqvKbEiI.js                 1.08 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/article-QA79pmBS.js                            1.22 kB │ map:   2.46 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/conf-ToKWs9i_.js                               1.33 kB │ map:   2.80 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-S8eDnNTD.js                 1.34 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-styles-1.mjs-Dp4KfIuv.js                  1.44 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/period-A9T2wMbS.js                             1.44 kB │ map:   3.64 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_folklore_search_sp-DAjyz2oB.js   1.50 kB │ map:   1.55 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-T0HAWDzR.js                 1.51 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/article-view-Gl36MrVU.js                       1.52 kB │ map:   3.64 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/preview-styles-1.mjs-pnd4vFHT.js               1.59 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles-2.mjs-PKrzT0Is.js                 1.71 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_writer_search_sp-VxWu1PP5.js     1.95 kB │ map:   2.00 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_myth_search_sp-CJtOscXO.js       1.97 kB │ map:   2.02 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_others_search_sp-H2Khyt_Y.js     2.02 kB │ map:   2.07 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/error-500-styles-1.mjs-jbzM5VPC.js             2.17 kB │ map:   0.12 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_legend_search_sp-gN4WjSB3.js     2.19 kB │ map:   2.24 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-styles-1.mjs-fJWp0l7g.js                  2.50 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-styles-1.mjs-vROcq7VN.js                 2.54 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-KTUUZTZ7.js                              2.65 kB │ map:   0.59 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/error-500-2D6dcp2B.js                          3.04 kB │ map:   3.79 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/preview-Ifv9IazH.js                            3.18 kB │ map:   5.86 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/search-styles-2.mjs-cZXXypmX.js                3.29 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/admin-styles-2.mjs-LCrvitSA.js                 3.40 kB │ map:   0.11 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/search-box-UzBJRbUW.js                         3.47 kB │ map:   3.48 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/admin-gcc0Z9CK.js                              3.53 kB │ map:   8.87 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/error-404-styles-1.mjs-gy0NFO_4.js             3.86 kB │ map:   0.12 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/error-404-vOfP9MOS.js                          3.93 kB │ map:   5.83 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/page-num-count-2nYjycCC.js                     4.41 kB │ map:   6.75 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_folklore_top_sp-8QquO17x.js      4.45 kB │ map:   4.50 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_writer_top_sp-GfDuV4RQ.js        5.08 kB │ map:   5.14 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/preview-6Le1mTxP.js                            5.22 kB │ map:   2.18 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_myth_top_sp-Lne3wNmu.js          5.24 kB │ map:   5.30 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/icon_category_others_top_sp-cMGxvd7t.js        5.25 kB │ map:   5.31 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-gEDemQOz.js                               5.41 kB │ map:   2.05 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/nuxt-link-CXWnO8QZ.js                          6.53 kB │ map:  14.70 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-G_oO3sFj.js                              6.56 kB │ map:   4.52 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-iYkhp-gC.js                               6.64 kB │ map:   4.33 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_category_-4VSG4sgp.js                         9.52 kB │ map:   3.06 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/search-F4-Plzfw.js                            10.33 kB │ map:  12.28 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/api-logic-zcG-oO8Y.js                         11.00 kB │ map:  25.67 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/search-Sk-ymsAJ.js                            11.40 kB │ map:   6.64 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-NK68IuP_.js                             14.39 kB │ map:   8.01 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/flatpickr.min-2F9bRLI0.js                     15.86 kB │ map:  36.93 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index--gnBzzVL.js                             15.90 kB │ map:  13.40 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-ygHDFPRG.js                             17.31 kB │ map:  12.06 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/index-_4Oq1TtZ.js                             21.93 kB │ map:  13.69 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/_nuxt/_id_-Pz0QJfBo.js                              22.08 kB │ map:  13.74 kB
+[2024/02/11 21:53:06]  ℹ .nuxt/dist/server/server.mjs                                          42.86 kB │ map: 101.14 kB
+[2024/02/11 21:53:06]  ℹ ✓ built in 6.36s
+[2024/02/11 21:53:06]  ✔ Server built in 6456ms
+[2024/02/11 21:53:06]  [nitro] ✔ Generated public .output/public
+[2024/02/11 21:53:06]  [nitro] ℹ Building Nitro Server (preset: node-server)
+[2024/02/11 21:53:15]  [nitro] ✔ Nitro server built
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_category_-4VSG4sgp.mjs (10.1 kB) (1.99 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_category_-4VSG4sgp.mjs.map (7.43 kB) (1.52 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_category_-styles.lpSfmQFN.mjs (960 B) (423 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_category_-styles.lpSfmQFN.mjs.map (349 B) (220 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-gEDemQOz.mjs (5.73 kB) (1.44 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-gEDemQOz.mjs.map (4.58 kB) (1.05 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-iYkhp-gC.mjs (6.94 kB) (1.89 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-iYkhp-gC.mjs.map (5.22 kB) (1.37 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-Pz0QJfBo.mjs (22.9 kB) (3.83 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-Pz0QJfBo.mjs.map (17.1 kB) (3.05 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.bCPnYvsB.mjs (640 B) (296 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.bCPnYvsB.mjs.map (330 B) (211 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.gsLWFwkS.mjs (2.6 kB) (724 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.gsLWFwkS.mjs.map (331 B) (217 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.Un9mcW46.mjs (1.53 kB) (571 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/_id_-styles.Un9mcW46.mjs.map (331 B) (212 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/admin-gcc0Z9CK.mjs (3.84 kB) (1.21 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/admin-gcc0Z9CK.mjs.map (3.26 kB) (856 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/admin-styles.TOhTy5bQ.mjs (4.46 kB) (1.28 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/admin-styles.TOhTy5bQ.mjs.map (459 B) (249 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/api-logic-zcG-oO8Y.mjs (11.3 kB) (3.08 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/api-logic-zcG-oO8Y.mjs.map (13.7 kB) (2.79 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/article-category-2gae7FPe.mjs (367 B) (247 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/article-category-2gae7FPe.mjs.map (450 B) (258 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/article-P2PzmGZ9.mjs (1.2 kB) (534 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/article-P2PzmGZ9.mjs.map (876 B) (386 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/article-QA79pmBS.mjs (1.22 kB) (485 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/article-QA79pmBS.mjs.map (1.31 kB) (405 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/article-view-Gl36MrVU.mjs (1.52 kB) (595 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/article-view-Gl36MrVU.mjs.map (1.62 kB) (503 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/author-JVfkjpL-.mjs (545 B) (296 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/author-JVfkjpL-.mjs.map (649 B) (278 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/conf-ToKWs9i_.mjs (1.47 kB) (547 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/conf-ToKWs9i_.mjs.map (1.96 kB) (465 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/default-Frk4XnkW.mjs (1.2 kB) (531 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/default-Frk4XnkW.mjs.map (876 B) (386 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/entry-styles.L5N0oDbV.mjs (2.67 kB) (1.02 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/entry-styles.L5N0oDbV.mjs.map (552 B) (268 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/error-404-styles.XRz1-5H_.mjs (3.97 kB) (1.26 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/error-404-styles.XRz1-5H_.mjs.map (346 B) (223 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/error-404-vOfP9MOS.mjs (4.09 kB) (1.7 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/error-404-vOfP9MOS.mjs.map (2.33 kB) (781 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/error-500-2D6dcp2B.mjs (3.19 kB) (1.39 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/error-500-2D6dcp2B.mjs.map (1.69 kB) (600 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/error-500-styles.vMIeuOQq.mjs (2.28 kB) (871 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/error-500-styles.vMIeuOQq.mjs.map (346 B) (220 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/flatpickr.min-2F9bRLI0.mjs (15.8 kB) (2.8 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/flatpickr.min-2F9bRLI0.mjs.map (15.9 kB) (2.21 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_hover_sp-UkkoJIzv.mjs (795 B) (339 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_hover_sp-UkkoJIzv.mjs.map (305 B) (197 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_search_sp-DAjyz2oB.mjs (1.5 kB) (1.08 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_search_sp-DAjyz2oB.mjs.map (238 B) (172 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_top_sp-8QquO17x.mjs (4.45 kB) (3.31 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_folklore_top_sp-8QquO17x.mjs.map (232 B) (172 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_hover_sp-yRQhq93V.mjs (787 B) (336 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_hover_sp-yRQhq93V.mjs.map (301 B) (196 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_search_sp-gN4WjSB3.mjs (2.19 kB) (1.59 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_search_sp-gN4WjSB3.mjs.map (234 B) (173 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_top_sp-KMPmthP-.mjs (779 B) (333 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_legend_top_sp-KMPmthP-.mjs.map (297 B) (193 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_hover_sp-o80NeD7_.mjs (779 B) (335 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_hover_sp-o80NeD7_.mjs.map (297 B) (194 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_search_sp-CJtOscXO.mjs (1.97 kB) (1.43 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_search_sp-CJtOscXO.mjs.map (230 B) (171 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_top_sp-Lne3wNmu.mjs (5.24 kB) (3.87 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_myth_top_sp-Lne3wNmu.mjs.map (224 B) (168 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_hover_sp-h0bHrUkH.mjs (787 B) (336 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_hover_sp-h0bHrUkH.mjs.map (301 B) (195 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_search_sp-H2Khyt_Y.mjs (2.02 kB) (1.47 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_search_sp-H2Khyt_Y.mjs.map (234 B) (172 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_top_sp-cMGxvd7t.mjs (5.25 kB) (3.92 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_others_top_sp-cMGxvd7t.mjs.map (228 B) (169 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_hover_sp-ow5IFwVw.mjs (787 B) (336 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_hover_sp-ow5IFwVw.mjs.map (301 B) (196 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_search_sp-VxWu1PP5.mjs (1.95 kB) (1.43 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_search_sp-VxWu1PP5.mjs.map (234 B) (173 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_top_sp-GfDuV4RQ.mjs (5.08 kB) (3.76 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/icon_category_writer_top_sp-GfDuV4RQ.mjs.map (228 B) (173 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-_4Oq1TtZ.mjs (22.8 kB) (3.8 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-_4Oq1TtZ.mjs.map (16.9 kB) (3.03 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index--gnBzzVL.mjs (16.5 kB) (6.61 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index--gnBzzVL.mjs.map (7.5 kB) (1.18 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-G_oO3sFj.mjs (6.92 kB) (1.87 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-G_oO3sFj.mjs.map (5.17 kB) (1.36 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-KTUUZTZ7.mjs (3.03 kB) (1.04 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-KTUUZTZ7.mjs.map (2.1 kB) (738 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-NK68IuP_.mjs (15 kB) (3.23 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-NK68IuP_.mjs.map (11.4 kB) (2.55 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.Mr2jfVQs.mjs (2.64 kB) (726 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.Mr2jfVQs.mjs.map (334 B) (214 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.PQorCxj3.mjs (516 B) (262 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.PQorCxj3.mjs.map (333 B) (213 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.QzYNg7ni.mjs (1.61 kB) (583 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.QzYNg7ni.mjs.map (334 B) (218 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.Vn2JMyJ5.mjs (2.65 kB) (822 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.Vn2JMyJ5.mjs.map (538 B) (274 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.ynp5BxCt.mjs (1.44 kB) (510 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-styles.ynp5BxCt.mjs.map (334 B) (214 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-tbNGurtz.mjs (979 B) (455 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-tbNGurtz.mjs.map (1.14 kB) (456 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-ygHDFPRG.mjs (18.1 kB) (3.77 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/index-ygHDFPRG.mjs.map (13.9 kB) (3 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/island-renderer--oE2KIX0.mjs (1.2 kB) (531 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/island-renderer--oE2KIX0.mjs.map (895 B) (404 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/nuxt-link-CXWnO8QZ.mjs (6.62 kB) (1.87 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/nuxt-link-CXWnO8QZ.mjs.map (6.39 kB) (1.58 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/page-num-count-2nYjycCC.mjs (4.43 kB) (1.35 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/page-num-count-2nYjycCC.mjs.map (4.38 kB) (1.11 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/period-A9T2wMbS.mjs (1.43 kB) (405 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/period-A9T2wMbS.mjs.map (1.66 kB) (374 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/preview-6Le1mTxP.mjs (5.53 kB) (1.36 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/preview-6Le1mTxP.mjs.map (4.35 kB) (1 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/preview-Ifv9IazH.mjs (3.48 kB) (1.34 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/preview-Ifv9IazH.mjs.map (2.15 kB) (765 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/preview-styles.FZfhFOTa.mjs (2.26 kB) (847 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/preview-styles.FZfhFOTa.mjs.map (420 B) (240 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/preview-styles.YTz3KmLG.mjs (658 B) (299 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/preview-styles.YTz3KmLG.mjs.map (339 B) (219 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-box-UzBJRbUW.mjs (3.51 kB) (1.19 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-box-UzBJRbUW.mjs.map (2.69 kB) (843 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-F4-Plzfw.mjs (10.7 kB) (2.34 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-F4-Plzfw.mjs.map (8.71 kB) (1.56 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-Sk-ymsAJ.mjs (12.3 kB) (2.34 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-Sk-ymsAJ.mjs.map (9.52 kB) (1.78 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-styles.MQGTcHfP.mjs (866 B) (384 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-styles.MQGTcHfP.mjs.map (337 B) (216 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-styles.O2pr3Wzs.mjs (4.68 kB) (1.33 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/search-styles.O2pr3Wzs.mjs.map (543 B) (276 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/title_sp-8Q8wzEgW.mjs (612 B) (386 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/title_sp-8Q8wzEgW.mjs.map (667 B) (274 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/validation-SeQchZ6A.mjs (952 B) (374 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/_nuxt/validation-SeQchZ6A.mjs.map (1.3 kB) (381 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/client.manifest.mjs (25.7 kB) (2.48 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/client.manifest.mjs.map (20.8 kB) (1.53 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/server.mjs (45.9 kB) (10.8 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/server.mjs.map (303 B) (207 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/styles.mjs (1.98 kB) (523 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/app/styles.mjs.map (1.41 kB) (346 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/convert-type.mjs (341 B) (201 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/convert-type.mjs.map (491 B) (256 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/error-500.mjs (4.26 kB) (1.82 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/error-500.mjs.map (193 B) (157 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/handlers/renderer.mjs (13 kB) (4.16 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/handlers/renderer.mjs.map (424 B) (227 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.delete.mjs (772 B) (372 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.delete.mjs.map (620 B) (254 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.delete2.mjs (772 B) (373 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.delete2.mjs.map (620 B) (256 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get.mjs (987 B) (473 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get.mjs.map (860 B) (299 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get10.mjs (1.06 kB) (483 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get10.mjs.map (938 B) (324 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get11.mjs (1.05 kB) (485 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get11.mjs.map (937 B) (322 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get12.mjs (1.09 kB) (490 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get12.mjs.map (946 B) (329 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get13.mjs (1.05 kB) (487 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get13.mjs.map (937 B) (322 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get14.mjs (984 B) (470 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get14.mjs.map (856 B) (296 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get15.mjs (980 B) (469 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get15.mjs.map (851 B) (292 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get16.mjs (988 B) (474 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get16.mjs.map (861 B) (298 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get2.mjs (2.13 kB) (732 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get2.mjs.map (2.34 kB) (452 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get3.mjs (1.45 kB) (585 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get3.mjs.map (1.5 kB) (366 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get4.mjs (1.45 kB) (585 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get4.mjs.map (1.5 kB) (368 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get5.mjs (813 B) (380 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get5.mjs.map (593 B) (245 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get6.mjs (980 B) (469 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get6.mjs.map (851 B) (293 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get7.mjs (981 B) (470 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get7.mjs.map (853 B) (295 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get8.mjs (986 B) (472 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get8.mjs.map (859 B) (300 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get9.mjs (979 B) (466 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.get9.mjs.map (850 B) (292 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.mjs (14.8 kB) (4.07 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.mjs.map (184 B) (156 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.post.mjs (745 B) (362 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.post.mjs.map (586 B) (241 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.post2.mjs (745 B) (363 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.post2.mjs.map (586 B) (242 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put.mjs (786 B) (378 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put.mjs.map (644 B) (252 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put2.mjs (786 B) (379 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put2.mjs.map (644 B) (256 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put3.mjs (793 B) (385 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put3.mjs.map (645 B) (255 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put4.mjs (794 B) (386 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put4.mjs.map (647 B) (259 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put5.mjs (792 B) (385 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put5.mjs.map (644 B) (254 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put6.mjs (796 B) (387 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put6.mjs.map (649 B) (261 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put7.mjs (792 B) (385 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/index.put7.mjs.map (644 B) (254 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/multipart-parser.mjs (5.1 kB) (2.12 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/multipart-parser.mjs.map (210 B) (167 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/nitro/node-server.mjs (289 kB) (73.1 kB gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/nitro/node-server.mjs.map (3.47 kB) (900 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/rollup/_virtual_spa-template.mjs (94 B) (100 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/chunks/rollup/_virtual_spa-template.mjs.map (112 B) (112 B gzip)
+[2024/02/11 21:53:16]    ├─ .output/server/index.mjs (450 B) (232 B gzip)
+[2024/02/11 21:53:16]    └─ .output/server/package.json (2.64 kB) (783 B gzip)
+[2024/02/11 21:53:16]  Σ Total size: 4.69 MB (1.19 MB gzip)
+[2024/02/11 21:53:16]  [nitro] ✔ You can preview this build using node .output/server/index.mjs
+[2024/02/11 21:53:18]  httpd is restarted.
+[2024/02/11 21:53:19]  Use --update-env to update environment variables
+[2024/02/11 21:53:19]  [PM2] Applying action restartProcessId on app [0](ids: [ '0' ])
+[2024/02/11 21:53:19]  [PM2] [story-blog](0) ✓
+[2024/02/11 21:53:19]  ┌────┬───────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+[2024/02/11 21:53:19]  │ id │ name          │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+[2024/02/11 21:53:19]  ├────┼───────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+[2024/02/11 21:53:19]  │ 4  │ fairy-bot     │ default     │ 1.0.0   │ fork    │ 67846    │ 24h    │ 12   │ online    │ 0%       │ 10.2mb   │ gituser  │ disabled │
+[2024/02/11 21:53:19]  │ 0  │ story-blog    │ default     │ 0.0.0   │ cluster │ 70027    │ 0s     │ 20   │ online    │ 0%       │ 46.4mb   │ gituser  │ disabled │
+[2024/02/11 21:53:19]  └────┴───────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+[2024/02/11 21:53:19]  pm2 is restarted.
+[2024/02/11 21:53:19]  Switched to branch 'log'
+[2024/02/11 21:53:21]  From github.com:kikuzak/story-blog
+[2024/02/11 21:53:21]   * branch            main       -> FETCH_HEAD
+[2024/02/11 21:53:21]  fatal: Not possible to fast-forward, aborting.
