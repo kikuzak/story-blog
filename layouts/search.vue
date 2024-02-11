@@ -53,14 +53,13 @@ const router = useRouter();
 const categoryKeys = Conf.getCategoryKeys();
 let viewElement: HTMLElement;
 let navElement: HTMLElement;
-// let headerElement: HTMLElement;
-// let rootFontSize: number;
 
 // クエリ変化でviewが更新されないためここで更新する
 onBeforeRouteUpdate(async () => {
-    // const navElement = document.getElementsByClassName('side-bar-container')[0];
-    navElement.classList.remove('active');
-    navElement.classList.add('inactive');
+    if (window.innerWidth < 1280) {
+        navElement.classList.remove('active');
+        navElement.classList.add('inactive');
+    }
 });
 
 const linkTo = (category: string) => {
@@ -82,8 +81,6 @@ function toggleIndex() {
 // windowの高さを調節する
 function resize() {
     viewElement.style.blockSize = `${window.innerHeight}px`;
-    const asideElement = document.getElementsByClassName('aside')[0] as HTMLElement;
-    asideElement.style.blockSize = `${window.innerHeight}px`;
 }
 
 // pcのときにnavを表示する
@@ -203,7 +200,7 @@ nav {
 
 aside {
     background-color: rgba(0, 0, 0, 0.6);
-    block-size: 100vh;
+    block-size: 100%;
     inline-size: 100%;
     position: absolute;
     inset-block-start: 0;
