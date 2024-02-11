@@ -36,6 +36,9 @@ header {
 }
 .article-content {
     padding-block: 1rem;
+    @include mq(pc) {
+        padding-block-start: 0;
+    }
 }
 
 .article-text {
