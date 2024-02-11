@@ -83,6 +83,9 @@ const search = async (params: URLSearchParams) => {
 <style scoped lang="scss">
 .search-result {
     padding-block: 1rem;
+    @include mq(pc) {
+        padding-block-start: 0;
+    }
 }
 
 h1 {
