@@ -39,10 +39,39 @@ export default defineEventHandler(async (e): Promise<ArticleView[] | null> => {
         if (searchText) {
             data = await prisma.article.findMany({
                 where: {
-                    status: 2,
-                    content: {
-                        contains: searchText
-                    }
+                    AND: [
+                        {
+                            status: 2
+                        },
+                        {
+                            OR: [
+                                {
+                                    title: {
+                                        contains: searchText
+                                    }
+                                },
+                                {
+                                    content: {
+                                        contains: searchText
+                                    }
+                                },
+                                {
+                                    author: {
+                                        name: {
+                                            contains: searchText
+                                        }
+                                    }
+                                },
+                                {
+                                    source: {
+                                        contains: searchText
+                                    }
+                                }
+                            ]
+                        }
+                        
+                    ]
+
                 },
                 include: include
             });
