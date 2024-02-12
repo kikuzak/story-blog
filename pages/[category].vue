@@ -9,9 +9,9 @@
                         <ul class="article-attribute-list">
                             <li class="article-attribute-item" v-if="article.article_category">分類：{{ article.article_category.name }}</li>
                             <li class="article-attribute-item" v-if="article.class_number">分類番号：{{ article.class_number }}</li>
-                            <li class="article-attribute-item" v-if="article.region">地域：{{ article.region.name }}</li>
+                            <li class="article-attribute-item" v-if="article.country">国：{{ article.country.name }}</li>
+                            <li class="article-attribute-item" v-if="article.prefecture">分類番号：{{ article.prefecture.name }}</li>
                             <li class="article-attribute-item" v-if="article.period">時代：{{ article.period.name }}</li>
-                            <li class="article-attribute-item" v-if="article.author">著者：</li>
                         </ul>
                     </nuxt-link>
                 </li>
@@ -61,6 +61,7 @@ h1 {
 
 .article-attribute-list {
     display: flex;
+    flex-wrap: wrap;
     font-size: 0.7rem;
 
     .article-attribute-item {
