@@ -16,7 +16,7 @@
                     </nuxt-link>
                 </li>
                 <InfiniteLoading class="infinite-load" @infinite="load">
-                    <template #complete><span></span></template>>
+                    <template #complete><span></span></template>
                 </InfiniteLoading>
             </ul>
             <p v-else>お探しの記事は見つかりませんでした。</p>
