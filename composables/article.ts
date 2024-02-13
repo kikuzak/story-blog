@@ -30,6 +30,7 @@ function initialize(): Article {
         country_id: null,
         period_id: null,
         prefecture_id: null,
+        old_prefecture_id: null,
         author_id: null,
         source_category_id: null,
         source: null,

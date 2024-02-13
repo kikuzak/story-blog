@@ -71,8 +71,9 @@ export default defineEventHandler(async (e): Promise<ArticleView[] | null> => {
                         }
                         
                     ]
-
                 },
+                skip: (pageNumber - 1) * pageSize,
+                take: pageSize,
                 include: include
             });
         } else if (pageNumber === 0 && pageSize === 0) {
@@ -85,7 +86,6 @@ export default defineEventHandler(async (e): Promise<ArticleView[] | null> => {
                 where: where,
                 skip: (pageNumber - 1) * pageSize,
                 take: pageSize,
-                orderBy: {kana: 'asc'},
                 include: include
             });
         }

@@ -44,7 +44,6 @@
 <script setup lang="ts">
 const router = useRouter();
 const categoryKeys = Conf.getCategoryKeys();
-
 const categoryGroup = computed(() => {
     // 配列を2・1・2に分割する
     return [

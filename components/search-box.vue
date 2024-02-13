@@ -12,7 +12,7 @@ const searchText = ref("");
 const router = useRouter();
 
 const search = () => {
-    router.push(`/search?text=${searchText.value}`);
+    router.push(`/search/text/${searchText.value}`);
 }
 </script>
 

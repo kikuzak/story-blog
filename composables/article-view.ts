@@ -1,3 +1,4 @@
+import type { Article } from "@prisma/client";
 import { createReadMethods } from "./api-logic";
 
 export type ArticleView = {
@@ -57,11 +58,103 @@ function initialize(): ArticleView {
 }
 
 async function getMultiByText(text: string) {
-    const { data, error } = await useFetch('api/article-view', {
+    const { data, error } = await useFetch('/api/article-view', {
         query: {text: text, status: ArticleLogic.Status.published}
     });
     if (error.value) throw(error.value);
-    return data as Ref<ArticleView[]>;
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
+}
+
+async function getMutiByCategoryAndPage(categoryId: number, pageNumber: number, pageSize: number) {
+    const { data, error } = await useFetch('/api/article-view', {
+        query: {
+            article_category_id: categoryId,
+            page: pageNumber,
+            size: pageSize
+        }
+    });
+    if (error.value) throw(error.value);
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
+}
+
+async function getMutiByCountryAndPage(countryId: number, pageNumber: number, pageSize: number) {
+    const { data, error } = await useFetch('/api/article-view', {
+        query: {
+            country_id: countryId,
+            page: pageNumber,
+            size: pageSize
+        }
+    });
+    if (error.value) throw(error.value);
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
+}
+
+async function getMutiByRegionAndPage(regionId: number, pageNumber: number, pageSize: number) {
+    const { data, error } = await useFetch('/api/article-view', {
+        query: {
+            region_id: regionId,
+            page: pageNumber,
+            size: pageSize
+        }
+    });
+    if (error.value) throw(error.value);
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
+}
+
+async function getMutiByPeriodAndPage(periodId: number, pageNumber: number, pageSize: number) {
+    const { data, error } = await useFetch('/api/article-view', {
+        query: {
+            period_id: periodId,
+            page: pageNumber,
+            size: pageSize
+        }
+    });
+    if (error.value) throw(error.value);
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
+}
+
+async function getMutiByPrefectureAndPage(prefectureId: number, pageNumber: number, pageSize: number) {
+    const { data, error } = await useFetch('/api/article-view', {
+        query: {
+            prefecture_id: prefectureId,
+            page: pageNumber,
+            size: pageSize
+        }
+    });
+    if (error.value) throw(error.value);
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
+}
+
+async function getMutiByKanaAndPage(kana: string, pageNumber: number, pageSize: number) {
+    const { data, error } = await useFetch('/api/article-view', {
+        query: {
+            kana: kana,
+            page: pageNumber,
+            size: pageSize
+        }
+    });
+    if (error.value) throw(error.value);
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
+}
+
+async function getMutiByTextAndPage(text: string, pageNumber: number, pageSize: number) {
+    const { data, error } = await useFetch('/api/article-view', {
+        query: {
+            text: text,
+            page: pageNumber,
+            size: pageSize
+        }
+    });
+    if (error.value) throw(error.value);
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
 }
 
 const {
@@ -71,7 +164,7 @@ const {
     getMultiByCountry,
     getMultiByPeriod,
     getMultiByRegion,
-    getMultiByArticleCategory
+    getMultiByArticleCategory,
 } = createReadMethods<ArticleView>('article-view');
 
 const ArticleViewLogic = {
@@ -83,7 +176,14 @@ const ArticleViewLogic = {
     getMultiByPeriod,
     getMultiByRegion,
     getMultiByArticleCategory,
-    getMultiByText
+    getMultiByText,
+    getMutiByCategoryAndPage,
+    getMutiByTextAndPage,
+    getMutiByCountryAndPage,
+    getMutiByRegionAndPage,
+    getMutiByPeriodAndPage,
+    getMutiByPrefectureAndPage,
+    getMutiByKanaAndPage
 }
 
 export { ArticleViewLogic };

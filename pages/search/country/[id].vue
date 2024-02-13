@@ -1,7 +1,7 @@
 <template>
     <NuxtLayout name="search">
-        <div class="category">
-            <h1>{{ articleCategory.name }}の一覧</h1>
+        <div class="search-result">
+            <h1>「{{ country.name }}」の検索結果</h1>
             <ul class="article-list" v-if="articles">
                 <li class="article-item" v-for="article in articles" :key="article.id">
                     <nuxt-link :to="`/article/${article.id}`">
@@ -15,7 +15,7 @@
                         </ul>
                     </nuxt-link>
                 </li>
-                <InfiniteLoading class="infinite-load" @infinite="load">
+                <InfiniteLoading @infinite="load">
                     <template #complete><span></span></template>>
                 </InfiniteLoading>
             </ul>
@@ -29,17 +29,19 @@ import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
 
 const route = useRoute();
-const categoryKey = route.params.category as string;
-const categoryId = Conf.getCategoryIdFromKey(categoryKey) as number;
-const articleCategory = await ArticleCategoryLogic.getById(categoryId);
+const id = Number(route.params.id);
+const validation = useValidation();
 
+const country = await CountryLogic.getById(id);
 const articles: any = ref([ArticleViewLogic.initialize()]);
 const numPerPage = 10;
 let page = 1;
 
+if (!validation.id(route.params.id as string)) throw new Error("不正な値です。");
+
 const load = async ($state: any) => {
     try {
-        const res = await ArticleViewLogic.getMutiByCategoryAndPage(categoryId, page, numPerPage);
+        const res = await ArticleViewLogic.getMutiByCountryAndPage(id, page, numPerPage);
         if (!res.value) {
             if (!articles.value[0].title) articles.value = null;
             $state.complete();
@@ -59,10 +61,10 @@ const load = async ($state: any) => {
 </script>
 
 <style scoped lang="scss">
-.category {
+.search-result {
     padding-block: 1rem;
     @include mq(pc) {
-        padding: 0;
+        padding-block-start: 0;
     }
 }
 
@@ -90,15 +92,11 @@ h1 {
 
 .article-attribute-list {
     display: flex;
-    flex-wrap: wrap;
     font-size: 0.7rem;
+    flex-wrap: wrap;
 
     .article-attribute-item {
         margin-inline-end: 0.7rem;
     }
-}
-
-.infinite-load span {
-    display: none;
 }
 </style>

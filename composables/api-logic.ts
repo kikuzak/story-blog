@@ -113,8 +113,8 @@ export function createReadMethods<T>(name: string) {
         getMultiByPrefecture,
         getMultiBySourceCategory,
         getByAuthor,
-        getPosted
-    };
+        getPosted,
+    }
 }
 
 export function createWriteMethods<T>(name: string) {
