@@ -62,7 +62,8 @@ function toggleSearchList(className: string) {
 <style scoped lang="scss">
 .side-bar {
     $side-bar-size: 70%;
-    background-color: #FFF;
+    background-image: url('@/assets/img/sidebar_bg.png');
+    background-size: cover;
     block-size: 100%;
     inline-size: $side-bar-size;
     overflow: auto;
