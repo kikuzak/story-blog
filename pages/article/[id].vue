@@ -6,8 +6,8 @@
                 <div class="article-attribute-list flex-container">
                     <p class="article-attribute-item" v-if="article.article_category">分類：{{ article.article_category.name }}</p>
                     <p class="article-attribute-item" v-if="article.class_number">分類番号：{{ article.class_number }}</p>
-                    <p class="article-attribute-item" v-if="article.country">分類番号：{{ article.country.name }}</p>
-                    <p class="article-attribute-item" v-if="article.prefecture">分類番号：{{ article.prefecture.name }}</p>
+                    <p class="article-attribute-item" v-if="article.country">国：{{ article.country.name }}</p>
+                    <p class="article-attribute-item" v-if="article.prefecture">県：{{ article.prefecture.name }}</p>
                     <p class="article-attribute-item" v-if="article.period">時代：{{ article.period.name }}</p>
                 </div>
             </header>
