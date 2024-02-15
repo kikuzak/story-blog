@@ -38,6 +38,18 @@ let page = 1;
 
 if (!validation.text(route.params.text as string)) throw new Error("不正な値です。");
 
+useHead({
+    title: `MARINTO GOA | 「${text}」の検索結果`,
+    link: [
+        {rel: 'canonical', href: `${Conf.baseURL}/search/text/${text}`}
+    ],
+    meta: [
+        {name: 'description', content:  `「${text}」の検索結果です。`},
+        {property: 'og:title', content: `MARINTO GOA | 「${text}」の検索結果`},
+        {property: 'og:description', content: `「${text}」の検索結果です。`},
+    ]
+});
+
 const load = async ($state: any) => {
     try {
         const res = await ArticleViewLogic.getMutiByTextAndPage(text, page, numPerPage);

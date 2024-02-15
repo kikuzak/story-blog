@@ -38,6 +38,18 @@ let page = 1;
 
 if (!validation.kana(route.params.kana as string)) throw new Error("不正な値です。");
 
+useHead({
+    title: `MARINTO GOA | 「${kana}」の検索結果`,
+    link: [
+        {rel: 'canonical', href: `${Conf.baseURL}/search/kana/${kana}`}
+    ],
+    meta: [
+        {name: 'description', content:  `「${kana}」の検索結果です。`},
+        {property: 'og:title', content: `MARINTO GOA | 「${kana}」の検索結果`},
+        {property: 'og:description', content: `「${kana}」の検索結果です。`},
+    ]
+});
+
 const load = async ($state: any) => {
     try {
         const res = await ArticleViewLogic.getMutiByKanaAndPage(kana, page, numPerPage);

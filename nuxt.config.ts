@@ -10,7 +10,10 @@ export default defineNuxtConfig({
       },
       meta: [
         {charset: 'utf-8'},
-        {}
+        {property: 'og:site_name', content: 'MARINTO GOA (マリントゴア)'},
+        {property: 'og:type', content: 'article'},
+        {property: 'og:image', content: 'https://marintogoa.net/ogp.png'},
+        
       ],
       link: [
         {

@@ -1,3 +1,5 @@
+const baseURL = 'https://marintogoa.net';
+
 const CategoryType: { [key: string]: number } = {
     folklore: 1,
     myth: 2,
@@ -48,7 +50,8 @@ const Conf = {
     getCategoryIdFromKey,
     getCategoryKeys,
     kana,
-    getLineByKana
+    getLineByKana,
+    baseURL
 }
 
 export { Conf };

@@ -23,6 +23,22 @@ const route = useRoute();
 const id = Number(route.params.id);
 const article = await ArticleViewLogic.getById(id);
 
+const originalContent = article.value.content as string;
+const plainContent = originalContent.replace(/<[^>]+>/g, '');
+const headContent = plainContent.substring(0, 120);
+
+useHead({
+    title: `${article.value.title}`,
+    link: [
+        {rel: 'canonical', href: `${Conf.baseURL}/article/${article.value.id}`}
+    ],
+    meta: [
+        {name: 'description', content:  headContent},
+        {property: 'og:title', content: `${article.value.title}`},
+        {property: 'og:description', content: headContent},
+    ]
+});
+
 </script>
 
 <style scoped lang="scss">

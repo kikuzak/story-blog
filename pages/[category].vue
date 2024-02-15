@@ -37,6 +37,18 @@ const articles: any = ref([ArticleViewLogic.initialize()]);
 const numPerPage = 10;
 let page = 1;
 
+useHead({
+    title: `MARINTO GOA | ${articleCategory.value.name}`,
+    link: [
+        {rel: 'canonical', href: `${Conf.baseURL}/${categoryKey}`}
+    ],
+    meta: [
+        {name: 'description', content: `マリンとゴアの「${articleCategory.value.name}」カテゴリのページです。${articleCategory.value.name}に関する記事を紹介します。`},
+        {property: 'og:title', content: `MARINTO GOA | ${articleCategory.value.name}`},
+        {property: 'og:description', content:  `マリンとゴアの「${articleCategory.value.name}」カテゴリのページです。${articleCategory.value.name}に関する記事を紹介します。`},
+    ]
+});
+
 const load = async ($state: any) => {
     try {
         const res = await ArticleViewLogic.getMutiByCategoryAndPage(categoryId, page, numPerPage);

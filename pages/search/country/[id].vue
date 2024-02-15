@@ -39,6 +39,18 @@ let page = 1;
 
 if (!validation.id(route.params.id as string)) throw new Error("不正な値です。");
 
+useHead({
+    title: `MARINTO GOA | 「${country.value.name}」の検索結果`,
+    link: [
+        {rel: 'canonical', href: `${Conf.baseURL}/search/country/${country.value.id}`}
+    ],
+    meta: [
+        {name: 'description', content:  `「${country.value.name}」の検索結果です。`},
+        {property: 'og:title', content: `MARINTO GOA | 「${country.value.name}」の検索結果`},
+        {property: 'og:description', content: `「${country.value.name}」の検索結果です。`},
+    ]
+});
+
 const load = async ($state: any) => {
     try {
         const res = await ArticleViewLogic.getMutiByCountryAndPage(id, page, numPerPage);

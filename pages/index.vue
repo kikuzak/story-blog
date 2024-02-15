@@ -42,6 +42,18 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+    title: 'MARINTO GOA | 世界中の物語を集めるブログ',
+    link: [
+        {rel: 'canonical', href: `${Conf.baseURL}`}
+    ],
+    meta: [
+        {name: 'description', content: 'マリンとゴアには、管理人の蒐集した世界中の民話や神話、都市伝説といったさまざまな物語が記録されていきます。'},
+        {property: 'og:title', content: 'MARINTO GOA | 世界中の物語を集めるブログ'},
+        {property: 'og:description', content: 'マリンとゴアには、管理人の蒐集した世界中の民話や神話、都市伝説といったさまざまな物語が記録されていきます。'},
+    ]
+});
+
 const router = useRouter();
 const categoryKeys = Conf.getCategoryKeys();
 const categoryGroup = computed(() => {
