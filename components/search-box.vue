@@ -1,6 +1,6 @@
 <template>
     <div class="search-box">
-        <input name="query" class="search-text" type="text" v-model="searchText" placeholder="フリーワード検索">
+        <input name="query" class="search-text" type="text" v-model="searchText" placeholder="フリーワード検索" @keypress.enter="search">
         <button class="search-button" @click="search">
             <i class="fa fa-regular fa-magnifying-glass"></i>
         </button>
@@ -12,6 +12,7 @@ const searchText = ref("");
 const router = useRouter();
 
 const search = () => {
+    if (!searchText.value) return;
     router.push(`/search/text/${searchText.value}`);
 }
 </script>
@@ -24,6 +25,8 @@ const search = () => {
     position: relative;
 
     .search-text {
+        background-color: transparent;
+        inline-size: 100%;
         line-height: calc(2rem - 4px);
         padding-inline-start: 0.2rem;
         &::placeholder {
