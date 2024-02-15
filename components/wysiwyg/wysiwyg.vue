@@ -261,7 +261,7 @@ function enterLink(url: string, isTargetBlank: boolean) {
 function internalLink() {
     const { from, to } = editor.state.selection;
     const selectedText = editor.state.doc.textBetween(from, to);
-    const url = `/search?text=${selectedText}`;
+    const url = `/search/text/${selectedText}`;
     editor.chain().focus().toggleLink({href: url, target: null}).run();
 }
 
