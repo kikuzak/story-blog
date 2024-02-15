@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
+  modules: ['nuxt-gtag'],
   devtools: { enabled: true },
   app: {
     head: {
@@ -28,6 +29,9 @@ export default defineNuxtConfig({
     "@/assets/css/k-framework.scss",
     "@/assets/css/article.scss"
   ],
+  gtag: {
+    id: 'G-K4GW1V0ZRM'
+  },
   vite: {
     css: {
       preprocessorOptions: {
