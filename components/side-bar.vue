@@ -17,7 +17,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="index-category-item prefecture" v-show="old-prefectures">
+            <li class="index-category-item prefecture" v-show="oldPrefectures">
                 <p class="label" @click="toggleSearchList('old-prefecture-list')">日本(旧国名)</p>
                 <ul class="search-list old-prefecture-list">
                     <li v-for="oldPrefecture in oldPrefectures" :key="oldPrefecture.id">
