@@ -10,10 +10,18 @@
                 </ul>
             </li>
             <li class="index-category-item prefecture" v-show="prefectures">
-                <p class="label" @click="toggleSearchList('prefecture-list')">日本</p>
+                <p class="label" @click="toggleSearchList('prefecture-list')">日本(現在)</p>
                 <ul class="search-list prefecture-list">
                     <li v-for="prefecture in prefectures" :key="prefecture.id">
                         <nuxt-link :to="`/search/prefecture/${prefecture.id}`">{{ prefecture.name }}</nuxt-link>
+                    </li>
+                </ul>
+            </li>
+            <li class="index-category-item prefecture" v-show="prefectures">
+                <p class="label" @click="toggleSearchList('old-prefecture-list')">日本(旧国名)</p>
+                <ul class="search-list old-prefecture-list">
+                    <li v-for="oldPrefecture in oldPrefectures" :key="oldPrefecture.id">
+                        <nuxt-link :to="`/search/old-prefecture/${oldPrefecture.id}`">{{ oldPrefecture.name }}</nuxt-link>
                     </li>
                 </ul>
             </li>
@@ -46,10 +54,13 @@
 </template>
 
 <script setup lang="ts">
+import { OldPrefectureLogic } from '~/composables/old-prefecture';
+
 
 const regions = await RegionLogic.getPosted();
 const countries = await CountryLogic.getPosted();
 const prefectures = await PrefectureLogic.getPosted();
+const oldPrefectures = await OldPrefectureLogic.getPosted();
 const periods = await PeriodLogic.getPosted();
 
 function toggleSearchList(className: string) {

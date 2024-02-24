@@ -1,4 +1,3 @@
-import type { Article } from "@prisma/client";
 import { createReadMethods } from "./api-logic";
 
 export type ArticleView = {
@@ -14,6 +13,8 @@ export type ArticleView = {
     period: {name: string | null},
     prefecture_id: number | null,
     prefecture: {name: string | null},
+    old_prefecture_id: number | null,
+    old_prefecture: {name: string | null},
     author_id: number | null
     author: {name: string | null},
     source_category_id: number | null,
@@ -42,6 +43,8 @@ function initialize(): ArticleView {
         period: {name: null},
         prefecture_id: null,
         prefecture: {name: null},
+        old_prefecture_id: null,
+        old_prefecture: {name: null},
         author_id: null,
         author: {name: null},
         source_category_id: null,
@@ -131,6 +134,19 @@ async function getMutiByPrefectureAndPage(prefectureId: number, pageNumber: numb
     return res as Ref<ArticleView[]>;
 }
 
+async function getMutiByOldPrefectureAndPage(prefectureId: number, pageNumber: number, pageSize: number) {
+    const { data, error } = await useFetch('/api/article-view', {
+        query: {
+            old_prefecture_id: prefectureId,
+            page: pageNumber,
+            size: pageSize
+        }
+    });
+    if (error.value) throw(error.value);
+    const res = data as any;
+    return res as Ref<ArticleView[]>;
+}
+
 async function getMutiByKanaAndPage(kana: string, pageNumber: number, pageSize: number) {
     const { data, error } = await useFetch('/api/article-view', {
         query: {
@@ -183,7 +199,8 @@ const ArticleViewLogic = {
     getMutiByRegionAndPage,
     getMutiByPeriodAndPage,
     getMutiByPrefectureAndPage,
-    getMutiByKanaAndPage
+    getMutiByKanaAndPage,
+    getMutiByOldPrefectureAndPage,
 }
 
 export { ArticleViewLogic };

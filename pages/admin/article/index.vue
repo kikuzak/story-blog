@@ -169,7 +169,7 @@ async function deleteArticle() {
         toast.success('記事の削除に成功しました。');
         initialize();
     } catch (e) {
-        toast.error('記事の削除に失敗しました。')
+        toast.error('記事の削除に失敗しました。');
     }
 }
 

@@ -31,6 +31,7 @@ export default defineEventHandler(async (e): Promise<ArticleView[] | null> => {
             country: {select: {name: true}},
             period: {select: {name: true}},
             prefecture: {select: {name: true}},
+            old_prefecture: {select: {name: true}},
             source_category: {select: {name: true}}
         }
 

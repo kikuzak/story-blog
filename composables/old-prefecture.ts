@@ -16,11 +16,11 @@ function initialize(): OldPrefecture {
     }
 }
 
-const oldPrefectureLogic = {
+const OldPrefectureLogic = {
     getById,
     getAll,
     getPosted,
     initialize,
 };
 
-export { oldPrefectureLogic };
+export { OldPrefectureLogic };

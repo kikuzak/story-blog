@@ -36,6 +36,10 @@
                         <p class="label">国</p>
                         <InputSelectCountry v-model:countryId="article.country_id" />
                     </div>
+                    <div class="content-item country-area">
+                        <p class="label">旧国名</p>
+                        <InputSelectInputOldPrefecture v-model:oldPrefectureId="article.old_prefecture_id"  v-model:countryId="article.country_id"/>
+                    </div>
                     <div class="content-item prefecture-area">
                         <p class="label">県</p>
                         <InputSelectInputPrefecture v-model:prefectureId="article.prefecture_id" v-model:countryId="article.country_id" />
@@ -99,6 +103,7 @@ const articleCategories = await ArticleCategoryLogic.getAll();
 const regions = await RegionLogic.getAll();
 const countries = await CountryLogic.getAll();
 const prefectures = await PrefectureLogic.getAll();
+const oldPrefectures = await OldPrefectureLogic.getAll();
 const periods = await PeriodLogic.getAll();
 const authors = await AuthorLogic.getAll();
 const sourceCategories = await SourceCategoryLogic.getAll();
@@ -106,6 +111,7 @@ provide('articleCategories', articleCategories);
 provide('regions', regions);
 provide('countries', countries);
 provide('prefectures', prefectures);
+provide('oldPrefectures', oldPrefectures);
 provide('periods', periods);
 provide('authors', authors);
 provide('sourceCategories', sourceCategories);
